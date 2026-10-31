@@ -22,7 +22,11 @@ export function ResultCard({ card }: { card: Card }) {
           <span className={styles.severity}>{card.severity}</span>
         )}
       </header>
-      {card.value && <p className={styles.value}>{card.value}</p>}
+      {card.value && (
+        <p className={card.type === "metric" ? styles.value : styles.context}>
+          {card.value}
+        </p>
+      )}
       {card.body &&
         (card.type === "report" && card.body.length > 400 ? (
           <details className={styles.report}>

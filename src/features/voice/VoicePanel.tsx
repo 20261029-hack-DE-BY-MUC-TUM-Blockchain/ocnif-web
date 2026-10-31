@@ -65,7 +65,9 @@ export function VoicePanel({
           </Tooltip>
         </div>
       </div>
-      {!isVoice && <p className={styles.scope}>{t.voiceDisclosure}</p>}
+      {!isVoice && (
+        <p className={styles.voiceDisclosure}>{t.voiceDisclosure}</p>
+      )}
       {voice.status === "error" && (
         <p className={styles.error} role="alert">
           {t.voiceError}

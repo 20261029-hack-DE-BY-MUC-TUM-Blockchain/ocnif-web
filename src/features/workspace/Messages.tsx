@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Icon } from "@/components/ui/data-display/Icon/Icon";
 import { MarkdownText } from "@/components/ui/data-display/MarkdownText/MarkdownText";
 import { ResultCard } from "@/components/ui/data-display/ResultCard/ResultCard";
@@ -16,6 +17,11 @@ export function Messages({
   onSample: (value: string) => void;
 }) {
   const { t } = usePreferences();
+  const latest = useRef<HTMLElement | null>(null);
+  const messageCount = messages.length;
+  useEffect(() => {
+    if (messageCount) latest.current?.scrollIntoView({ block: "start" });
+  }, [messageCount]);
   if (!messages.length && !draft)
     return (
       <div className={styles.empty}>
@@ -46,11 +52,12 @@ export function Messages({
     );
   return (
     <div className={styles.messages} role="log" aria-live="polite">
-      {messages.map((message) => (
+      {messages.map((message, messageIndex) => (
         <article
           className={styles.message}
           data-role={message.role}
           key={message.id}
+          ref={messageIndex === messages.length - 1 ? latest : undefined}
         >
           <header>
             <span className={styles.messageAvatar}>

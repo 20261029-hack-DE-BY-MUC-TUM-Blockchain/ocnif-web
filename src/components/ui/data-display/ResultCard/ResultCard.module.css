@@ -66,3 +66,9 @@
   font-size: var(--font-sm);
   cursor: pointer;
 }
+
+.context {
+  color: var(--accent);
+  font-size: var(--font-xs);
+  margin-top: var(--space-3);
+}
