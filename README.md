@@ -12,7 +12,7 @@ cp .env.example .env
 git config core.hooksPath .githooks
 ```
 
-Set `API_BASE_URL` to the backend origin. Set `VOICE_API_ORIGIN` to the configured voice-provider HTTPS origin. `CARDANO_BASE_URL` enables the `/paid/` Masumi/Sokosumi status proxy. `SOKOSUMI_PREPROD_URL` is the public navigation origin for Personal Workspace setup. These are non-secret origin values; provider keys belong to the core service.
+Set `PUBLIC_APP_ORIGIN` to the browser-visible app origin and `API_BASE_URL` to the backend origin. Set `VOICE_API_ORIGIN` to the configured voice-provider HTTPS origin. `CARDANO_BASE_URL` enables the `/paid/` Masumi/Sokosumi status proxy. `SOKOSUMI_PREPROD_URL` is the public navigation origin for Personal Workspace setup. These are non-secret origin values; provider keys belong to the core service.
 
 ## Build and run
 
@@ -26,6 +26,8 @@ bun run start
 ```
 
 The production container runs Next.js standalone output with its static assets and listens on `PORT`. HTTP and WebSocket `/api/` traffic uses a same-origin reverse proxy, so session cookies stay on the web origin. `API_BASE_URL` and `CARDANO_BASE_URL` must be set before building because rewrites are build-time configuration. `VOICE_API_ORIGIN` must also be present at runtime for the per-request content-security policy.
+
+Supply `PUBLIC_APP_ORIGIN` at build and runtime. The CSP's explicit WebSocket source and reporting endpoint use this validated origin, independently of internal container hosts or forwarded request headers. HTTPS maps to WSS; local HTTP maps to WS. Without the setting, the policy retains `'self'` and relative `report-uri` but omits explicit WebSocket and reporting endpoint origins. Configure it for deployment so browsers receive the intended public WebSocket source.
 
 `docker-compose.yml` is for local development only; production uses Azure Container Apps. Each Docker build uses this repository as its own build context.
 

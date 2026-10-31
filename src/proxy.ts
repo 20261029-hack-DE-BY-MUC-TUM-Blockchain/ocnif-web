@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import {
   bsvOverlayUrl,
+  publicAppOrigin,
   voiceApiOrigin,
   walletConnectOrigins,
 } from "@/lib/config";
@@ -9,6 +10,8 @@ export function proxy(request: NextRequest) {
     crypto.getRandomValues(new Uint8Array(16)),
   ).toString("base64");
   const voice = voiceApiOrigin();
+  const origin = publicAppOrigin();
+  const websocket = origin?.replace(/^http/, "ws");
   const wallets = walletConnectOrigins().join(" ");
   const chainProviders = [bsvOverlayUrl()]
     .filter((value): value is string => !!value)
@@ -20,7 +23,7 @@ export function proxy(request: NextRequest) {
     `style-src 'self' 'nonce-${nonce}'`,
     "img-src 'self' data:",
     "font-src 'self'",
-    `connect-src 'self' ${request.nextUrl.protocol === "https:" ? "wss" : "ws"}://${request.nextUrl.host}${voice ? ` ${voice}` : ""} ${wallets} ${chainProviders}`,
+    `connect-src 'self'${websocket ? ` ${websocket}` : ""}${voice ? ` ${voice}` : ""} ${wallets} ${chainProviders}`,
     "media-src 'self' blob:",
     "worker-src 'self'",
     "frame-ancestors 'none'",
@@ -36,10 +39,11 @@ export function proxy(request: NextRequest) {
   const response = NextResponse.next({ request: { headers } });
   response.headers.set("Content-Security-Policy", csp);
   response.headers.set("Cache-Control", "no-store");
-  response.headers.set(
-    "Reporting-Endpoints",
-    `csp="${new URL("/csp-report", request.url).href}"`,
-  );
+  if (origin)
+    response.headers.set(
+      "Reporting-Endpoints",
+      `csp="${new URL("/csp-report", origin).href}"`,
+    );
   return response;
 }
 export const config = {

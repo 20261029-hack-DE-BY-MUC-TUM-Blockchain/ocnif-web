@@ -5,6 +5,7 @@ services:
     build:
       context: .
       args:
+        PUBLIC_APP_ORIGIN: ${PUBLIC_APP_ORIGIN:?Set PUBLIC_APP_ORIGIN}
         API_BASE_URL: ${API_BASE_URL:?Set API_BASE_URL}
         VOICE_API_ORIGIN: ${VOICE_API_ORIGIN:-}
         CARDANO_BASE_URL: ${CARDANO_BASE_URL:-}
@@ -15,6 +16,7 @@ services:
     ports:
       - "${WEB_PORT:-3000}:3000"
     environment:
+      PUBLIC_APP_ORIGIN: ${PUBLIC_APP_ORIGIN:?Set PUBLIC_APP_ORIGIN}
       PORT: "3000"
       HOSTNAME: "0.0.0.0"
       VOICE_API_ORIGIN: ${VOICE_API_ORIGIN:-}

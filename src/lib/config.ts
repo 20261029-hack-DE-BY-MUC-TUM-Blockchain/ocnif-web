@@ -1,3 +1,21 @@
+export function publicAppOrigin(): string | undefined {
+  const value = process.env.PUBLIC_APP_ORIGIN;
+  if (!value) return undefined;
+  const url = new URL(value);
+  if (
+    !["http:", "https:"].includes(url.protocol) ||
+    url.username ||
+    url.password ||
+    url.pathname !== "/" ||
+    url.search ||
+    url.hash
+  )
+    throw new Error(
+      "PUBLIC_APP_ORIGIN must be an HTTP origin without credentials, path, query or fragment",
+    );
+  return url.origin;
+}
+
 export function apiBaseUrl(): string | undefined {
   const value = process.env.API_BASE_URL;
   if (!value) return undefined;
