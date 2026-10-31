@@ -1,0 +1,6 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Next.js generated preview and server-action keys; source and environment files remain scanned"
+paths = ['''^\.next/''']
