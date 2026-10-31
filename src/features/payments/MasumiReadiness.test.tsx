@@ -26,9 +26,41 @@ test("task receipt renders separately from unverified payment state", () => {
   const html = renderToStaticMarkup(<MasumiReadiness status={status} />);
   assert.match(html, /Execution-only Task receipt<\/dt><dd>Verified/);
   assert.match(html, /Payment settlement receipt<\/dt><dd>Not verified/);
-  assert.match(html, /task-1/);
+  assert.doesNotMatch(html, /task-1/);
   assert.match(html, /local-worker-receipt/);
   assert.match(html, /2026-10-31T12:50:00Z/);
+});
+
+test("public readiness shows the scoped receipt digest without private task identifiers or current availability claims", () => {
+  const status: MasumiStatus = {
+    integration: "masumi-sokosumi",
+    network: "cardano:preprod",
+    agentReady: true,
+    coworkerConfigured: true,
+    workerFresh: false,
+    executionOnly: {
+      verified: true,
+      taskId: null,
+      receiptSHA256: "ab".repeat(32),
+      workspaceKind: "personal",
+      completedAt: "2026-10-31T13:00:00Z",
+      verifiedAt: "2026-10-31T13:00:01Z",
+    },
+    paid: {
+      enabled: false,
+      registrationConfirmed: false,
+      settlementVerified: false,
+    },
+    setupRequired: ["worker_not_attached"],
+  };
+  const html = renderToStaticMarkup(<MasumiReadiness status={status} />);
+  assert.match(html, /Receipt SHA256/);
+  assert.match(html, new RegExp("ab".repeat(32)));
+  assert.match(html, /Receipt workspace<\/dt><dd>Personal Workspace/);
+  assert.match(html, /Worker heartbeat<\/dt><dd>Disconnected or stale/);
+  assert.match(html, /Payment settlement receipt<\/dt><dd>Not verified/);
+  assert.match(html, /2026-10-31T13:00:00Z/);
+  assert.doesNotMatch(html, /Recorded Task identifier|Organization Workspace/);
 });
 test("selected Cardano panel has setup navigation and no legacy purchase or signing controls", () => {
   const html = renderToStaticMarkup(

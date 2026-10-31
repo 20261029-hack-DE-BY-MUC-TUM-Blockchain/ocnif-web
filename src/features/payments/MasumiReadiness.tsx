@@ -19,6 +19,14 @@ export function MasumiReadiness({ status }: { status: MasumiStatus }) {
       status.coworkerConfigured ? t.masumiReady : t.masumiNotReady,
     ],
     [
+      t.masumiWorkerFresh,
+      status.workerFresh === undefined
+        ? t.masumiWorkerUnknown
+        : status.workerFresh
+          ? t.masumiWorkerRecent
+          : t.masumiWorkerStale,
+    ],
+    [
       t.masumiExecution,
       status.executionOnly.verified ? t.masumiVerified : t.masumiUnverified,
     ],
@@ -46,10 +54,42 @@ export function MasumiReadiness({ status }: { status: MasumiStatus }) {
           </div>
         ))}
       </dl>
-      {status.executionOnly.taskId && (
-        <p>
-          {t.masumiTaskId}: <code>{status.executionOnly.taskId}</code>
-        </p>
+      {status.executionOnly.receiptSHA256 && (
+        <>
+          <p>{t.masumiHistoryNote}</p>
+          <dl>
+            <div className={styles.statusRow}>
+              <dt>{t.masumiReceiptDigest}</dt>
+              <dd>
+                <code>{status.executionOnly.receiptSHA256}</code>
+              </dd>
+            </div>
+            <div className={styles.statusRow}>
+              <dt>{t.masumiWorkspace}</dt>
+              <dd>
+                {status.executionOnly.workspaceKind === "personal"
+                  ? t.masumiPersonal
+                  : t.masumiOrganization}
+              </dd>
+            </div>
+            <div className={styles.statusRow}>
+              <dt>{t.masumiCompletedAt}</dt>
+              <dd>
+                <time dateTime={status.executionOnly.completedAt}>
+                  {status.executionOnly.completedAt}
+                </time>
+              </dd>
+            </div>
+            <div className={styles.statusRow}>
+              <dt>{t.masumiVerifiedAt}</dt>
+              <dd>
+                <time dateTime={status.executionOnly.verifiedAt}>
+                  {status.executionOnly.verifiedAt}
+                </time>
+              </dd>
+            </div>
+          </dl>
+        </>
       )}
       {status.evidence && (
         <p>
@@ -57,6 +97,7 @@ export function MasumiReadiness({ status }: { status: MasumiStatus }) {
           <time dateTime={status.evidence.observedAt}>
             {status.evidence.observedAt}
           </time>
+          {status.evidence.verification && <> · {t.masumiAttestation}</>}
         </p>
       )}
       {status.setupRequired.length > 0 && (

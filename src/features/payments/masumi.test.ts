@@ -71,3 +71,49 @@ test("worker receipt provenance and observation time are retained", () => {
     }),
   );
 });
+
+test("a private-ID-free historical receipt remains verified when the worker heartbeat is stale", () => {
+  const executionOnly = {
+    verified: true,
+    taskId: null,
+    receiptSHA256: "ab".repeat(32),
+    workspaceKind: "personal",
+    completedAt: "2026-10-31T13:00:00Z",
+    verifiedAt: "2026-10-31T13:00:01Z",
+  };
+  const evidence = {
+    source: "local-worker-receipt",
+    observedAt: executionOnly.verifiedAt,
+    verification: "authenticated-local-worker-attestation",
+  };
+  const parsed = parseCardanoStatus({
+    ...status,
+    workerFresh: false,
+    executionOnly,
+    evidence,
+  });
+  assert.ok(parsed.integration === "masumi-sokosumi");
+  assert.deepEqual(parsed.executionOnly, executionOnly);
+  assert.equal(parsed.workerFresh, false);
+  assert.equal(parsed.paid.settlementVerified, false);
+  assert.deepEqual(parsed.evidence, evidence);
+  for (const changed of [
+    { receiptSHA256: "invalid" },
+    { workspaceKind: "TUM-verified" },
+    { completedAt: "yesterday" },
+    { verifiedAt: undefined },
+  ])
+    assert.throws(() =>
+      parseCardanoStatus({
+        ...status,
+        executionOnly: { ...executionOnly, ...changed },
+      }),
+    );
+  assert.throws(() => parseCardanoStatus({ ...status, workerFresh: "true" }));
+  assert.throws(() =>
+    parseCardanoStatus({
+      ...status,
+      evidence: { ...evidence, verification: "on-chain-settled" },
+    }),
+  );
+});
