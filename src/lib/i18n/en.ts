@@ -103,6 +103,9 @@ export const en = {
   traces: "Activity & evidence",
   traceEmpty: "Real agent and tool events will appear here.",
   showTrace: "Inspect activity",
+  detailsTitle: "Workspace details",
+  showDetails: "Show workspace details",
+  hideDetails: "Hide workspace details",
   noEvidence: "No evidence yet",
   result: "Investigation result",
   approving: "Sending decision…",
@@ -126,6 +129,21 @@ export const en = {
   unmute: "Unmute microphone",
   voiceConnecting: "Connecting voice…",
   voiceActive: "Voice connected",
+  voiceDetails: "Transcript & speaker details",
+  enableAudio: "Enable audio",
+  voiceThinking: "Preparing a response…",
+  voiceWorking: "Running the requested task…",
+  voiceResponding: "Assistant speaking",
+  voiceMuted: "Microphone muted",
+  assistantTranscript: "Assistant caption",
+  voiceResponseFailed:
+    "The voice response failed. You can continue by text or end and reconnect.",
+  voiceTranscriptionFailed:
+    "The microphone transcript could not be completed. Please try again or use text.",
+  voiceTaskFailed:
+    "The requested task failed. Review the chat activity for details.",
+  voiceSessionFailed:
+    "The voice session reported an error. End the call and reconnect.",
   voiceError:
     "Voice could not connect. Check microphone permission and service configuration.",
   voiceDisclosure:

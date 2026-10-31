@@ -378,4 +378,22 @@ export const es: Dictionary = {
   gateError:
     "No se pudo verificar la cartera, política, evidencia o recibo. Revisa la transacción guardada y la cartera antes de reintentar. Comprobar el recibo no envía una transacción nueva.",
   gateTotalEstimate: "Comisión total estimada, incluidos datos L1 y operador",
+  voiceDetails: "Transcripción y detalles de hablantes",
+  detailsTitle: "Detalles del espacio de trabajo",
+  showDetails: "Mostrar detalles del espacio de trabajo",
+  hideDetails: "Ocultar detalles del espacio de trabajo",
+  enableAudio: "Activar audio",
+  voiceThinking: "Preparando una respuesta…",
+  voiceWorking: "Ejecutando la tarea solicitada…",
+  voiceResponding: "El asistente está hablando",
+  assistantTranscript: "Subtítulos del asistente",
+  voiceResponseFailed:
+    "La respuesta de voz falló. Puedes continuar por texto o terminar la llamada y volver a conectar.",
+  voiceTranscriptionFailed:
+    "No se pudo completar la transcripción del micrófono. Inténtalo de nuevo o usa texto.",
+  voiceTaskFailed:
+    "La tarea solicitada falló. Revisa la actividad del chat para ver los detalles.",
+  voiceSessionFailed:
+    "La sesión de voz notificó un error. Termina la llamada y vuelve a conectar.",
+  voiceMuted: "Micrófono silenciado",
 };

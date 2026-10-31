@@ -380,4 +380,22 @@ export const fr: Dictionary = {
   gateError:
     "Le portefeuille, la politique, la preuve ou le reçu n’a pas pu être vérifié. Examinez la transaction enregistrée et votre portefeuille avant de réessayer. Vérifier le reçu n’envoie aucune nouvelle transaction.",
   gateTotalEstimate: "Frais totaux estimés, données L1 et opérateur inclus",
+  voiceDetails: "Transcription et détails des locuteurs",
+  detailsTitle: "Détails de l’espace de travail",
+  showDetails: "Afficher les détails de l’espace de travail",
+  hideDetails: "Masquer les détails de l’espace de travail",
+  enableAudio: "Activer l’audio",
+  voiceThinking: "Préparation d’une réponse…",
+  voiceWorking: "Exécution de la tâche demandée…",
+  voiceResponding: "L’assistant parle",
+  assistantTranscript: "Sous-titres de l’assistant",
+  voiceResponseFailed:
+    "La réponse vocale a échoué. Vous pouvez continuer par écrit ou terminer l’appel et vous reconnecter.",
+  voiceTranscriptionFailed:
+    "La transcription du microphone n’a pas pu être terminée. Réessayez ou utilisez le texte.",
+  voiceTaskFailed:
+    "La tâche demandée a échoué. Consultez l’activité du chat pour plus de détails.",
+  voiceSessionFailed:
+    "La session vocale a signalé une erreur. Terminez l’appel et reconnectez-vous.",
+  voiceMuted: "Microphone coupé",
 };

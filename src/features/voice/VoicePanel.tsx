@@ -17,6 +17,18 @@ export function VoicePanel({
 }) {
   const { t } = usePreferences();
   const isVoice = voice.status === "connected" || voice.status === "connecting";
+  const activity = {
+    listening: voice.muted ? t.voiceMuted : t.voiceSpeaking,
+    thinking: t.voiceThinking,
+    working: t.voiceWorking,
+    speaking: t.voiceResponding,
+  };
+  const responseErrors = {
+    response_failed: t.voiceResponseFailed,
+    transcription_failed: t.voiceTranscriptionFailed,
+    task_failed: t.voiceTaskFailed,
+    session_failed: t.voiceSessionFailed,
+  };
   return (
     <>
       <div className={styles.voiceBar}>
@@ -26,16 +38,23 @@ export function VoicePanel({
             {voice.status === "connecting"
               ? t.voiceConnecting
               : voice.status === "connected"
-                ? t.voiceActive
+                ? activity[voice.activity]
                 : t.voiceReady}
           </span>
         </div>
         <div>
+          {isVoice && voice.playbackBlocked && (
+            <Button variant="secondary" onClick={voice.resumeAudio}>
+              <Icon name="play" />
+              {t.enableAudio}
+            </Button>
+          )}
           {isVoice && (
             <Tooltip label={voice.muted ? t.unmute : t.mute}>
               <Button
                 variant="icon"
                 aria-label={voice.muted ? t.unmute : t.mute}
+                aria-pressed={voice.muted}
                 onClick={voice.toggleMute}
               >
                 <Icon name={voice.muted ? "muted" : "mic"} />
@@ -73,38 +92,60 @@ export function VoicePanel({
           {t.voiceError}
         </p>
       )}
+      {isVoice && voice.responseError && (
+        <p className={styles.error} role="alert">
+          {responseErrors[voice.responseError]}
+        </p>
+      )}
       {isVoice && (
-        <div className={styles.voiceTranscript}>
-          <p>{t.voiceDisclosure}</p>
-          <span>
-            {capabilities?.diarization ? t.speakerCaveat : t.noDiarization}
-          </span>
-          <div>
-            {voice.diarization.status === "working" && (
-              <span>{t.speakerBusy}</span>
-            )}
-            {voice.diarization.status === "error" && (
-              <span>{t.noDiarization}</span>
-            )}
-            {voice.diarization.segments.length > 0 && (
-              <div>
-                <b>{t.speakerSnapshot}</b>
-                {voice.diarization.segments.map((segment, index) => (
-                  <p key={`${index}-${segment.speaker}`}>
-                    {segment.speaker}: {segment.start.toFixed(2)}–
-                    {segment.end.toFixed(2)} s
-                  </p>
-                ))}
+        <details className={styles.voiceDetails}>
+          <summary>{t.voiceDetails}</summary>
+          <section
+            className={styles.voiceTranscript}
+            aria-label={t.voiceDetails}
+            // biome-ignore lint/a11y/noNoninteractiveTabindex: The bounded transcript region must support keyboard scrolling.
+            tabIndex={0}
+          >
+            <p>{t.voiceDisclosure}</p>
+            <span>
+              {capabilities?.diarization ? t.speakerCaveat : t.noDiarization}
+            </span>
+            <div>
+              {voice.diarization.status === "working" && (
+                <span>{t.speakerBusy}</span>
+              )}
+              {voice.diarization.status === "error" && (
+                <span>{t.noDiarization}</span>
+              )}
+              {voice.diarization.segments.length > 0 && (
+                <div>
+                  <b>{t.speakerSnapshot}</b>
+                  {voice.diarization.segments.map((segment, index) => (
+                    <p key={`${index}-${segment.speaker}`}>
+                      {segment.speaker}: {segment.start.toFixed(2)}–
+                      {segment.end.toFixed(2)} s
+                    </p>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div aria-live="polite">
+              <b>
+                {t.speaker} · {t.transcript}
+              </b>
+              <p>
+                {voice.transcript ||
+                  (voice.muted ? t.voiceMuted : t.voiceSpeaking)}
+              </p>
+            </div>
+            {voice.assistantTranscript && (
+              <div aria-live="polite">
+                <b>{t.assistantTranscript}</b>
+                <p>{voice.assistantTranscript}</p>
               </div>
             )}
-          </div>
-          <div aria-live="polite">
-            <b>
-              {t.speaker} · {t.transcript}
-            </b>
-            <p>{voice.transcript || t.voiceSpeaking}</p>
-          </div>
-        </div>
+          </section>
+        </details>
       )}
     </>
   );

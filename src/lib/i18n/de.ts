@@ -383,4 +383,22 @@ export const de: Dictionary = {
     "Wallet, Richtlinie, Nachweis oder Beleg konnten nicht geprüft werden. Prüfe vor einem erneuten Versuch die gespeicherte Transaktion und die Wallet. Die Belegprüfung sendet keine neue Transaktion.",
   gateTotalEstimate:
     "Geschätzte Gesamtgebühr einschließlich L1-Daten und Betreiber",
+  voiceDetails: "Transkript und Sprecherdetails",
+  detailsTitle: "Details zum Arbeitsbereich",
+  showDetails: "Details zum Arbeitsbereich anzeigen",
+  hideDetails: "Details zum Arbeitsbereich ausblenden",
+  enableAudio: "Audio aktivieren",
+  voiceThinking: "Antwort wird vorbereitet…",
+  voiceWorking: "Die angeforderte Aufgabe wird ausgeführt…",
+  voiceResponding: "Der Assistent spricht",
+  assistantTranscript: "Untertitel des Assistenten",
+  voiceResponseFailed:
+    "Die Sprachantwort ist fehlgeschlagen. Du kannst per Text fortfahren oder den Anruf beenden und dich erneut verbinden.",
+  voiceTranscriptionFailed:
+    "Die Mikrofonaufnahme konnte nicht vollständig transkribiert werden. Versuche es erneut oder verwende Text.",
+  voiceTaskFailed:
+    "Die angeforderte Aufgabe ist fehlgeschlagen. Details findest du in der Chat-Aktivität.",
+  voiceSessionFailed:
+    "Die Sprachsitzung hat einen Fehler gemeldet. Beende den Anruf und verbinde dich erneut.",
+  voiceMuted: "Mikrofon stummgeschaltet",
 };

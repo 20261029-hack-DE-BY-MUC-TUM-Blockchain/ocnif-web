@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/buttons/Button/Button";
 import { Icon } from "@/components/ui/data-display/Icon/Icon";
 import { Tooltip } from "@/components/ui/overlays/Tooltip/Tooltip";
@@ -16,11 +16,14 @@ import { TeamPanel } from "./TeamPanel";
 import { TracePanel } from "./TracePanel";
 import { useWorkspace } from "./useWorkspace";
 import styles from "./Workspace.module.css";
+import { DetailsToggle, WorkspaceDetails } from "./WorkspaceDetails";
 export function Workspace() {
   const { t, locale } = usePreferences();
   const [value, setValue] = useState("");
   const [details, setDetails] = useState(true);
   const [sidebar, setSidebar] = useState(false);
+  const detailsButton = useRef<HTMLButtonElement>(null);
+  const detailsPanel = useRef<HTMLElement>(null);
   const eventRef = useRef<(event: RuntimeEvent) => void>(() => {});
   const workspace = useWorkspace(locale, (event) => eventRef.current(event));
   const voice = useVoice(
@@ -28,9 +31,29 @@ export function Workspace() {
     workspace.send,
     workspace.capabilities?.diarization || false,
   );
+  const endVoice = useRef(voice.end);
+  endVoice.current = voice.end;
+  useEffect(() => {
+    if (workspace.connection !== "connected") endVoice.current();
+  }, [workspace.connection]);
   eventRef.current = voice.receiveEvent;
   function send() {
     if (workspace.send(value)) setValue("");
+  }
+  function closeDetails() {
+    setDetails(false);
+    detailsButton.current?.focus();
+  }
+  function toggleDetails() {
+    if (details) {
+      closeDetails();
+      return;
+    }
+    setDetails(true);
+    requestAnimationFrame(() => {
+      detailsPanel.current?.focus({ preventScroll: true });
+      detailsPanel.current?.scrollIntoView({ block: "nearest" });
+    });
   }
   function exportChat() {
     const blob = new Blob(
@@ -59,6 +82,7 @@ export function Workspace() {
         <Brand />
         <Button
           onClick={() => {
+            voice.end();
             workspace.newConversation();
             setSidebar(false);
           }}
@@ -149,16 +173,11 @@ export function Workspace() {
                 <Icon name="download" />
               </Button>
             </Tooltip>
-            <Tooltip label={t.showTrace}>
-              <Button
-                variant="icon"
-                aria-label={t.showTrace}
-                aria-expanded={details}
-                onClick={() => setDetails(!details)}
-              >
-                <Icon name="activity" />
-              </Button>
-            </Tooltip>
+            <DetailsToggle
+              ref={detailsButton}
+              open={details}
+              onClick={toggleDetails}
+            />
           </div>
         </header>
         <section className={styles.conversation}>
@@ -213,13 +232,13 @@ export function Workspace() {
         </section>
       </main>
       {details && (
-        <aside className={styles.details}>
+        <WorkspaceDetails ref={detailsPanel} onClose={closeDetails}>
           <TeamPanel
             events={workspace.state.events}
             capabilities={workspace.capabilities}
           />
           <TracePanel events={workspace.state.events} />
-        </aside>
+        </WorkspaceDetails>
       )}
     </div>
   );
