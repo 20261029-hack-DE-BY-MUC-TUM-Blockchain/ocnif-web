@@ -1,0 +1,33 @@
+# Local development only. Production runs on Azure Container Apps.
+services:
+  web:
+    image: ocnif-web:${WEB_IMAGE_TAG:-dev}
+    build:
+      context: .
+      args:
+        API_BASE_URL: ${API_BASE_URL:?Set API_BASE_URL}
+        VOICE_API_ORIGIN: ${VOICE_API_ORIGIN:-}
+        CARDANO_BASE_URL: ${CARDANO_BASE_URL:-}
+    ports:
+      - "${WEB_PORT:-3000}:3000"
+    environment:
+      PORT: "3000"
+      HOSTNAME: "0.0.0.0"
+      VOICE_API_ORIGIN: ${VOICE_API_ORIGIN:-}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:'+process.env.PORT+'/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
