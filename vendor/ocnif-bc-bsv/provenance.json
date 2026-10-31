@@ -1,31 +1,45 @@
 {
   "repository": "20261029-hack-DE-BY-MUC-TUM-Blockchain/ocnif-bc-bsv",
-  "commit": "e151b4af01d6ad6bb9274bc4b1791275e5643417",
-  "reason": "Reviewed immutable source vendored for independent builds without private Git credentials.",
+  "commit": "854aa2abe69ccd72b378735571aab55ad38ac939",
+  "sourceArchiveSha256": "3e50e358ae72e2d10a6e4be3c9f98f756f81b18d489cfeb4c47bf67991617150",
+  "upstreamPackageSha256": "1ec5abcb3d9040e58bd88c70220ba080c6b6ae1c026f599a2539627afa2f04de",
+  "reason": "Exact production browser modules extracted from the reviewed local immutable package. Browser-only manifest excludes service and development dependencies.",
   "files": [
     {
-      "path": "package.json",
-      "sha256": "085f275a0c5768a17f076060b44d6577d40b48427015bdf4871022694926df1f"
+      "path": "README.md",
+      "sha256": "a0a0e784c6fe9021520c683ec0ee1a463018c0ed8e6436ccd7bba851d8c4718f"
     },
     {
-      "path": "README.md",
-      "sha256": "b9b3e3f7a0318a9f04bb05a62bdc7844c67bf693608ba819b7f54c1d44f78e7d"
+      "path": "src/http.ts",
+      "sha256": "845a2a69e1cc3f8ad9265a21dbcba6b8b795de6549c2d178cd4ae5cce6b8c34b"
     },
     {
       "path": "src/index.ts",
-      "sha256": "2e57d18fde2252f366ba752dea786ee5fbf452289dede8b17501a7242f8bf1d4"
+      "sha256": "fc3b237b19d3b94fa485bb3d5083fad2aa73d5312afe128a74e30056be5b53ed"
     },
     {
       "path": "src/journal.ts",
       "sha256": "7f0958a3f22ee2f178ed6bc46e8ee682a270b5ff76a49799a5ecad6614de53f4"
     },
     {
+      "path": "src/market.ts",
+      "sha256": "5facdd65fcf9789da0204be9c83b5094eb24e5b4715618124d90984e24b8d67e"
+    },
+    {
+      "path": "src/mint.ts",
+      "sha256": "85d7a52ef44b153aad591ab7840eb6bc1537fe952527fe462a0e0f7d77bf2e03"
+    },
+    {
       "path": "src/overlay.ts",
-      "sha256": "ede55ec6fc2d9f3e36fe4d44f73a8a5d3831fd79fe6a8d678307333b9527476c"
+      "sha256": "cb269deb3b515d74af761c95b8a812f4775a88da4a48b78663ec79e4a9f3f247"
     },
     {
       "path": "src/protocol.ts",
       "sha256": "9118de22f746cfc4f2dac0ebb320d2181bc090491d47f116075bd8a9aeb49a53"
+    },
+    {
+      "path": "src/report-contract.ts",
+      "sha256": "e15f8f630b8388cbc694e0ccf9978e3e415aad728048472f7b2c219015504920"
     },
     {
       "path": "src/swap-receipt.ts",

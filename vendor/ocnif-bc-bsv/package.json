@@ -6,19 +6,8 @@
   "exports": {
     ".": "./src/index.ts"
   },
-  "scripts": {
-    "test": "node --test src/*.test.ts",
-    "typecheck": "tsc --noEmit"
-  },
   "dependencies": {
-    "@bsv/sdk": "3.2.1"
-  },
-  "devDependencies": {
-    "@bsv/wallet-toolbox": "2.14.9",
-    "@types/node": "26.6.5",
-    "better-sqlite3": "13.0.3",
-    "fake-indexeddb": "6.2.7",
-    "knex": "3.3.0",
-    "typescript": "7.0.2"
+    "@bsv/sdk": "3.2.1",
+    "@bsv/402-pay": "0.3.3"
   }
 }
