@@ -107,6 +107,10 @@ export const de: Dictionary = {
   approve: "Genehmigen",
   reject: "Ablehnen",
   approval: "Deine Prüfung ist erforderlich",
+  publishedReport: "Bericht veröffentlicht",
+  publishedBody:
+    "Deine Freigabe hat diesen Bericht im kostenpflichtigen Berichtsdienst verfügbar gemacht. Es wurde keine Zahlung ausgeführt.",
+  openCardano: "Diesen Bericht bei Cardano-Zahlungen prüfen",
   decisionSent: "Entscheidung gesendet",
   events: "Ereignisse",
   model: "Denkmodell",

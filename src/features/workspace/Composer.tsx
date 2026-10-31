@@ -11,6 +11,7 @@ const commands = [
   "/plan",
   "/verify",
   "/report",
+  "/publish",
   "/help",
   "/skills",
 ];

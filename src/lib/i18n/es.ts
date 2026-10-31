@@ -106,6 +106,10 @@ export const es: Dictionary = {
   approve: "Aprobar",
   reject: "Rechazar",
   approval: "Necesitamos tu revisión",
+  publishedReport: "Informe publicado",
+  publishedBody:
+    "Tu aprobación habilitó este informe en el servicio de informes de pago. No se ha realizado ningún pago.",
+  openCardano: "Revisar este informe en pagos de Cardano",
   decisionSent: "Decisión enviada",
   events: "eventos",
   model: "Modelo de razonamiento",

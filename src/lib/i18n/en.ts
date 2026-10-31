@@ -103,6 +103,10 @@ export const en = {
   approve: "Approve",
   reject: "Reject",
   approval: "Your review is needed",
+  publishedReport: "Report published",
+  publishedBody:
+    "Your approval made this report available through the paid report service. No payment has been made.",
+  openCardano: "Review this report in Cardano payments",
   decisionSent: "Decision sent",
   events: "events",
   model: "Reasoning model",

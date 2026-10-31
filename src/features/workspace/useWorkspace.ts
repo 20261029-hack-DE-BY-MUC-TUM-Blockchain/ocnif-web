@@ -10,7 +10,12 @@ import {
   type RuntimeEvent,
   type User,
 } from "@/lib/types/runtime";
-import { applyEvent, initialState, type RunState } from "./state";
+import {
+  applyEvent,
+  applySubmission,
+  initialState,
+  type RunState,
+} from "./state";
 export function useWorkspace(
   locale: Locale,
   onEvent: (event: RuntimeEvent) => void,
@@ -117,21 +122,9 @@ export function useWorkspace(
           request_id: requestId,
         }),
       );
-      setState((current) => ({
-        ...current,
-        active: true,
-        error: null,
-        messages: [
-          ...current.messages,
-          {
-            id: requestId,
-            role: "user",
-            content: content.trim(),
-            cards: [],
-            created_at: new Date().toISOString(),
-          },
-        ],
-      }));
+      setState((current) =>
+        applySubmission(current, content, requestId, new Date().toISOString()),
+      );
       return true;
     },
     [locale, state.active],

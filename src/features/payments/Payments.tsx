@@ -10,12 +10,16 @@ import styles from "./Payments.module.css";
 export function Payments({
   overlayUrl,
   koiosUrl,
+  initialTab = "api3",
+  initialReportId,
 }: {
   overlayUrl?: string;
   koiosUrl?: string;
+  initialTab?: "api3" | "cardano";
+  initialReportId?: string;
 }) {
   const { t } = usePreferences();
-  const [tab, setTab] = useState("api3");
+  const [tab, setTab] = useState<string>(initialTab);
   return (
     <>
       <Header />
@@ -42,7 +46,10 @@ export function Payments({
         ) : tab === "bsv" ? (
           <BsvSwapPanel overlayUrl={overlayUrl} />
         ) : (
-          <CardanoPanel providerConfigured={!!koiosUrl} />
+          <CardanoPanel
+            providerConfigured={!!koiosUrl}
+            initialReportId={initialReportId}
+          />
         )}
       </main>
     </>

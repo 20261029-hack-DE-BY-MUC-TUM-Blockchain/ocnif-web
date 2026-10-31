@@ -48,6 +48,8 @@ Presentation uses CSS Modules, with shared tokens in `src/styles/globals.css` an
 
 Run tests with `bun test src`. Voice requires a secure context, microphone permission and a configured backend. Its short-lived credentials remain in memory. Optional speaker analysis captures a maximum 20-second window as 16 kHz mono PCM16, discards audio on call end, and shows anonymous labels returned by the configured worker. It does not infer personal identity. The service worker caches only a public offline page and icons; it never caches authenticated API or conversation responses.
 
+Use `/publish` in the workspace to request explicit publication of the latest completed report. The approval is separate from an active assessment. Only a confirmed publication decision exposes the report identifier and a link to its prefilled Cardano payment panel; opening the panel does not authorize payment. Rejected publication stays private.
+
 ## Wallet connection
 
 The BSV connection control loads the pinned `ocnif-bc-bsv` source artifact under `vendor/`; `provenance.json` records its source commit and SHA256 hashes. This keeps builds independent of private GitHub access. Signing remains in the user wallet. The interface displays the actual public identity and network; available funds remain in the wallet UI.

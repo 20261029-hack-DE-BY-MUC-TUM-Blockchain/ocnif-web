@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/buttons/Button/Button";
+import { isReportId } from "@/lib/types/publication";
 import { usePreferences } from "../settings/Preferences";
 import { type Merchant, parseMerchant } from "./merchant";
 import { PaymentReview } from "./PaymentReview";
@@ -15,8 +16,10 @@ import {
 import { usePaymentFlow } from "./usePaymentFlow";
 export function CardanoPanel({
   providerConfigured,
+  initialReportId = "",
 }: {
   providerConfigured: boolean;
+  initialReportId?: string;
 }) {
   const { t } = usePreferences();
   const flow = usePaymentFlow("cardano:preprod");
@@ -24,7 +27,7 @@ export function CardanoPanel({
   const [selected, setSelected] = useState(0);
   const [wallet, setWallet] = useState<CardanoConnection | null>(null);
   const [merchant, setMerchant] = useState<Merchant | null>(null);
-  const [report, setReport] = useState("");
+  const [report, setReport] = useState(initialReportId);
   const [fee, setFee] = useState("500000");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(false);
@@ -121,11 +124,7 @@ export function CardanoPanel({
         />
       </label>
       <Button
-        disabled={
-          !/^[a-zA-Z0-9_-]{1,100}$/.test(report) ||
-          flow.busy ||
-          !merchant?.configured
-        }
+        disabled={!isReportId(report) || flow.busy || !merchant?.configured}
         onClick={() => flow.load(`/paid/reports/${report}`, wallet?.address)}
       >
         {t.requestChallenge}

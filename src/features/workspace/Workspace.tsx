@@ -11,6 +11,7 @@ import { useVoice } from "../voice/useVoice";
 import { VoicePanel } from "../voice/VoicePanel";
 import { Composer } from "./Composer";
 import { Messages } from "./Messages";
+import { ReportReview } from "./ReportReview";
 import { TeamPanel } from "./TeamPanel";
 import { TracePanel } from "./TracePanel";
 import { useWorkspace } from "./useWorkspace";
@@ -184,41 +185,11 @@ export function Workspace() {
                 {workspace.state.error}
               </p>
             )}
-            {workspace.state.approval && (
-              <div className={styles.approval}>
-                <Icon name="shield" />
-                <div>
-                  <h3>{t.approval}</h3>
-                  <b>{workspace.state.approval.title}</b>
-                  <p>{workspace.state.approval.description}</p>
-                  <div>
-                    <Button
-                      onClick={() =>
-                        workspace.control({
-                          type: "approval",
-                          approval_id: workspace.state.approval?.id || "",
-                          decision: "approve",
-                        })
-                      }
-                    >
-                      {t.approve}
-                    </Button>
-                    <Button
-                      variant="secondary"
-                      onClick={() =>
-                        workspace.control({
-                          type: "approval",
-                          approval_id: workspace.state.approval?.id || "",
-                          decision: "reject",
-                        })
-                      }
-                    >
-                      {t.reject}
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            )}
+            <ReportReview
+              approval={workspace.state.approval}
+              publishedReportId={workspace.state.publishedReportId}
+              control={workspace.control}
+            />
           </div>
           <div className={styles.inputArea}>
             <VoicePanel

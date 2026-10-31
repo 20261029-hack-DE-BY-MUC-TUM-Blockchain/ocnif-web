@@ -1,3 +1,4 @@
+import { isReportId } from "@/lib/types/publication";
 import {
   type Message,
   parseMessage,
@@ -10,6 +11,7 @@ export type RunState = {
   draft: string;
   error: string | null;
   approval: { id: string; title: string; description: string } | null;
+  publishedReportId: string | null;
 };
 export const initialState: RunState = {
   events: [],
@@ -18,7 +20,32 @@ export const initialState: RunState = {
   draft: "",
   error: null,
   approval: null,
+  publishedReportId: null,
 };
+export function applySubmission(
+  state: RunState,
+  content: string,
+  requestId: string,
+  createdAt: string,
+): RunState {
+  // Publication requests have their own approval events, not an agent run.
+  if (content.trim() === "/publish") return { ...state, error: null };
+  return {
+    ...state,
+    active: true,
+    error: null,
+    messages: [
+      ...state.messages,
+      {
+        id: requestId,
+        role: "user",
+        content: content.trim(),
+        cards: [],
+        created_at: createdAt,
+      },
+    ],
+  };
+}
 export function applyEvent(state: RunState, event: RuntimeEvent): RunState {
   if (state.events.some((item) => item.id === event.id)) return state;
   const next = { ...state, events: [...state.events, event] };
@@ -56,7 +83,25 @@ export function applyEvent(state: RunState, event: RuntimeEvent): RunState {
           ? String(event.data.message || event.data.code || "Run failed")
           : null,
     };
-  if (event.type === "approval.resolved") return { ...next, approval: null };
+  if (event.type === "approval.resolved") {
+    const { approval_id, decision, scope, report_id } = event.data;
+    const request = state.events.find(
+      (item) =>
+        item.type === "approval.required" &&
+        item.data.approval_id === approval_id,
+    );
+    const published =
+      decision === "approve" &&
+      scope === "public report" &&
+      request?.data.kind === "public-share" &&
+      request.data.report_id === report_id &&
+      isReportId(report_id);
+    return {
+      ...next,
+      approval: state.approval?.id === approval_id ? null : state.approval,
+      publishedReportId: published ? report_id : state.publishedReportId,
+    };
+  }
   if (event.type === "error")
     return { ...next, error: String(event.data.message || "Service error") };
   return next;
