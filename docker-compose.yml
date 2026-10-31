@@ -9,12 +9,16 @@ services:
         VOICE_API_ORIGIN: ${VOICE_API_ORIGIN:-}
         CARDANO_BASE_URL: ${CARDANO_BASE_URL:-}
         WALLET_CONNECT_ORIGINS: ${WALLET_CONNECT_ORIGINS:-}
+        BSV_OVERLAY_URL: ${BSV_OVERLAY_URL:-}
+        CARDANO_KOIOS_URL: ${CARDANO_KOIOS_URL:-}
     ports:
       - "${WEB_PORT:-3000}:3000"
     environment:
       PORT: "3000"
       HOSTNAME: "0.0.0.0"
       VOICE_API_ORIGIN: ${VOICE_API_ORIGIN:-}
+      BSV_OVERLAY_URL: ${BSV_OVERLAY_URL:-}
+      CARDANO_KOIOS_URL: ${CARDANO_KOIOS_URL:-}
       WALLET_CONNECT_ORIGINS: ${WALLET_CONNECT_ORIGINS:-}
     restart: unless-stopped
     healthcheck:

@@ -4,18 +4,26 @@ WORKDIR /app
 COPY --from=security /usr/bin/gitleaks /usr/local/bin/gitleaks
 COPY package.json bun.lock ./
 COPY vendor/ocnif-bc-bsv ./vendor/ocnif-bc-bsv
+COPY vendor/ocnif-bc-api3-client ./vendor/ocnif-bc-api3-client
+COPY vendor/ocnif-bc-cardano-client ./vendor/ocnif-bc-cardano-client
 RUN bun install --frozen-lockfile
 COPY . .
 ARG API_BASE_URL
 ARG VOICE_API_ORIGIN
 ARG CARDANO_BASE_URL
 ARG WALLET_CONNECT_ORIGINS
+ARG BSV_OVERLAY_URL
+ARG CARDANO_KOIOS_URL
+ENV BSV_OVERLAY_URL=${BSV_OVERLAY_URL} CARDANO_KOIOS_URL=${CARDANO_KOIOS_URL}
 ENV API_BASE_URL=${API_BASE_URL} VOICE_API_ORIGIN=${VOICE_API_ORIGIN} CARDANO_BASE_URL=${CARDANO_BASE_URL} WALLET_CONNECT_ORIGINS=${WALLET_CONNECT_ORIGINS} NEXT_TELEMETRY_DISABLED=1
 RUN gitleaks dir . --redact --no-banner && bun audit && bun test src && bunx tsc --noEmit && bun run build
 FROM gcr.io/distroless/nodejs26-debian13:nonroot@sha256:a51c5d631b90e1b298e17a88a307b77f0b959b47de942d033acce0c96be3fb83 AS runtime
 WORKDIR /app
 ARG WALLET_CONNECT_ORIGINS
+ARG BSV_OVERLAY_URL
+ARG CARDANO_KOIOS_URL
 ARG VOICE_API_ORIGIN
+ENV BSV_OVERLAY_URL=${BSV_OVERLAY_URL} CARDANO_KOIOS_URL=${CARDANO_KOIOS_URL}
 ENV WALLET_CONNECT_ORIGINS=${WALLET_CONNECT_ORIGINS} VOICE_API_ORIGIN=${VOICE_API_ORIGIN}
 ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000 HOSTNAME=0.0.0.0
 COPY --from=build --chown=65532:65532 /app/.next/standalone ./
