@@ -52,3 +52,35 @@ export function walletConnectOrigins(): string[] {
     return url.origin;
   });
 }
+
+export function bsvOverlayUrl(): string | undefined {
+  const value = process.env.BSV_OVERLAY_URL;
+  if (!value) return undefined;
+  const url = new URL(value);
+  if (
+    url.protocol !== "https:" ||
+    url.username ||
+    url.password ||
+    url.search ||
+    url.hash
+  )
+    throw new Error("BSV_OVERLAY_URL must be a public HTTPS service URL");
+  return url.href.replace(/\/$/, "");
+}
+export function cardanoKoiosUrl(): string | undefined {
+  const value = process.env.CARDANO_KOIOS_URL;
+  if (!value) return undefined;
+  const url = new URL(value);
+  if (
+    url.origin !== "https://preprod.koios.rest" ||
+    url.pathname.replace(/\/$/, "") !== "/api/v1" ||
+    url.search ||
+    url.hash ||
+    url.username ||
+    url.password
+  )
+    throw new Error(
+      "CARDANO_KOIOS_URL must be the official Preprod Koios API endpoint",
+    );
+  return "https://preprod.koios.rest/api/v1";
+}
