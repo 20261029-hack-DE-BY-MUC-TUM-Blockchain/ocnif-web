@@ -1,0 +1,98 @@
+.deck {
+  max-width: var(--content);
+  margin: auto;
+  padding: var(--space-6);
+}
+.slide {
+  min-height: 70dvh;
+  position: relative;
+  overflow: hidden;
+  background: var(--glass);
+  border: var(--border) solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: var(--shadow);
+}
+.eyebrow {
+  font-size: var(--font-xs);
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: var(--space-12);
+  z-index: 1;
+}
+.slide h1 {
+  font-size: clamp(2.5rem, 5.5vw, 5.5rem);
+  max-width: 53rem;
+  font-weight: 500;
+  z-index: 1;
+  line-height: 1.08;
+}
+.body {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  max-width: 44rem;
+  color: var(--muted);
+  margin-top: var(--space-8);
+  z-index: 1;
+}
+.symbol {
+  position: absolute;
+  right: var(--space-10);
+  top: var(--space-10);
+  border: var(--border) solid var(--accent);
+  border-radius: 50%;
+  padding: var(--space-12);
+  color: var(--accent);
+  opacity: 0.15;
+  box-shadow: 0 0 140px var(--accent);
+}
+.watermark {
+  position: absolute;
+  right: var(--space-8);
+  bottom: 0;
+  font-size: 12rem;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.06;
+  letter-spacing: var(--tracking);
+}
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  justify-content: center;
+  margin-top: var(--space-6);
+  font-size: var(--font-sm);
+  color: var(--muted);
+}
+.dots {
+  display: flex;
+  gap: var(--space-2);
+}
+.dots button {
+  width: var(--space-2);
+  height: var(--space-2);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--line);
+}
+.dots button[aria-current="step"] {
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+.launch {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--accent);
+  margin-top: var(--space-8);
+  z-index: 1;
+}
+@media (min-width: 800px) {
+  .slide {
+    padding: var(--space-16);
+  }
+}
