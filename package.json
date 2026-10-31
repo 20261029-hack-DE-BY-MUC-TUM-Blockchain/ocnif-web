@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "next": "16.4.3",
+    "ocnif-bc-bsv": "./vendor/ocnif-bc-bsv",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-markdown": "10.1.0",

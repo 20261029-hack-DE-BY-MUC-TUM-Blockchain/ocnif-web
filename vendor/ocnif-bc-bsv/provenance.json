@@ -1,0 +1,11 @@
+{
+  "repository": "20261029-hack-DE-BY-MUC-TUM-Blockchain/ocnif-bc-bsv",
+  "commit": "3705828c94c7a6dfa0d6045b9856e17493eba684",
+  "reason": "Immutable Git tarball was inaccessible without credentials; reviewed source artifact vendored for independent builds.",
+  "sha256": {
+    "package.json": "775c92910fca7bc4615538236e6611ea11f6dfbdd359c3f0dbf22a2723b80945",
+    "src/index.ts": "9ea54f03f6263bd0eee3ee1fe35ab708d0eb15a11885159b7c1262f822aebeb9",
+    "src/journal.ts": "661e33b1dcdc3d743bcbae94967d132a3d2b7a66cde85e7d411a584ac62d83b7",
+    "README.md": "b32ccac5e156c264c191549d84e35bb00c56605991094b817599cf1a94b47aeb"
+  }
+}

@@ -3,6 +3,7 @@ import { apiBaseUrl, cardanoBaseUrl } from "./src/lib/config";
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  transpilePackages: ["ocnif-bc-bsv"],
   reactCompiler: true,
   productionBrowserSourceMaps: false,
   async rewrites() {

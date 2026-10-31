@@ -177,5 +177,27 @@ export const de: Dictionary = {
   speakerBusy: "Sprecher werden getrennt…",
   voiceReady: "Sprache bereit",
   readReport: "Vollständige Bewertung lesen",
+  walletIntro:
+    "Verbinde eine BRC-100-Wallet. Schlüssel und Signaturen bleiben in deiner Wallet.",
+  walletConnect: "BSV-Wallet verbinden",
+  walletDiscovering: "Wallet wird gesucht…",
+  walletConnected: "Wallet verbunden; keine Zahlung gesendet.",
+  walletNetwork: "Netzwerk",
+  walletIdentity: "Öffentlicher Identitätsschlüssel",
+  walletFunds:
+    "Verfügbare Mittel und Transaktionsverlauf findest du in deiner Wallet.",
+  walletDisconnect: "Diese Seite trennen",
+  walletError:
+    "Keine genehmigte Wallet-Verbindung. Öffne BSV Desktop oder BSV Browser und versuche es erneut. Browser oder Wallet können eine Freigabe verlangen.",
+  serviceChecking: "Händlerdienst wird geprüft…",
+  merchantReady:
+    "Händler konfiguriert. Jede Zahlung benötigt einen Bericht, ein Angebot und die Wallet-Freigabe.",
+  merchantSetup:
+    "Händlerkonfiguration erforderlich. Kostenpflichtige Berichte sind nicht verfügbar.",
+  merchantUnavailable:
+    "Händlerstatus nicht verfügbar. Zahlungsbereitschaft wird nicht vorausgesetzt.",
+  merchantPrice: "Berichtspreis",
+  merchantRecipient: "Händleradresse",
+  refreshStatus: "Status aktualisieren",
   speakerSnapshot: "Momentaufnahme der Sprecheraktivität",
 };

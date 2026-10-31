@@ -31,3 +31,24 @@ export function cardanoBaseUrl(): string | undefined {
     throw new Error("CARDANO_BASE_URL must be an HTTP origin");
   return url.origin;
 }
+
+export function walletConnectOrigins(): string[] {
+  const raw = process.env.WALLET_CONNECT_ORIGINS;
+  if (!raw) return [];
+  return raw.split(",").map((item) => {
+    const url = new URL(item.trim());
+    if (
+      !["http:", "https:"].includes(url.protocol) ||
+      !["localhost", "127.0.0.1", "[::1]"].includes(url.hostname) ||
+      url.username ||
+      url.password ||
+      url.pathname !== "/" ||
+      url.search ||
+      url.hash
+    )
+      throw new Error(
+        "WALLET_CONNECT_ORIGINS must contain explicit loopback origins",
+      );
+    return url.origin;
+  });
+}

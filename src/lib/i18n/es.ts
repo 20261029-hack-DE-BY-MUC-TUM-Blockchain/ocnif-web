@@ -175,5 +175,27 @@ export const es: Dictionary = {
   speakerBusy: "Separando hablantes…",
   voiceReady: "Voz lista",
   readReport: "Leer la evaluación completa",
+  walletIntro:
+    "Conecta una billetera BRC-100. Las claves y firmas permanecen en tu billetera.",
+  walletConnect: "Conectar billetera BSV",
+  walletDiscovering: "Buscando billetera…",
+  walletConnected: "Billetera conectada; ningún pago enviado.",
+  walletNetwork: "Red",
+  walletIdentity: "Clave de identidad pública",
+  walletFunds:
+    "Consulta los fondos y el historial de transacciones en tu billetera.",
+  walletDisconnect: "Desconectar esta página",
+  walletError:
+    "No hay conexión autorizada. Abre BSV Desktop o BSV Browser y reintenta. El navegador o la billetera pueden solicitar permiso.",
+  serviceChecking: "Consultando el servicio del comerciante…",
+  merchantReady:
+    "Comerciante configurado. Cada pago requiere un informe, una cotización y aprobación en la billetera.",
+  merchantSetup:
+    "Es necesario configurar el comerciante. Los informes de pago no están disponibles.",
+  merchantUnavailable:
+    "Estado del comerciante no disponible. No se presupone disponibilidad de pago.",
+  merchantPrice: "Precio del informe",
+  merchantRecipient: "Dirección del comerciante",
+  refreshStatus: "Actualizar estado",
   speakerSnapshot: "Actividad de hablantes",
 };

@@ -175,5 +175,27 @@ export const fr: Dictionary = {
   speakerBusy: "Séparation des locuteurs…",
   voiceReady: "Voix prête",
   readReport: "Lire l’évaluation complète",
+  walletIntro:
+    "Connectez un portefeuille BRC-100. Les clés et signatures restent dans votre portefeuille.",
+  walletConnect: "Connecter le portefeuille BSV",
+  walletDiscovering: "Recherche du portefeuille…",
+  walletConnected: "Portefeuille connecté ; aucun paiement envoyé.",
+  walletNetwork: "Réseau",
+  walletIdentity: "Clé d’identité publique",
+  walletFunds:
+    "Consultez les fonds disponibles et les transactions dans votre portefeuille.",
+  walletDisconnect: "Déconnecter cette page",
+  walletError:
+    "Aucune connexion autorisée. Ouvrez BSV Desktop ou BSV Browser, puis réessayez. Le navigateur ou le portefeuille peuvent demander une autorisation.",
+  serviceChecking: "Vérification du service marchand…",
+  merchantReady:
+    "Marchand configuré. Chaque paiement nécessite un rapport, un devis et l’approbation du portefeuille.",
+  merchantSetup:
+    "Configuration du marchand requise. Les rapports payants sont indisponibles.",
+  merchantUnavailable:
+    "Statut marchand indisponible. La disponibilité du paiement n’est pas supposée.",
+  merchantPrice: "Prix du rapport",
+  merchantRecipient: "Adresse du marchand",
+  refreshStatus: "Actualiser le statut",
   speakerSnapshot: "Aperçu de l’activité des locuteurs",
 };

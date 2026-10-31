@@ -1,17 +1,18 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { voiceApiOrigin } from "@/lib/config";
+import { voiceApiOrigin, walletConnectOrigins } from "@/lib/config";
 export function proxy(request: NextRequest) {
   const nonce = Buffer.from(
     crypto.getRandomValues(new Uint8Array(16)),
   ).toString("base64");
   const voice = voiceApiOrigin();
+  const wallets = walletConnectOrigins().join(" ");
   const csp = [
     "default-src 'self'",
     `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
     `style-src 'self' 'nonce-${nonce}'`,
     "img-src 'self' data:",
     "font-src 'self'",
-    `connect-src 'self' ${request.nextUrl.protocol === "https:" ? "wss" : "ws"}://${request.nextUrl.host}${voice ? ` ${voice}` : ""}`,
+    `connect-src 'self' ${request.nextUrl.protocol === "https:" ? "wss" : "ws"}://${request.nextUrl.host}${voice ? ` ${voice}` : ""} ${wallets}`,
     "media-src 'self' blob:",
     "worker-src 'self'",
     "frame-ancestors 'none'",

@@ -1,5 +1,6 @@
 import { Icon, type IconName } from "@/components/ui/data-display/Icon/Icon";
 import type { Capabilities, RuntimeEvent } from "@/lib/types/runtime";
+import { WalletPanel } from "../payments/WalletPanel";
 import { usePreferences } from "../settings/Preferences";
 import styles from "./Workspace.module.css";
 export function TeamPanel({
@@ -80,14 +81,7 @@ export function TeamPanel({
           {t.scopeDetail}
         </p>
       </section>
-      <section className={styles.service}>
-        <h3>
-          <Icon name="wallet" />
-          {t.payments}
-        </h3>
-        <p className={styles.muted}>{t.paymentEmpty}</p>
-        <p className={styles.scope}>{t.paymentNote}</p>
-      </section>
+      <WalletPanel />
     </>
   );
 }

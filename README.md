@@ -46,3 +46,9 @@ For Apple Container, build the same Dockerfile with the environment origins pass
 Presentation uses CSS Modules, with shared tokens in `src/styles/globals.css` and Urbanist typography. Reusable controls live under `src/components/ui/`; API/state wiring lives under `src/features/` and `src/lib/`.
 
 Run tests with `bun test src`. Voice requires a secure context, microphone permission and a configured backend. Its short-lived credentials remain in memory. Optional speaker analysis captures a maximum 20-second window as 16 kHz mono PCM16, discards audio on call end, and shows anonymous labels returned by the configured worker. It does not infer personal identity. The service worker caches only a public offline page and icons; it never caches authenticated API or conversation responses.
+
+## Wallet connection
+
+The BSV connection control loads the pinned `ocnif-bc-bsv` source artifact under `vendor/`; `provenance.json` records its source commit and SHA256 hashes. This keeps builds independent of private GitHub access. Signing remains in the user wallet. The interface displays the actual public identity and network; available funds remain in the wallet UI.
+
+Set `WALLET_CONNECT_ORIGINS` to the explicit loopback wallet endpoints in `.env.example` to permit the SDK’s HTTP discovery. The browser may still require local network permission, and the wallet must authorize the app origin. `payment=()` disables the browser Payment Request API; BRC-100 uses its own wallet transport. Cardano merchant status comes from the configured `CARDANO_BASE_URL` through `/paid/config`.

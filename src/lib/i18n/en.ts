@@ -170,6 +170,26 @@ export const en = {
   speakerBusy: "Separating speakers…",
   voiceReady: "Voice ready",
   readReport: "Read full assessment",
+  walletIntro:
+    "Connect a BRC-100 wallet. Keys and signing remain in your wallet.",
+  walletConnect: "Connect BSV wallet",
+  walletDiscovering: "Discovering wallet…",
+  walletConnected: "Wallet connected; no payment sent.",
+  walletNetwork: "Network",
+  walletIdentity: "Public identity key",
+  walletFunds: "View available funds and transaction history in your wallet.",
+  walletDisconnect: "Disconnect this page",
+  walletError:
+    "No approved wallet connection. Open BSV Desktop or BSV Browser, then retry. Browser or wallet permissions may be required.",
+  serviceChecking: "Checking merchant service…",
+  merchantReady:
+    "Merchant configured. Each payment still requires a report, quote and wallet approval.",
+  merchantSetup: "Merchant setup required. Paid reports are unavailable.",
+  merchantUnavailable:
+    "Merchant status unavailable. No payment availability is assumed.",
+  merchantPrice: "Report price",
+  merchantRecipient: "Merchant address",
+  refreshStatus: "Refresh status",
   speakerSnapshot: "Speaker activity snapshot",
 };
 export type Dictionary = { [K in keyof typeof en]: string };
