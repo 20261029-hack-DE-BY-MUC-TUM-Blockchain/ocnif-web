@@ -17,7 +17,7 @@ test("confirmed publication renders a report-specific Cardano handoff", () => {
     html,
     /href="\/payments\?network=cardano&amp;report=published-report-1"/,
   );
-  assert.match(html, /No payment has been made/);
+  assert.match(html, /does not create a Masumi task or prove a payment/);
 });
 
 test("pending publication never renders a paid report handoff", () => {

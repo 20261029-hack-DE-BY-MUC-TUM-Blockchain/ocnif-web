@@ -84,6 +84,27 @@
 .review dt {
   color: var(--muted);
 }
+.statusRow {
+  display: contents;
+}
+.setupList {
+  display: grid;
+  gap: var(--space-3);
+  padding-left: var(--space-5);
+  margin: var(--space-5) 0;
+  color: var(--muted);
+  font-size: var(--font-sm);
+}
+.externalLink {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--pill);
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+  font-size: var(--font-sm);
+}
 .review dd {
   margin: 0;
   overflow-wrap: anywhere;

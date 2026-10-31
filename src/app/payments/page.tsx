@@ -1,5 +1,5 @@
 import { Payments } from "@/features/payments/Payments";
-import { bsvOverlayUrl, cardanoKoiosUrl } from "@/lib/config";
+import { bsvOverlayUrl, sokosumiPreprodUrl } from "@/lib/config";
 import { isReportId } from "@/lib/types/publication";
 export default async function Page({
   searchParams,
@@ -11,7 +11,7 @@ export default async function Page({
   return (
     <Payments
       overlayUrl={bsvOverlayUrl()}
-      koiosUrl={cardanoKoiosUrl()}
+      sokosumiUrl={sokosumiPreprodUrl()}
       initialTab={query.network === "cardano" ? "cardano" : "api3"}
       initialReportId={reportId}
     />

@@ -113,8 +113,8 @@ export const es: Dictionary = {
   approval: "Necesitamos tu revisión",
   publishedReport: "Informe publicado",
   publishedBody:
-    "Tu aprobación habilitó este informe en el servicio de informes de pago. No se ha realizado ningún pago.",
-  openCardano: "Revisar este informe en pagos de Cardano",
+    "La publicación de este informe quedó registrada en tu espacio. No crea una tarea de Masumi ni demuestra un pago.",
+  openCardano: "Ver configuración de tareas de Cardano",
   decisionSent: "Decisión enviada",
   events: "eventos",
   model: "Modelo de razonamiento",
@@ -268,9 +268,51 @@ export const es: Dictionary = {
   tokenId: "Identificador del token",
   tokenAmount: "Cantidad de tokens",
   tokenOutpoint: "Salida del token",
-  cardanoTitle: "Desbloquea un informe publicado explícitamente",
+  cardanoTitle: "Ejecuta una tarea de seguridad con Masumi y Sokosumi",
   cardanoBody:
-    "Conecta una billetera CIP-30 en preprod. Revisa el informe, destinatario, precio y presupuesto de comisiones. Tu billetera firma la transacción; el facilitador la difunde y devuelve evidencia.",
+    "Usa tu espacio personal en Sokosumi Preprod. Verifica primero una tarea de Coworker solo de ejecución; después revisa una tarea pagada de Masumi cuando se confirmen el registro y la configuración de pagos.",
+  masumiExecutionNote:
+    "Una tarea completada solo de ejecución demuestra la entrega. La habilitación de tareas pagadas y la liquidación del pago se verifican por separado.",
+  masumiReportReference:
+    "Este identificador es solo una referencia. Crea la tarea de Sokosumi con la evidencia real que quieras analizar. Abrir esta página no envía, compra ni desbloquea un informe.",
+  masumiChecking: "Comprobando el estado de Masumi/Sokosumi…",
+  masumiUnavailable:
+    "El estado de Masumi/Sokosumi no está disponible. Actualiza tras configurar el servicio; no se presupone éxito de tareas ni pagos.",
+  masumiLegacy:
+    "Este servicio aún informa de la integración histórica x402. Masumi/Sokosumi no está conectado aquí; los controles de compra x402 están deshabilitados.",
+  openSokosumi: "Abrir Sokosumi Preprod",
+  masumiPersonalWorkspace:
+    "En Sokosumi, usa tu espacio personal y el Coworker asignado. Mantén credenciales y secretos de pago en la configuración local aprobada. Revisa y autoriza allí cualquier tarea o pago.",
+  masumiReadiness: "Controles del servicio y de las tareas",
+  masumiAgent: "Estado del servicio Rust core",
+  masumiCoworker: "Coworker configurado",
+  masumiExecution: "Recibo de tarea solo de ejecución",
+  masumiRegistration: "Registro en Masumi",
+  masumiPaidEnabled: "Tareas pagadas habilitadas",
+  masumiSettlement: "Recibo de liquidación del pago",
+  masumiReady: "Listo",
+  masumiNotReady: "Requiere configuración",
+  masumiVerified: "Verificado",
+  masumiUnverified: "Sin verificar",
+  masumiEnabled: "Habilitadas",
+  masumiDisabled: "Deshabilitadas",
+  masumiTaskId: "Identificador de tarea registrado",
+  masumiReceiptSource: "Origen del recibo y fecha de observación",
+  masumiSetupTitle: "Configuración necesaria",
+  masumiSetupCoworker: "Configura tu espacio personal y Coworker en Sokosumi.",
+  masumiSetupExecution:
+    "Completa una tarea de Coworker solo de ejecución y verifica su recibo.",
+  masumiSetupPayment:
+    "Configura el servicio de pagos Masumi en el entorno local aprobado.",
+  masumiSetupRegistration: "Confirma el registro del agente en Masumi.",
+  masumiSetupPaid:
+    "Completa una tarea pagada revisada por separado y verifica la liquidación.",
+  masumiSetupWorker: "Conecta el proceso de trabajo aprobado al Coworker.",
+  masumiExecutionVerified:
+    "Tarea solo de ejecución verificada; revisa los controles de pago por separado.",
+  masumiExecutionPending:
+    "La tarea solo de ejecución aún no está verificada. Puede faltar configurar la cuenta o el proceso de trabajo.",
+  masumiViewSetup: "Ver configuración de tareas Masumi",
   connectCardano: "Conectar billetera Cardano",
   cardanoWallet: "Billetera Cardano",
   reportId: "Identificador del informe publicado",

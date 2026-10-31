@@ -9,12 +9,12 @@ import { CardanoPanel } from "./CardanoPanel";
 import styles from "./Payments.module.css";
 export function Payments({
   overlayUrl,
-  koiosUrl,
+  sokosumiUrl,
   initialTab = "api3",
   initialReportId,
 }: {
   overlayUrl?: string;
-  koiosUrl?: string;
+  sokosumiUrl?: string;
   initialTab?: "api3" | "cardano";
   initialReportId?: string;
 }) {
@@ -47,7 +47,7 @@ export function Payments({
           <BsvSwapPanel overlayUrl={overlayUrl} />
         ) : (
           <CardanoPanel
-            providerConfigured={!!koiosUrl}
+            sokosumiUrl={sokosumiUrl}
             initialReportId={initialReportId}
           />
         )}

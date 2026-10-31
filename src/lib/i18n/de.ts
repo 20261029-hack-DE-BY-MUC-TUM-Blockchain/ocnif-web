@@ -115,8 +115,8 @@ export const de: Dictionary = {
   approval: "Deine Prüfung ist erforderlich",
   publishedReport: "Bericht veröffentlicht",
   publishedBody:
-    "Deine Freigabe hat diesen Bericht im kostenpflichtigen Berichtsdienst verfügbar gemacht. Es wurde keine Zahlung ausgeführt.",
-  openCardano: "Diesen Bericht bei Cardano-Zahlungen prüfen",
+    "Die Veröffentlichung dieses Berichts wurde in deinem Arbeitsbereich erfasst. Sie erstellt keinen Masumi Task und belegt keine Zahlung.",
+  openCardano: "Cardano-Aufgabeneinrichtung ansehen",
   decisionSent: "Entscheidung gesendet",
   events: "Ereignisse",
   model: "Denkmodell",
@@ -271,9 +271,52 @@ export const de: Dictionary = {
   tokenId: "Token-Kennung",
   tokenAmount: "Tokenmenge",
   tokenOutpoint: "Token-Output",
-  cardanoTitle: "Einen ausdrücklich veröffentlichten Bericht freischalten",
+  cardanoTitle: "Sicherheitsaufgabe mit Masumi und Sokosumi ausführen",
   cardanoBody:
-    "Verbinde eine CIP-30-Wallet auf Preprod. Prüfe Bericht, Empfänger, Preis und Gebührenlimit. Deine Wallet signiert die vollständige Transaktion; der Facilitator sendet sie und liefert einen Beleg.",
+    "Nutze deinen persönlichen Arbeitsbereich in Sokosumi Preprod. Prüfe zuerst eine reine Ausführungsaufgabe des Coworkers. Prüfe danach einen bezahlten Masumi Task, sobald Registrierung und Zahlungseinrichtung bestätigt sind.",
+  masumiExecutionNote:
+    "Eine abgeschlossene reine Ausführungsaufgabe belegt die Lieferung. Freigabe bezahlter Aufgaben und Zahlungsabwicklung werden getrennt geprüft.",
+  masumiReportReference:
+    "Diese Berichtskennung dient nur als Referenz. Erstelle den Sokosumi Task mit den tatsächlichen zu prüfenden Belegen. Diese Seite sendet, kauft oder entsperrt keinen Bericht.",
+  masumiChecking: "Masumi/Sokosumi-Dienststatus wird geprüft…",
+  masumiUnavailable:
+    "Masumi/Sokosumi-Status nicht verfügbar. Nach der Einrichtung aktualisieren; Aufgaben- oder Zahlungserfolg wird nicht angenommen.",
+  masumiLegacy:
+    "Dieser Endpunkt meldet noch die historische x402-Integration. Der gewählte Masumi/Sokosumi-Dienst ist hier nicht angebunden; x402-Käufe sind deaktiviert.",
+  openSokosumi: "Sokosumi Preprod öffnen",
+  masumiPersonalWorkspace:
+    "Nutze in Sokosumi deinen persönlichen Arbeitsbereich und zugewiesenen Coworker. Zugangsdaten und Zahlungsgeheimnisse bleiben in der freigegebenen lokalen Einrichtung. Prüfe und autorisiere dort jede Aufgabe oder Zahlung.",
+  masumiReadiness: "Dienst- und Aufgabenprüfungen",
+  masumiAgent: "Zustand des Rust-Core-Dienstes",
+  masumiCoworker: "Coworker eingerichtet",
+  masumiExecution: "Beleg der reinen Ausführungsaufgabe",
+  masumiRegistration: "Masumi-Registrierung",
+  masumiPaidEnabled: "Bezahlte Aufgaben freigegeben",
+  masumiSettlement: "Beleg der Zahlungsabwicklung",
+  masumiReady: "Bereit",
+  masumiNotReady: "Einrichtung erforderlich",
+  masumiVerified: "Verifiziert",
+  masumiUnverified: "Nicht verifiziert",
+  masumiEnabled: "Freigegeben",
+  masumiDisabled: "Deaktiviert",
+  masumiTaskId: "Erfasste Aufgabenkennung",
+  masumiReceiptSource: "Belegquelle und Beobachtungszeit",
+  masumiSetupTitle: "Erforderliche Einrichtung",
+  masumiSetupCoworker:
+    "Richte deinen persönlichen Sokosumi-Arbeitsbereich und Coworker ein.",
+  masumiSetupExecution:
+    "Schließe eine reine Coworker-Ausführungsaufgabe ab und prüfe ihren Beleg.",
+  masumiSetupPayment:
+    "Richte den Masumi-Zahlungsdienst in der freigegebenen lokalen Umgebung ein.",
+  masumiSetupRegistration: "Bestätige die Masumi-Registrierung des Agenten.",
+  masumiSetupPaid:
+    "Schließe eine separat geprüfte bezahlte Aufgabe ab und prüfe die Abwicklung.",
+  masumiSetupWorker: "Verbinde den freigegebenen Worker mit dem Coworker.",
+  masumiExecutionVerified:
+    "Reine Ausführungsaufgabe verifiziert; Zahlungsprüfungen separat ansehen.",
+  masumiExecutionPending:
+    "Reine Ausführungsaufgabe noch nicht verifiziert. Konto oder Worker müssen möglicherweise eingerichtet werden.",
+  masumiViewSetup: "Masumi-Aufgabeneinrichtung ansehen",
   connectCardano: "Cardano-Wallet verbinden",
   cardanoWallet: "Cardano-Wallet",
   reportId: "Kennung des veröffentlichten Berichts",

@@ -32,6 +32,22 @@ export function cardanoBaseUrl(): string | undefined {
   return url.origin;
 }
 
+export function sokosumiPreprodUrl(): string | undefined {
+  const value = process.env.SOKOSUMI_PREPROD_URL;
+  if (!value) return undefined;
+  const url = new URL(value);
+  if (
+    url.origin !== "https://preprod.sokosumi.com" ||
+    url.pathname !== "/" ||
+    url.username ||
+    url.password ||
+    url.search ||
+    url.hash
+  )
+    throw new Error("SOKOSUMI_PREPROD_URL must be the official Preprod origin");
+  return url.origin;
+}
+
 export function walletConnectOrigins(): string[] {
   const raw = process.env.WALLET_CONNECT_ORIGINS;
   if (!raw) return [];

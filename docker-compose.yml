@@ -11,6 +11,7 @@ services:
         WALLET_CONNECT_ORIGINS: ${WALLET_CONNECT_ORIGINS:-}
         BSV_OVERLAY_URL: ${BSV_OVERLAY_URL:-}
         CARDANO_KOIOS_URL: ${CARDANO_KOIOS_URL:-}
+        SOKOSUMI_PREPROD_URL: ${SOKOSUMI_PREPROD_URL:-}
     ports:
       - "${WEB_PORT:-3000}:3000"
     environment:
@@ -19,6 +20,7 @@ services:
       VOICE_API_ORIGIN: ${VOICE_API_ORIGIN:-}
       BSV_OVERLAY_URL: ${BSV_OVERLAY_URL:-}
       CARDANO_KOIOS_URL: ${CARDANO_KOIOS_URL:-}
+      SOKOSUMI_PREPROD_URL: ${SOKOSUMI_PREPROD_URL:-}
       WALLET_CONNECT_ORIGINS: ${WALLET_CONNECT_ORIGINS:-}
     restart: unless-stopped
     healthcheck:

@@ -111,8 +111,8 @@ export const en = {
   approval: "Your review is needed",
   publishedReport: "Report published",
   publishedBody:
-    "Your approval made this report available through the paid report service. No payment has been made.",
-  openCardano: "Review this report in Cardano payments",
+    "Publication of this report was recorded in your workspace. It does not create a Masumi task or prove a payment.",
+  openCardano: "View Cardano task setup",
   decisionSent: "Decision sent",
   events: "events",
   model: "Reasoning model",
@@ -262,9 +262,52 @@ export const en = {
   tokenId: "Token identifier",
   tokenAmount: "Token quantity",
   tokenOutpoint: "Token output",
-  cardanoTitle: "Unlock an explicitly published report",
+  cardanoTitle: "Run a security task with Masumi and Sokosumi",
   cardanoBody:
-    "Connect a CIP-30 wallet on preprod. Review the report, recipient, price and fee budget. Your wallet signs the complete transaction; the facilitator broadcasts it and returns settlement evidence.",
+    "Use your Personal Workspace in Sokosumi Preprod. Verify an execution-only Coworker Task first, then review a paid Masumi Task after registration and payment setup are confirmed.",
+  masumiExecutionNote:
+    "A completed execution-only Task proves task delivery. Paid-task enablement and payment settlement are separate checks.",
+  masumiReportReference:
+    "This report identifier is a reference only. Create the Sokosumi Task with the actual evidence to analyze. Opening this page does not submit, purchase or unlock a report.",
+  masumiChecking: "Checking Masumi/Sokosumi service status…",
+  masumiUnavailable:
+    "Masumi/Sokosumi status is unavailable. Refresh after service setup; no task or payment success is assumed.",
+  masumiLegacy:
+    "This endpoint still reports the historical x402 integration. The selected Masumi/Sokosumi service is not connected here; x402 purchase controls are disabled.",
+  openSokosumi: "Open Sokosumi Preprod",
+  masumiPersonalWorkspace:
+    "In Sokosumi, use your Personal Workspace and assigned Coworker. Keep account credentials and payment secrets in the approved local setup. Review and authorize any task or payment there.",
+  masumiReadiness: "Service and task checkpoints",
+  masumiAgent: "Rust core service health",
+  masumiCoworker: "Coworker configured",
+  masumiExecution: "Execution-only Task receipt",
+  masumiRegistration: "Masumi registration",
+  masumiPaidEnabled: "Paid Tasks enabled",
+  masumiSettlement: "Payment settlement receipt",
+  masumiReady: "Ready",
+  masumiNotReady: "Setup required",
+  masumiVerified: "Verified",
+  masumiUnverified: "Not verified",
+  masumiEnabled: "Enabled",
+  masumiDisabled: "Disabled",
+  masumiTaskId: "Recorded Task identifier",
+  masumiReceiptSource: "Receipt source and observation time",
+  masumiSetupTitle: "Required setup",
+  masumiSetupCoworker:
+    "Configure your Sokosumi Personal Workspace and Coworker.",
+  masumiSetupExecution:
+    "Complete an execution-only Coworker Task and verify its receipt.",
+  masumiSetupPayment:
+    "Configure the Masumi payment service in the approved local setup.",
+  masumiSetupRegistration: "Confirm the agent’s Masumi registration.",
+  masumiSetupPaid:
+    "Complete a separately reviewed paid Task and verify settlement.",
+  masumiSetupWorker: "Attach the approved worker to the Coworker.",
+  masumiExecutionVerified:
+    "Execution-only Task verified; inspect payment checkpoints separately.",
+  masumiExecutionPending:
+    "Execution-only Task is not yet verified. Account or worker setup may be required.",
+  masumiViewSetup: "View Masumi task setup",
   connectCardano: "Connect Cardano wallet",
   cardanoWallet: "Cardano wallet",
   reportId: "Published report identifier",

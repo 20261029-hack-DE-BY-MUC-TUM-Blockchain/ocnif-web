@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/buttons/Button/Button";
 import { Icon } from "@/components/ui/data-display/Icon/Icon";
 import { usePreferences } from "../settings/Preferences";
-import { type Merchant, parseMerchant } from "./merchant";
+import { useCardanoStatus } from "./useCardanoStatus";
 import styles from "./WalletPanel.module.css";
 
 type WalletConnection = Awaited<
@@ -14,38 +14,16 @@ export function WalletPanel() {
   const { t } = usePreferences();
   const [wallet, setWallet] = useState<WalletConnection | null>(null);
   const [walletStatus, setWalletStatus] = useState("idle");
-  const [merchant, setMerchant] = useState<Merchant | null>(null);
-  const [merchantStatus, setMerchantStatus] = useState("checking");
+  const cardano = useCardanoStatus();
   const active = useRef(true);
   const walletAttempt = useRef(0);
-  const checkMerchant = useCallback(async (signal?: AbortSignal) => {
-    setMerchantStatus("checking");
-    try {
-      const response = await fetch("/paid/config", {
-        credentials: "same-origin",
-        cache: "no-store",
-        signal,
-      });
-      if (!response.ok) throw new Error("Merchant unavailable");
-      const result = parseMerchant(await response.json());
-      if (active.current) {
-        setMerchant(result);
-        setMerchantStatus(result.configured ? "ready" : "setup");
-      }
-    } catch {
-      if (active.current && !signal?.aborted) setMerchantStatus("unavailable");
-    }
-  }, []);
   useEffect(() => {
     active.current = true;
-    const controller = new AbortController();
-    void checkMerchant(controller.signal);
     return () => {
       active.current = false;
       walletAttempt.current += 1;
-      controller.abort();
     };
-  }, [checkMerchant]);
+  }, []);
   async function connect() {
     const attempt = ++walletAttempt.current;
     setWalletStatus("connecting");
@@ -108,36 +86,26 @@ export function WalletPanel() {
         {walletStatus === "error" && <p role="alert">{t.walletError}</p>}
       </div>
       <div className={styles.network}>
-        <b>Cardano · x402</b>
+        <b>Cardano · Masumi + Sokosumi</b>
         <output className={styles.merchantStatus}>
-          {merchantStatus === "checking"
-            ? t.serviceChecking
-            : merchantStatus === "ready"
-              ? t.merchantReady
-              : merchantStatus === "setup"
-                ? t.merchantSetup
-                : t.merchantUnavailable}
+          {cardano.loading
+            ? t.masumiChecking
+            : cardano.error
+              ? t.masumiUnavailable
+              : cardano.status?.integration === "legacy-x402"
+                ? t.masumiLegacy
+                : cardano.status?.executionOnly.verified
+                  ? t.masumiExecutionVerified
+                  : t.masumiExecutionPending}
         </output>
-        {merchant && (
-          <dl>
-            <dt>{t.walletNetwork}</dt>
-            <dd>{merchant.network}</dd>
-            <dt>{t.merchantPrice}</dt>
-            <dd>{merchant.amount} lovelace</dd>
-            {merchant.payTo && (
-              <>
-                <dt>{t.merchantRecipient}</dt>
-                <dd>
-                  <code>{merchant.payTo}</code>
-                </dd>
-              </>
-            )}
-          </dl>
-        )}
+        <p>{t.masumiExecutionNote}</p>
+        <Link href="/payments?network=cardano" className={styles.link}>
+          {t.masumiViewSetup}
+        </Link>
         <Button
           variant="ghost"
-          onClick={() => checkMerchant()}
-          disabled={merchantStatus === "checking"}
+          onClick={cardano.refresh}
+          disabled={cardano.loading}
         >
           {t.refreshStatus}
         </Button>

@@ -114,8 +114,8 @@ export const fr: Dictionary = {
   approval: "Votre examen est nécessaire",
   publishedReport: "Rapport publié",
   publishedBody:
-    "Votre accord a rendu ce rapport disponible via le service de rapports payants. Aucun paiement n’a été effectué.",
-  openCardano: "Examiner ce rapport dans les paiements Cardano",
+    "La publication de ce rapport a été enregistrée dans votre espace. Elle ne crée aucune tâche Masumi et ne prouve aucun paiement.",
+  openCardano: "Voir la configuration des tâches Cardano",
   decisionSent: "Décision envoyée",
   events: "événements",
   model: "Modèle de raisonnement",
@@ -269,9 +269,52 @@ export const fr: Dictionary = {
   tokenId: "Identifiant du token",
   tokenAmount: "Quantité de tokens",
   tokenOutpoint: "Sortie du token",
-  cardanoTitle: "Déverrouiller un rapport explicitement publié",
+  cardanoTitle: "Exécuter une tâche de sécurité avec Masumi et Sokosumi",
   cardanoBody:
-    "Connectez un portefeuille CIP-30 sur preprod. Examinez rapport, destinataire, prix et budget de frais. Le portefeuille signe la transaction complète ; le facilitateur la diffuse et fournit le reçu.",
+    "Utilisez votre espace personnel dans Sokosumi Preprod. Vérifiez d’abord une tâche Coworker d’exécution seule, puis examinez une tâche Masumi payante après confirmation de l’enregistrement et de la configuration des paiements.",
+  masumiExecutionNote:
+    "Une tâche d’exécution seule terminée prouve la livraison. L’activation des tâches payantes et le règlement du paiement sont vérifiés séparément.",
+  masumiReportReference:
+    "Cet identifiant est une référence uniquement. Créez la tâche Sokosumi avec les preuves réelles à analyser. Cette page ne soumet, n’achète et ne débloque aucun rapport.",
+  masumiChecking: "Vérification du service Masumi/Sokosumi…",
+  masumiUnavailable:
+    "Le statut Masumi/Sokosumi est indisponible. Actualisez après la configuration ; aucun succès de tâche ou paiement n’est présumé.",
+  masumiLegacy:
+    "Ce service indique encore l’intégration historique x402. Le service Masumi/Sokosumi choisi n’est pas connecté ici ; les achats x402 sont désactivés.",
+  openSokosumi: "Ouvrir Sokosumi Preprod",
+  masumiPersonalWorkspace:
+    "Dans Sokosumi, utilisez votre espace personnel et le Coworker attribué. Conservez les identifiants et secrets de paiement dans la configuration locale approuvée. Examinez et autorisez chaque tâche ou paiement sur ce service.",
+  masumiReadiness: "Contrôles du service et des tâches",
+  masumiAgent: "État du service Rust core",
+  masumiCoworker: "Coworker configuré",
+  masumiExecution: "Reçu de tâche d’exécution seule",
+  masumiRegistration: "Enregistrement Masumi",
+  masumiPaidEnabled: "Tâches payantes activées",
+  masumiSettlement: "Reçu de règlement du paiement",
+  masumiReady: "Prêt",
+  masumiNotReady: "Configuration requise",
+  masumiVerified: "Vérifié",
+  masumiUnverified: "Non vérifié",
+  masumiEnabled: "Activées",
+  masumiDisabled: "Désactivées",
+  masumiTaskId: "Identifiant de tâche enregistré",
+  masumiReceiptSource: "Source du reçu et date d’observation",
+  masumiSetupTitle: "Configuration nécessaire",
+  masumiSetupCoworker:
+    "Configurez votre espace personnel Sokosumi et le Coworker.",
+  masumiSetupExecution:
+    "Terminez une tâche Coworker d’exécution seule et vérifiez son reçu.",
+  masumiSetupPayment:
+    "Configurez le service de paiement Masumi dans l’environnement local approuvé.",
+  masumiSetupRegistration: "Confirmez l’enregistrement Masumi de l’agent.",
+  masumiSetupPaid:
+    "Terminez une tâche payante examinée séparément et vérifiez son règlement.",
+  masumiSetupWorker: "Connectez le processus de travail approuvé au Coworker.",
+  masumiExecutionVerified:
+    "Tâche d’exécution seule vérifiée ; examinez séparément les contrôles de paiement.",
+  masumiExecutionPending:
+    "La tâche d’exécution seule n’est pas encore vérifiée. Le compte ou le processus de travail peut nécessiter une configuration.",
+  masumiViewSetup: "Voir la configuration des tâches Masumi",
   connectCardano: "Connecter le portefeuille Cardano",
   cardanoWallet: "Portefeuille Cardano",
   reportId: "Identifiant du rapport publié",
