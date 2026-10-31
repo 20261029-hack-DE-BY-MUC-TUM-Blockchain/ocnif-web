@@ -4,15 +4,121 @@ import { isReportId, publishedReportPath } from "@/lib/types/publication";
 import { parseCard, parseEvent } from "@/lib/types/runtime";
 import { applyEvent, applySubmission, initialState } from "./state";
 
-const event = (type: string, data = {}) => ({
+const event = (type: string, data = {}, run_id = "run-1") => ({
   id: crypto.randomUUID(),
-  run_id: "run-1",
+  run_id,
   sequence: 1,
   type,
   data,
   created_at: new Date().toISOString(),
 });
 describe("runtime event state", () => {
+  test("a correlated rejected submission clears busy state without discarding its message", () => {
+    const pending = applySubmission(
+      initialState,
+      "Review evidence",
+      "request-1",
+      "now",
+    );
+    const rejected = applyEvent(
+      pending,
+      event(
+        "error",
+        { request_id: "request-1", message: "All slots busy" },
+        "",
+      ),
+    );
+    assert.equal(rejected.active, false);
+    assert.equal(rejected.error, "All slots busy");
+    assert.equal(rejected.messages[0].id, "request-1");
+  });
+  test("an unrelated error or rejected replacement does not stop a real accepted run", () => {
+    const pending = applySubmission(
+      initialState,
+      "Review evidence",
+      "request-1",
+      "now",
+    );
+    assert.equal(
+      applyEvent(
+        pending,
+        event("error", { request_id: "other", message: "Other error" }, ""),
+      ).active,
+      true,
+    );
+    const running = applyEvent(
+      pending,
+      event("run.accepted", { request_id: "request-1" }),
+    );
+    const replacement = applySubmission(
+      running,
+      "Use corrected evidence",
+      "request-2",
+      "now",
+    );
+    const rejected = applyEvent(
+      replacement,
+      event("error", { request_id: "request-2", message: "Not accepted" }, ""),
+    );
+    assert.equal(rejected.active, true);
+    assert.equal(applyEvent(rejected, event("run.completed")).active, false);
+  });
+  test("cancelling an old run preserves its pending steering replacement", () => {
+    const running = applyEvent(
+      applySubmission(initialState, "Original evidence", "request-1", "now"),
+      event("run.accepted", { request_id: "request-1" }),
+    );
+    const steering = applySubmission(
+      running,
+      "Corrected evidence",
+      "request-2",
+      "now",
+    );
+    const oldCancelled = applyEvent(steering, event("run.cancelled"));
+    assert.equal(oldCancelled.active, true);
+    const accepted = applyEvent(
+      oldCancelled,
+      event("run.accepted", { request_id: "request-2" }, "run-2"),
+    );
+    assert.equal(accepted.active, true);
+    const started = applyEvent(
+      accepted,
+      event("run.started", { request_id: "request-2" }, "run-2"),
+    );
+    assert.equal(started.active, true);
+    assert.equal(
+      applyEvent(started, event("run.completed", {}, "run-2")).active,
+      false,
+    );
+    assert.equal(
+      applyEvent(
+        oldCancelled,
+        event("error", { request_id: "request-2", message: "No capacity" }, ""),
+      ).active,
+      false,
+    );
+  });
+  test("history restores unfinished accepted runs and ignores late starts after a terminal event", () => {
+    let restored = initialState;
+    for (const item of [
+      event("run.accepted", { request_id: "request-1" }),
+      event("run.started", { request_id: "request-1" }),
+      event("run.cancelled"),
+      event("run.accepted", { request_id: "request-2" }, "run-2"),
+    ])
+      restored = applyEvent(restored, item);
+    assert.equal(restored.active, true);
+    restored = applyEvent(
+      restored,
+      event("run.failed", { message: "Stopped" }, "run-2"),
+    );
+    assert.equal(restored.active, false);
+    assert.equal(
+      applyEvent(restored, event("run.started", { request_id: "request-1" }))
+        .active,
+      false,
+    );
+  });
   test("deduplicates replayed events and renders provider deltas", () => {
     const start = event("run.started");
     const state = applyEvent(initialState, start);
