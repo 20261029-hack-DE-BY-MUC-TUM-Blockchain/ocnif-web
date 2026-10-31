@@ -1,0 +1,147 @@
+:root {
+  --bg: #060c0d;
+  --panel: #101c1e;
+  --panel-soft: #0b1517;
+  --surface: #192729;
+  --text: #f0f8f7;
+  --muted: #9aaead;
+  --line: #304043;
+  --accent: #32d5c3;
+  --accent-text: #022a27;
+  --accent-soft: #113c38;
+  --danger: #f49c9c;
+  --warning: #e8c489;
+  --glass: linear-gradient(145deg, #1e3839a6, #101819bf 58%, #21454180);
+  --glow: radial-gradient(ellipse at 70% 45%, #1c8d8040, transparent 62%);
+  --shadow: 0 24px 80px #00000040;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --radius-sm: 0.75rem;
+  --radius: 1.5rem;
+  --radius-lg: 2.25rem;
+  --pill: 999px;
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-base: 1rem;
+  --font-lg: 1.25rem;
+  --font-xl: 1.5rem;
+  --font-2xl: 2rem;
+  --font-3xl: 3rem;
+  --font-hero: clamp(3.75rem, 8vw, 7.5rem);
+  --control: 2.75rem;
+  --icon: 1.25rem;
+  --sidebar: 16rem;
+  --detail: 20rem;
+  --content: 85rem;
+  --border: 1px;
+  --duration: 180ms;
+  --leading: 1.6;
+  --tracking: -0.04em;
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --bg: #f0f5f3;
+  --panel: #fff;
+  --panel-soft: #e9f0ed;
+  --surface: #e1eae6;
+  --text: #122a29;
+  --muted: #506967;
+  --line: #bdcfca;
+  --accent: #087c71;
+  --accent-text: #fff;
+  --accent-soft: #cfe9e3;
+  --danger: #a72929;
+  --warning: #795115;
+  --glass: linear-gradient(145deg, #fffffff2, #e0f0e9f0 75%, #b5e4d780);
+  --glow: radial-gradient(ellipse at 70% 45%, #4fa59135, transparent 62%);
+  --shadow: 0 24px 80px #28483b16;
+  color-scheme: light;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-urbanist), Arial, sans-serif;
+  font-size: var(--font-base);
+  line-height: var(--leading);
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3 {
+  line-height: 1.12;
+  letter-spacing: var(--tracking);
+}
+svg {
+  flex-shrink: 0;
+}
+::selection {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: Reduced motion must override component animations. */
+    animation-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: Reduced motion must override component transitions. */
+    transition-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: Reduced motion must disable smooth scrolling. */
+    scroll-behavior: auto !important;
+  }
+}

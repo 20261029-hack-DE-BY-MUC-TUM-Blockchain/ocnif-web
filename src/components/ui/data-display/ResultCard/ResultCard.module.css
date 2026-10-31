@@ -1,0 +1,68 @@
+.card {
+  background: var(--glass);
+  border: var(--border) solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+}
+.card header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.card header > svg {
+  color: var(--accent);
+}
+.card h3 {
+  font-size: var(--font-base);
+  letter-spacing: normal;
+  font-weight: 600;
+  flex: 1;
+}
+.severity {
+  font-size: var(--font-xs);
+  border-radius: var(--pill);
+  padding: var(--space-1) var(--space-2);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.card[data-severity="high"] .severity {
+  color: var(--danger);
+  background: var(--panel);
+}
+.body {
+  white-space: pre-wrap;
+  font-size: var(--font-sm);
+  color: var(--muted);
+  margin-top: var(--space-3);
+}
+.value {
+  font-size: var(--font-3xl);
+  margin-top: var(--space-4);
+  color: var(--accent);
+}
+.card ul {
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: 0;
+}
+.card li {
+  display: flex;
+  gap: var(--space-2);
+  font-size: var(--font-sm);
+}
+.card li svg {
+  color: var(--accent);
+  width: var(--space-4);
+  margin-top: var(--space-1);
+}
+
+.report {
+  margin-top: var(--space-3);
+}
+.report summary {
+  color: var(--accent);
+  font-size: var(--font-sm);
+  cursor: pointer;
+}
