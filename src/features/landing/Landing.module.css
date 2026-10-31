@@ -1,0 +1,310 @@
+.main {
+  max-width: var(--content);
+  margin: auto;
+  padding: 0 var(--space-6);
+}
+.hero {
+  display: grid;
+  gap: var(--space-10);
+  padding: var(--space-12) 0 var(--space-16);
+  align-items: center;
+}
+.eyebrow {
+  font-size: var(--font-xs);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.eyebrow span {
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 16px var(--accent);
+}
+.copy h1 {
+  font-size: var(--font-hero);
+  font-weight: 500;
+  white-space: pre-line;
+  line-height: 1.02;
+  margin: var(--space-6) 0;
+  letter-spacing: -0.06em;
+}
+.intro {
+  max-width: 31rem;
+  font-size: var(--font-lg);
+  color: var(--muted);
+  line-height: 1.65;
+}
+.actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin: var(--space-8) 0 var(--space-4);
+}
+.note {
+  font-size: var(--font-xs);
+  color: var(--muted);
+  max-width: 28rem;
+}
+.error {
+  color: var(--danger);
+  font-size: var(--font-sm);
+  margin-bottom: var(--space-3);
+}
+.visual {
+  position: relative;
+  min-height: 33rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glow);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.orbit {
+  position: absolute;
+  width: 26rem;
+  height: 26rem;
+  border: var(--border) solid var(--line);
+  border-radius: 50%;
+  top: var(--space-3);
+  right: -2rem;
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 50px #18b6a20b;
+}
+.orbitInner {
+  position: absolute;
+  inset: var(--space-10);
+  border: var(--border) solid var(--line);
+  border-radius: 50%;
+  transform: rotate(-35deg);
+  box-shadow: 0 0 50px #24b9a611;
+}
+.orbitCore {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 25%,
+    #a9fff33b,
+    #25cdb516 50%,
+    #051c1a66
+  );
+  border: var(--border) solid var(--accent);
+  box-shadow:
+    inset 0 0 36px #32d5c340,
+    0 0 70px #32d5c326;
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+}
+.orbitNode,
+.orbitNode2 {
+  position: absolute;
+  width: var(--space-4);
+  height: var(--space-4);
+  border: var(--border) solid var(--accent);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 22px var(--accent);
+  top: var(--space-16);
+  left: var(--space-8);
+}
+.orbitNode2 {
+  top: auto;
+  bottom: var(--space-5);
+  left: auto;
+  right: var(--space-20);
+  width: var(--space-2);
+  height: var(--space-2);
+}
+.floating {
+  position: absolute;
+  left: 0;
+  bottom: var(--space-16);
+  width: 75%;
+  max-width: 22rem;
+  background: var(--glass);
+  z-index: 1;
+  transform: rotate(-3deg);
+}
+.floating h2 {
+  font-size: var(--font-2xl);
+  font-weight: 500;
+  margin: var(--space-5) 0;
+}
+.mint {
+  font-size: 0.625rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+.signal {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: var(--space-12);
+}
+.signal span {
+  flex: 1;
+  height: 20%;
+  background: linear-gradient(var(--accent), transparent);
+  border-top: 2px solid var(--accent);
+  border-radius: var(--space-1);
+}
+.signal span:nth-child(3n) {
+  height: 70%;
+}
+.signal span:nth-child(4n) {
+  height: 100%;
+}
+.signal span:nth-child(5n) {
+  height: 45%;
+}
+.roleStrip {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.roleStrip div {
+  font-size: var(--font-xs);
+  border: var(--border) solid var(--line);
+  background: var(--panel);
+  border-radius: var(--pill);
+  padding: var(--space-2) var(--space-3);
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+.roleStrip span {
+  color: var(--muted);
+}
+.roleStrip svg {
+  width: var(--space-3);
+  height: var(--space-3);
+  color: var(--accent);
+}
+.features {
+  display: grid;
+  gap: var(--space-4);
+}
+.features h3 {
+  font-size: var(--font-xl);
+  font-weight: 500;
+  margin: var(--space-6) 0 var(--space-3);
+}
+.features p,
+.steps p {
+  color: var(--muted);
+  font-size: var(--font-sm);
+}
+.featureIcon {
+  display: grid;
+  place-items: center;
+  width: var(--space-12);
+  height: var(--space-12);
+  border: var(--border) solid var(--line);
+  border-radius: 50%;
+  color: var(--accent);
+}
+.how {
+  padding: var(--space-24) 0;
+}
+.how h2 {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 500;
+  max-width: 40rem;
+  margin-top: var(--space-5);
+}
+.steps {
+  display: grid;
+  gap: var(--space-8);
+  margin: var(--space-12) 0;
+}
+.number {
+  font-size: var(--font-sm);
+  color: var(--accent);
+}
+.steps h3 {
+  font-weight: 500;
+  font-size: var(--font-xl);
+  margin: var(--space-4) 0;
+}
+.deckLink {
+  display: inline-flex;
+  gap: var(--space-4);
+  align-items: center;
+  border-bottom: var(--border) solid var(--accent);
+  padding: var(--space-3) 0;
+  color: var(--accent);
+}
+.footer {
+  max-width: var(--content);
+  padding: var(--space-6);
+  border-top: var(--border) solid var(--line);
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: var(--font-xs);
+}
+.footer span:last-child {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+.auth {
+  max-width: 25rem;
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  padding: var(--space-6);
+  background: var(--panel);
+  border: var(--border) solid var(--line);
+  border-radius: var(--radius);
+}
+.auth label {
+  display: grid;
+  gap: var(--space-2);
+  font-size: var(--font-sm);
+}
+.auth input {
+  width: 100%;
+  border: var(--border) solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  padding: var(--space-3);
+}
+@media (min-width: 760px) {
+  .hero {
+    grid-template-columns: 1.05fr 1fr;
+    padding-top: var(--space-20);
+  }
+  .features,
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .visual {
+    min-height: 36rem;
+  }
+  .floating {
+    left: var(--space-4);
+  }
+  .orbit {
+    right: 0;
+  }
+}
