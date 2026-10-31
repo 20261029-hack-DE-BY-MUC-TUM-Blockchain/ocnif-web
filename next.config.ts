@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import { apiBaseUrl, cardanoBaseUrl } from "./src/lib/config";
+import { apiBaseUrl, bsvBaseUrl, cardanoBaseUrl } from "./src/lib/config";
 
 const nextConfig: NextConfig = {
   output: "standalone",
@@ -13,12 +13,19 @@ const nextConfig: NextConfig = {
   async rewrites() {
     const api = apiBaseUrl();
     const cardano = cardanoBaseUrl();
+    const bsv = bsvBaseUrl();
     return [
       ...(api
         ? [{ source: "/api/:path*", destination: `${api}/api/:path*` }]
         : []),
       ...(cardano
         ? [{ source: "/paid/:path*", destination: `${cardano}/v1/:path*` }]
+        : []),
+      ...(bsv
+        ? [
+            { source: "/bsv/:path*", destination: `${bsv}/:path*` },
+            { source: "/arc-ingest", destination: `${bsv}/arc-ingest` },
+          ]
         : []),
     ];
   },

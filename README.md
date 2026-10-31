@@ -29,6 +29,8 @@ The production container runs Next.js standalone output with its static assets a
 
 Supply `PUBLIC_APP_ORIGIN` at build and runtime. The CSP's explicit WebSocket source and reporting endpoint use this validated origin, independently of internal container hosts or forwarded request headers. HTTPS maps to WSS; local HTTP maps to WS. Without the setting, the policy retains `'self'` and relative `report-uri` but omits explicit WebSocket and reporting endpoint origins. Configure it for deployment so browsers receive the intended public WebSocket source.
 
+Set build-time `BSV_BASE_URL` to the internal BSV service origin to enable `/bsv/:path*` and the dedicated `/arc-ingest` callback proxy. The first strips `/bsv`; the second preserves the callback path expected by OverlayExpress. These rewrites pass the request body and caller-provided authorization/callback headers to the service without adding credentials; the service must validate them. When using this deployment layout, set the browser's `BSV_OVERLAY_URL` and the BSV service's `OVERLAY_PUBLIC_URL` to the public app origin followed by `/bsv`. The BSV service remains private behind the web ingress.
+
 `docker-compose.yml` is for local development only; production uses Azure Container Apps. Each Docker build uses this repository as its own build context.
 
 ```sh

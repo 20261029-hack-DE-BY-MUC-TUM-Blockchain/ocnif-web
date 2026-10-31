@@ -48,6 +48,6 @@ export function proxy(request: NextRequest) {
 }
 export const config = {
   matcher: [
-    "/((?!api|cardano-provider|_next/static|_next/image|favicon.ico|icon|manifest.json|sw.js|offline|health|csp-report).*)",
+    "/((?!api|bsv|arc-ingest|cardano-provider|_next/static|_next/image|favicon.ico|icon|manifest.json|sw.js|offline|health|csp-report).*)",
   ],
 };
