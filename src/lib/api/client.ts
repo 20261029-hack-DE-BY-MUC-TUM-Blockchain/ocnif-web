@@ -72,9 +72,10 @@ export async function history(id: string) {
 export async function logout() {
   await request("/auth/logout", { method: "POST" });
 }
-export async function voiceSession(locale: string) {
+export async function voiceSession(locale: string, signal?: AbortSignal) {
   const data = record(
     await request("/voice/session", {
+      signal,
       method: "POST",
       body: JSON.stringify({ locale }),
     }),

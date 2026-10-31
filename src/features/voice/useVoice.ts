@@ -2,10 +2,20 @@
 import { useEffect, useRef, useState } from "react";
 import { voiceSession } from "@/lib/api/client";
 import { type Locale, type RuntimeEvent, record } from "@/lib/types/runtime";
+import { playVoiceAudio } from "./playback";
+import {
+  VoiceConversation,
+  type VoiceResponseState,
+  voiceSessionUpdate,
+} from "./realtime";
 import { advanceTranscript, type TranscriptState } from "./transcript";
 import { useDiarization } from "./useDiarization";
 
-type VoiceRequest = { callId: string; requestId: string; runId?: string };
+const INITIAL_RESPONSE: VoiceResponseState = {
+  activity: "listening",
+  assistantTranscript: "",
+  responseError: null,
+};
 export function useVoice(
   locale: Locale,
   onRequest: (content: string, id: string) => boolean,
@@ -16,7 +26,7 @@ export function useVoice(
   const media = useRef<MediaStream | null>(null);
   const channel = useRef<RTCDataChannel | null>(null);
   const audio = useRef<HTMLAudioElement | null>(null);
-  const pending = useRef<VoiceRequest[]>([]);
+  const conversation = useRef<VoiceConversation | null>(null);
   const generation = useRef(0);
   const connectionRequest = useRef<AbortController | null>(null);
   const utterance = useRef<TranscriptState>({ itemId: "", text: "" });
@@ -27,10 +37,14 @@ export function useVoice(
   >("idle");
   const [muted, setMuted] = useState(false);
   const [transcript, setTranscript] = useState("");
+  const [responseState, setResponseState] = useState(INITIAL_RESPONSE);
+  const [playbackBlocked, setPlaybackBlocked] = useState(false);
   function end() {
     generation.current += 1;
     connectionRequest.current?.abort();
     connectionRequest.current = null;
+    conversation.current?.dispose();
+    conversation.current = null;
     diarization.stop();
     channel.current?.close();
     peer.current?.close();
@@ -42,68 +56,41 @@ export function useVoice(
     peer.current = null;
     media.current = null;
     channel.current = null;
-    pending.current = [];
+    audio.current = null;
     setStatus("idle");
     setMuted(false);
+    setPlaybackBlocked(false);
+    setResponseState((state) => ({ ...state, activity: "listening" }));
   }
   useEffect(
     () => () => {
       generation.current += 1;
       connectionRequest.current?.abort();
+      conversation.current?.dispose();
       diarization.stop();
       channel.current?.close();
       peer.current?.close();
       media.current?.getTracks().forEach((track) => {
         track.stop();
       });
+      audio.current?.pause();
       if (audio.current) audio.current.srcObject = null;
     },
     [diarization.stop],
   );
-  function reply(callId: string, output: string) {
-    if (channel.current?.readyState !== "open") return;
-    channel.current.send(
-      JSON.stringify({
-        type: "conversation.item.create",
-        item: { type: "function_call_output", call_id: callId, output },
-      }),
-    );
-    channel.current.send(JSON.stringify({ type: "response.create" }));
+  async function resumeAudio() {
+    const current = audio.current;
+    if (!current) return;
+    const played = await playVoiceAudio(current);
+    if (audio.current === current) setPlaybackBlocked(!played);
   }
-  function handleMessage(raw: string) {
-    try {
-      const message = record(JSON.parse(raw));
-      utterance.current = advanceTranscript(utterance.current, message);
-      setTranscript(utterance.current.text);
-      if (
-        message.type === "conversation.item.input_audio_transcription.completed"
-      )
-        void diarization.snapshot();
-      if (
-        message.type === "response.function_call_arguments.done" &&
-        message.name === "ocnif_request" &&
-        typeof message.call_id === "string" &&
-        typeof message.arguments === "string"
-      ) {
-        const args = record(JSON.parse(message.arguments));
-        if (typeof args.content !== "string") return;
-        const id = crypto.randomUUID();
-        if (request.current(args.content, id))
-          pending.current.push({ callId: message.call_id, requestId: id });
-        else
-          reply(
-            message.call_id,
-            "The workspace could not accept this request. Check its connection and keep the request within 16,000 UTF-8 bytes. No task was executed.",
-          );
-      }
-      if (message.type === "error") {
-        end();
-        setStatus("error");
-      }
-    } catch {
-      end();
-      setStatus("error");
-    }
+  function failConnection() {
+    end();
+    setStatus("error");
+    setResponseState((state) => ({
+      ...state,
+      responseError: "session_failed",
+    }));
   }
   async function start() {
     end();
@@ -114,8 +101,9 @@ export function useVoice(
     utterance.current = { itemId: "", text: "" };
     setStatus("connecting");
     setTranscript("");
+    setResponseState(INITIAL_RESPONSE);
     try {
-      const session = await voiceSession(locale);
+      const session = await voiceSession(locale, controller.signal);
       if (!active()) return;
       const endpoint = new URL(session.calls_url);
       if (
@@ -140,57 +128,78 @@ export function useVoice(
         return;
       }
       media.current = stream;
-      await diarization.capture(stream);
-      if (!active()) return;
+      // Optional speaker analysis must not delay the primary voice transport.
+      void diarization.capture(stream);
       const pc = new RTCPeerConnection();
       peer.current = pc;
-      audio.current = new Audio();
-      audio.current.autoplay = true;
+      const output = new Audio();
+      output.autoplay = true;
+      output.setAttribute("playsinline", "");
+      audio.current = output;
       pc.ontrack = (event) => {
-        if (audio.current) audio.current.srcObject = event.streams[0];
+        if (!active()) return;
+        output.srcObject = event.streams[0] ?? new MediaStream([event.track]);
+        void playVoiceAudio(output).then((played) => {
+          if (active()) setPlaybackBlocked(!played);
+        });
       };
       for (const track of stream.getAudioTracks()) pc.addTrack(track, stream);
       const dc = pc.createDataChannel("oai-events");
       channel.current = dc;
+      const voice = new VoiceConversation({
+        send: (event) => {
+          if (!active() || dc.readyState !== "open") return false;
+          try {
+            dc.send(JSON.stringify(event));
+            return true;
+          } catch {
+            return false;
+          }
+        },
+        request: (content, id) => request.current(content, id),
+        changed: (state) => {
+          if (active()) setResponseState(state);
+        },
+      });
+      conversation.current = voice;
+      let sessionConfirmed = false;
       dc.onmessage = (event) => {
-        if (active()) handleMessage(event.data);
+        if (!active()) return;
+        try {
+          const message = record(JSON.parse(event.data));
+          utterance.current = advanceTranscript(utterance.current, message);
+          setTranscript(utterance.current.text);
+          if (
+            message.type ===
+            "conversation.item.input_audio_transcription.completed"
+          )
+            void diarization.snapshot();
+          voice.receive(message);
+          if (message.type === "error" && !sessionConfirmed)
+            throw new Error("Voice configuration refused");
+          if (message.type === "session.updated") {
+            const updated = record(message.session);
+            if (
+              !Array.isArray(updated.output_modalities) ||
+              !updated.output_modalities.includes("audio")
+            )
+              throw new Error("Voice audio mode was not confirmed");
+            sessionConfirmed = true;
+            setStatus("connected");
+          }
+        } catch {
+          failConnection();
+        }
       };
       dc.onopen = () => {
-        if (!active()) return;
-        setStatus("connected");
-        dc.send(
-          JSON.stringify({
-            type: "session.update",
-            session: {
-              type: "realtime",
-              instructions: `Speak in ${locale}. You are the voice interface of Ocnif. For every security task, call ocnif_request with the full user request and evidence. Wait for its result; do not claim an investigation or payment occurred yourself. Read its result faithfully and briefly.`,
-              tools: [
-                {
-                  type: "function",
-                  name: "ocnif_request",
-                  description:
-                    "Run the user's authorized evidence-review or security-training task in Ocnif and receive its actual result.",
-                  parameters: {
-                    type: "object",
-                    properties: { content: { type: "string" } },
-                    required: ["content"],
-                    additionalProperties: false,
-                  },
-                },
-              ],
-              tool_choice: "auto",
-            },
-          }),
-        );
+        if (active()) dc.send(JSON.stringify(voiceSessionUpdate(locale)));
+      };
+      dc.onclose = dc.onerror = () => {
+        if (active()) failConnection();
       };
       pc.onconnectionstatechange = () => {
-        if (
-          active() &&
-          ["failed", "disconnected"].includes(pc.connectionState)
-        ) {
-          end();
-          setStatus("error");
-        }
+        if (active() && ["failed", "disconnected"].includes(pc.connectionState))
+          failConnection();
       };
       const offer = await pc.createOffer();
       if (!active()) return;
@@ -210,33 +219,11 @@ export function useVoice(
       if (!active()) return;
       await pc.setRemoteDescription({ type: "answer", sdp: answer });
     } catch {
-      if (active()) {
-        end();
-        setStatus("error");
-      }
+      if (active()) failConnection();
     }
   }
   function receiveEvent(event: RuntimeEvent) {
-    if (event.type === "run.started") {
-      const item = pending.current.find(
-        (item) => item.requestId === event.data.request_id,
-      );
-      if (item) item.runId = event.run_id;
-    }
-    if (
-      event.type === "message.completed" ||
-      event.type === "run.failed" ||
-      event.type === "run.cancelled"
-    ) {
-      const matches = pending.current.filter(
-        (item) => item.runId === event.run_id,
-      );
-      for (const item of matches)
-        reply(item.callId, JSON.stringify(event.data));
-      pending.current = pending.current.filter(
-        (item) => item.runId !== event.run_id,
-      );
-    }
+    conversation.current?.receiveRuntime(event);
   }
   function toggleMute() {
     const next = !muted;
@@ -249,6 +236,9 @@ export function useVoice(
     status,
     muted,
     transcript,
+    ...responseState,
+    playbackBlocked,
+    resumeAudio,
     start,
     end,
     toggleMute,
