@@ -12,7 +12,13 @@ export default async function Page({
     <Payments
       overlayUrl={bsvOverlayUrl()}
       sokosumiUrl={sokosumiPreprodUrl()}
-      initialTab={query.network === "cardano" ? "cardano" : "api3"}
+      initialTab={
+        query.network === "cardano"
+          ? "cardano"
+          : query.network === "bsv"
+            ? "bsv"
+            : "api3"
+      }
       initialReportId={reportId}
     />
   );

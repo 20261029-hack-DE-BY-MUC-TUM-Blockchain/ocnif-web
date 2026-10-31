@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/buttons/Button/Button";
 import { Icon } from "@/components/ui/data-display/Icon/Icon";
+import { bsvCopy } from "@/lib/i18n/bsv";
 import { publishedReportPath } from "@/lib/types/publication";
 import { usePreferences } from "../settings/Preferences";
 import type { RunState } from "./state";
@@ -14,7 +15,7 @@ export function ReportReview({
 }: Pick<RunState, "approval" | "publishedReportId"> & {
   control: (payload: Record<string, string>) => void;
 }) {
-  const { t } = usePreferences();
+  const { t, locale } = usePreferences();
   const latest = useRef<HTMLDivElement>(null);
   const approvalId = approval?.id;
   useEffect(() => {
@@ -72,6 +73,13 @@ export function ReportReview({
               href={publishedReportPath(publishedReportId)}
             >
               {t.openCardano}
+              <Icon name="arrow" />
+            </Link>
+            <Link
+              className={styles.publicationLink}
+              href={publishedReportPath(publishedReportId, "bsv")}
+            >
+              {bsvCopy[locale].title}
               <Icon name="arrow" />
             </Link>
           </div>

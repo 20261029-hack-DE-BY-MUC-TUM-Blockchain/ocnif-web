@@ -141,3 +141,9 @@
 .flow code {
   overflow-wrap: anywhere;
 }
+
+.reportCards {
+  display: grid;
+  gap: var(--space-4);
+  margin: var(--space-5) 0;
+}

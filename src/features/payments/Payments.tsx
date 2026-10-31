@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/buttons/Button/Button";
 import { Header } from "../settings/Header";
 import { usePreferences } from "../settings/Preferences";
 import { Api3Panel } from "./Api3Panel";
-import { BsvSwapPanel } from "./BsvSwapPanel";
+import { BsvMarketPanel } from "./BsvMarketPanel";
 import { CardanoPanel } from "./CardanoPanel";
 import styles from "./Payments.module.css";
 export function Payments({
@@ -15,7 +15,7 @@ export function Payments({
 }: {
   overlayUrl?: string;
   sokosumiUrl?: string;
-  initialTab?: "api3" | "cardano";
+  initialTab?: "api3" | "cardano" | "bsv";
   initialReportId?: string;
 }) {
   const { t } = usePreferences();
@@ -44,7 +44,10 @@ export function Payments({
         {tab === "api3" ? (
           <Api3Panel />
         ) : tab === "bsv" ? (
-          <BsvSwapPanel overlayUrl={overlayUrl} />
+          <BsvMarketPanel
+            overlayUrl={overlayUrl}
+            initialReportId={initialReportId}
+          />
         ) : (
           <CardanoPanel
             sokosumiUrl={sokosumiUrl}

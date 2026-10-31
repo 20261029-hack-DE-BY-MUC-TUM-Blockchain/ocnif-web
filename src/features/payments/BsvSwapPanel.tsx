@@ -1,6 +1,6 @@
 "use client";
 import type { PreparedSwap, SwapOffer, SwapReceipt } from "ocnif-bc-bsv";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/buttons/Button/Button";
 import { usePreferences } from "../settings/Preferences";
 import styles from "./Payments.module.css";
@@ -11,28 +11,52 @@ import { SwapReview } from "./SwapReview";
 type Connection = Awaited<
   ReturnType<typeof import("ocnif-bc-bsv").connectWallet>
 >;
-export function BsvSwapPanel({ overlayUrl }: { overlayUrl?: string }) {
+export function BsvSwapPanel({
+  overlayUrl,
+  connection,
+  initialOffer,
+  blocked = false,
+  onBusyChange,
+  onReceipt,
+}: {
+  overlayUrl?: string;
+  connection?: Connection;
+  initialOffer?: SwapOffer;
+  blocked?: boolean;
+  onBusyChange?: (busy: boolean) => void;
+  onReceipt?: (receipt: SwapReceipt) => void;
+}) {
   const { t } = usePreferences();
-  const [wallet, setWallet] = useState<Connection | null>(null);
+  const [localWallet, setWallet] = useState<Connection | null>(null);
+  const wallet = connection ?? localWallet;
   const [mode, setMode] = useState<"buyer" | "seller">("buyer");
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(
+    initialOffer ? JSON.stringify(initialOffer) : "",
+  );
   const [signature, setSignature] = useState("");
   const [keyIndex, setKeyIndex] = useState(0);
-  const [offer, setOffer] = useState<SwapOffer | null>(null);
+  const [offer, setOffer] = useState<SwapOffer | null>(initialOffer ?? null);
   const [prepared, setPrepared] = useState<PreparedSwap | null>(null);
   const [receipt, setReceipt] = useState<SwapReceipt | null>(null);
-  const [busy, setBusy] = useState(false);
+  const [localBusy, setBusy] = useState(false);
+  const busy = localBusy || blocked;
+  const locked = useRef(false);
   const [error, setError] = useState(false);
   const [state, setState] = useState("");
   async function run(action: () => Promise<void>) {
+    if (locked.current || blocked) return;
+    locked.current = true;
     setBusy(true);
+    onBusyChange?.(true);
     setError(false);
     try {
       await action();
     } catch {
       setError(true);
     } finally {
+      locked.current = false;
       setBusy(false);
+      onBusyChange?.(false);
     }
   }
   async function connect() {
@@ -70,6 +94,7 @@ export function BsvSwapPanel({ overlayUrl }: { overlayUrl?: string }) {
       if (existing) {
         setPrepared(existing.prepared || null);
         setReceipt(existing.receipt || null);
+        if (existing.receipt) onReceipt?.(existing.receipt);
         setState(existing.status);
         return;
       }
@@ -119,6 +144,7 @@ export function BsvSwapPanel({ overlayUrl }: { overlayUrl?: string }) {
         new sdk.IndexedDBSwapJournal(),
       );
       setReceipt(result);
+      onReceipt?.(result);
       setState(result.status);
     });
   }
@@ -133,6 +159,7 @@ export function BsvSwapPanel({ overlayUrl }: { overlayUrl?: string }) {
         new sdk.IndexedDBSwapJournal(),
       );
       setReceipt(result);
+      onReceipt?.(result);
       setState(result.status);
     });
   }
@@ -148,9 +175,11 @@ export function BsvSwapPanel({ overlayUrl }: { overlayUrl?: string }) {
           {t.overlayLabel}: <code>{overlayUrl}</code>
         </p>
       )}
-      <Button variant="secondary" onClick={connect} disabled={busy}>
-        {wallet ? t.connectedWallet : t.walletConnect}
-      </Button>
+      {!connection && (
+        <Button variant="secondary" onClick={connect} disabled={busy}>
+          {wallet ? t.connectedWallet : t.walletConnect}
+        </Button>
+      )}
       {wallet && (
         <p>
           <code>{wallet.identityKey}</code> · {wallet.network}
