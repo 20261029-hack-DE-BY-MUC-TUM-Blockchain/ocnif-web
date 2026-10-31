@@ -224,6 +224,8 @@ export const de: Dictionary = {
     "Öffne eine EVM-Wallet-Erweiterung und genehmige die Verbindung. Die Zahlung erfordert Base Sepolia.",
   requestChallenge: "Zahlungsbedingungen anfordern",
   reviewPayment: "Diese Zahlung prüfen",
+  paymentContextChanged:
+    "Die CVE hat sich geändert. Fordere vor dem Fortfahren Zahlungsbedingungen für die aktuelle CVE an.",
   paymentResource: "Angeforderte Ressource",
   paymentAsset: "Asset-Kennung",
   paymentAmount: "Betrag in kleinsten Einheiten",

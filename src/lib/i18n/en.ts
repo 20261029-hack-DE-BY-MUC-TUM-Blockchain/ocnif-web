@@ -215,6 +215,8 @@ export const en = {
     "Open an EVM wallet extension and approve the connection. The payment requires Base Sepolia.",
   requestChallenge: "Request payment terms",
   reviewPayment: "Review this payment",
+  paymentContextChanged:
+    "The CVE has changed. Request payment terms for the current CVE before continuing.",
   paymentResource: "Requested resource",
   paymentAsset: "Asset identifier",
   paymentAmount: "Amount in smallest units",

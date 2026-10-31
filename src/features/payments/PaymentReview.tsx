@@ -5,17 +5,20 @@ import { attemptId } from "./protocol/journal";
 import type { usePaymentFlow } from "./usePaymentFlow";
 export function PaymentReview({
   flow,
+  expectedEndpoint,
   payer,
   approve,
   disabled = false,
 }: {
   flow: ReturnType<typeof usePaymentFlow>;
+  expectedEndpoint: string;
   payer?: string;
   approve: () => void;
   disabled?: boolean;
 }) {
   const { t } = usePreferences();
   const { challenge, attempt, result } = flow;
+  const contextMatches = challenge?.endpoint === expectedEndpoint;
   const payerMatches =
     !attempt || (!!payer && attempt.id === attemptId(attempt.challenge, payer));
   return (
@@ -25,7 +28,11 @@ export function PaymentReview({
           <h3>{t.reviewPayment}</h3>
           <dl>
             <dt>{t.paymentResource}</dt>
-            <dd>{challenge.resource}</dd>
+            <dd>
+              {challenge.resource}
+              <br />
+              <code>{challenge.endpoint}</code>
+            </dd>
             <dt>{t.walletNetwork}</dt>
             <dd>{challenge.selected.network}</dd>
             <dt>{t.merchantRecipient}</dt>
@@ -37,11 +44,18 @@ export function PaymentReview({
             <dt>{t.paymentPayer}</dt>
             <dd>{payer || t.unavailable}</dd>
           </dl>
+          {!contextMatches && <p role="alert">{t.paymentContextChanged}</p>}
           <p>{t.paymentApprovalNote}</p>
           {!attempt || attempt.state === "reviewing" ? (
             <Button
-              onClick={approve}
-              disabled={!payer || !payerMatches || disabled || flow.busy}
+              onClick={() => contextMatches && approve()}
+              disabled={
+                !contextMatches ||
+                !payer ||
+                !payerMatches ||
+                disabled ||
+                flow.busy
+              }
             >
               {flow.busy ? t.working : t.approvePayment}
             </Button>
@@ -53,8 +67,10 @@ export function PaymentReview({
               {attempt.proof && attempt.state !== "settled" && (
                 <Button
                   variant="secondary"
-                  onClick={flow.retrySameProof}
-                  disabled={flow.busy || !payerMatches}
+                  onClick={() => contextMatches && flow.retrySameProof()}
+                  disabled={
+                    flow.busy || !payerMatches || !contextMatches || disabled
+                  }
                 >
                   {t.retryPayment}
                 </Button>
@@ -68,8 +84,16 @@ export function PaymentReview({
                   </p>
                   <Button
                     variant="secondary"
-                    onClick={() => payer && flow.newAttempt(payer)}
-                    disabled={!payer || !payerMatches || disabled || flow.busy}
+                    onClick={() =>
+                      contextMatches && payer && flow.newAttempt(payer)
+                    }
+                    disabled={
+                      !contextMatches ||
+                      !payer ||
+                      !payerMatches ||
+                      disabled ||
+                      flow.busy
+                    }
                   >
                     {t.paymentNewReview}
                   </Button>

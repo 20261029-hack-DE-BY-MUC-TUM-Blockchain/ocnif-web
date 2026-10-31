@@ -63,6 +63,7 @@ export function Api3Panel() {
         <input
           value={cve}
           onChange={(event) => setCve(event.target.value.toUpperCase())}
+          disabled={flow.busy}
           maxLength={30}
           placeholder="CVE-2021-44228"
         />
@@ -77,10 +78,14 @@ export function Api3Panel() {
       </Button>
       <PaymentReview
         flow={flow}
+        expectedEndpoint={`/api/v1/vulnerabilities/${cve}`}
         payer={wallet?.address}
         disabled={wallet?.chainId !== 84532}
         approve={() => {
-          if (wallet)
+          if (
+            wallet &&
+            flow.challenge?.endpoint === `/api/v1/vulnerabilities/${cve}`
+          )
             void flow.approve(wallet.address, (challenge) =>
               signEvm(challenge, wallet),
             );

@@ -30,6 +30,7 @@ const id = attemptId(challenge, payer);
 function render(
   attempt: Attempt,
   recovery: ReturnType<typeof usePaymentFlow>["recovery"],
+  expectedEndpoint = challenge.endpoint,
 ) {
   const flow = {
     challenge,
@@ -47,6 +48,7 @@ function render(
   return renderToStaticMarkup(
     <PaymentReview
       flow={flow}
+      expectedEndpoint={expectedEndpoint}
       payer={payer}
       approve={() => assert.fail("Rendering cannot sign a payment")}
     />,
@@ -65,6 +67,40 @@ test("a rejected payment offers fresh terms without exposing a second signing co
   assert.match(html, /Request a new reviewed attempt/);
   assert.doesNotMatch(html, /Approve these terms and sign in wallet/);
   assert.doesNotMatch(html, /Retry the same signed proof/);
+});
+
+test("changing the CVE invalidates signing, fresh review and saved-proof submission for the old quote", () => {
+  for (const [state, recovery] of [
+    ["reviewing", null],
+    ["rejected", "wallet_rejected"],
+    ["review_required", null],
+  ] as const) {
+    const attempt: Attempt = {
+      id,
+      challenge,
+      state,
+      createdAt: 1,
+      ...(state === "review_required" ? { proof: "saved-proof" } : {}),
+      ...(state === "rejected"
+        ? { rejection: "wallet_user_rejected_before_proof" as const }
+        : {}),
+    };
+    const original = render(attempt, recovery);
+    assert.doesNotMatch(original, /<button[^>]*disabled/);
+    const changed = render(
+      attempt,
+      recovery,
+      "/api/v1/vulnerabilities/CVE-2024-12345",
+    );
+    assert.match(
+      changed,
+      /<code>\/api\/v1\/vulnerabilities\/CVE-2021-44228<\/code>/,
+    );
+    assert.match(changed, /role="alert"/);
+    const buttons = changed.match(/<button\b[^>]*>/g) || [];
+    assert.equal(buttons.length, 1, state);
+    assert.match(buttons[0], /disabled=""/, state);
+  }
 });
 
 test("an uncertain signed attempt only offers its saved proof, never a fresh payment", () => {

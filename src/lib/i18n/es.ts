@@ -221,6 +221,8 @@ export const es: Dictionary = {
     "Abre una extensión de billetera EVM y autoriza la conexión. El pago requiere Base Sepolia.",
   requestChallenge: "Solicitar condiciones de pago",
   reviewPayment: "Revisar este pago",
+  paymentContextChanged:
+    "El CVE ha cambiado. Solicita las condiciones de pago del CVE actual antes de continuar.",
   paymentResource: "Recurso solicitado",
   paymentAsset: "Identificador del activo",
   paymentAmount: "Importe en unidades mínimas",
