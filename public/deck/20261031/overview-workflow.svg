@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc"><title id="title">The Ocnif user journey</title><desc id="desc">General user journey through supplied evidence, local tools, parallel analyst and remediation roles, verifier response and explicit approval. Optional blockchain workflows are independent; publication is separately authorized.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#32d5c3"/></marker></defs><rect width="1600" height="900" fill="#060c0d"/>
+<text x="55" y="75" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="600" fill="#f0f8f7" text-anchor="start">The Ocnif user journey</text>
+<text x="55" y="123" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" fill="#9aaead" text-anchor="start">Supply evidence, watch the specialists work, then review the result.</text>
+<text x="55" y="232" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600" fill="#32d5c3" text-anchor="start">01</text>
+<polyline points="305,360 365,360" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" />
+<text x="365" y="232" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600" fill="#32d5c3" text-anchor="start">02</text>
+<polyline points="615,360 675,360" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" />
+<text x="675" y="232" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600" fill="#32d5c3" text-anchor="start">03</text>
+<polyline points="925,360 985,360" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" />
+<text x="985" y="232" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600" fill="#32d5c3" text-anchor="start">04</text>
+<polyline points="1235,360 1295,360" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" />
+<text x="1295" y="232" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600" fill="#32d5c3" text-anchor="start">05</text>
+<rect x="55" y="265" width="250" height="195" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M57 285V440" stroke="#32d5c3" stroke-width="5"/>
+<text x="79" y="308" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Add evidence</text>
+<text x="79" y="349" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Text or voice</text>
+<text x="79" y="381" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Supplied material</text>
+<rect x="365" y="265" width="250" height="195" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M367 285V440" stroke="#32d5c3" stroke-width="5"/>
+<text x="389" y="308" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Inspect</text>
+<text x="389" y="349" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Headers</text>
+<text x="389" y="381" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Training cues</text>
+<rect x="675" y="265" width="250" height="195" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M677 285V440" stroke="#32d5c3" stroke-width="5"/>
+<text x="699" y="308" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Two roles</text>
+<text x="699" y="349" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Evidence analyst</text>
+<text x="699" y="381" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Remediation role</text>
+<text x="699" y="413" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Run in parallel</text>
+<rect x="985" y="265" width="250" height="195" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M987 285V440" stroke="#32d5c3" stroke-width="5"/>
+<text x="1009" y="308" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Review</text>
+<text x="1009" y="349" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Verifier role</text>
+<text x="1009" y="381" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Safe report cards</text>
+<rect x="1295" y="265" width="250" height="195" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M1297 285V440" stroke="#32d5c3" stroke-width="5"/>
+<text x="1319" y="308" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Decide</text>
+<text x="1319" y="349" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Accept or reject</text>
+<text x="1319" y="381" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Publish separately</text>
+<polyline points="790,460 790,540 180,540 180,460" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" />
+<text x="300" y="520" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" fill="#9aaead" text-anchor="start">Steer or cancel during the run</text>
+<text x="55" y="612" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="600" fill="#f0f8f7" text-anchor="start">Optional network workflows — each has its own terms and approval</text>
+<rect x="55" y="645" width="465" height="110" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M57 665V735" stroke="#32d5c3" stroke-width="5"/>
+<text x="79" y="688" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Cardano</text>
+<text x="79" y="729" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Commission a paid Sokosumi Task</text>
+<rect x="565" y="645" width="465" height="110" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M567 665V735" stroke="#32d5c3" stroke-width="5"/>
+<text x="589" y="688" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">API3</text>
+<text x="589" y="729" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Buy signed CVE evidence</text>
+<rect x="1075" y="645" width="470" height="110" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M1077 665V735" stroke="#32d5c3" stroke-width="5"/>
+<text x="1099" y="688" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">BSV</text>
+<text x="1099" y="729" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Publish a report; trade access</text>
+<path d="M55 795H1545" stroke="#304043" stroke-width="2"/>
+<text x="55" y="833" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="500" fill="#f0f8f7" text-anchor="start">Text and synthetic voice journeys have completed with saved reports.</text>
+<text x="55" y="871" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" fill="#9aaead" text-anchor="start">The verifier reviews supplied evidence; it does not independently test or remediate a live system.</text>
+</svg>

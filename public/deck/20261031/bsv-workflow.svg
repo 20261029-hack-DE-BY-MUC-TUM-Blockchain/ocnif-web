@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc"><title id="title">BSV: trade access to published reports</title><desc id="desc">Implemented BSV workflow: a separately approved published report is bound by digest to an issuer-minted BSV-21 pass. The overlay tracks token outputs, an independent buyer accepts an atomic BSV swap, and a signed holder challenge unlocks the report. Overlay and issuer are configured; real mint, swap and payment remain unperformed. The separate BRC-121 merchant route needs setup.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#32d5c3"/></marker></defs><rect width="1600" height="900" fill="#060c0d"/>
+<text x="55" y="75" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="600" fill="#f0f8f7" text-anchor="start">BSV: trade access to published reports</text>
+<text x="55" y="123" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" fill="#9aaead" text-anchor="start">Two wallet owners review the terms; the overlay validates tokens and current ownership.</text>
+<text x="55" y="215" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="#9aaead" text-anchor="start">EXPLICIT PUBLICATION</text>
+<text x="440" y="215" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="#9aaead" text-anchor="start">ISSUER WALLET</text>
+<text x="840" y="215" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="#9aaead" text-anchor="start">PRIVATE SERVICE</text>
+<text x="1240" y="215" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="#9aaead" text-anchor="start">BUYER WALLET</text>
+<rect x="55" y="275" width="285" height="170" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M57 295V425" stroke="#32d5c3" stroke-width="5"/>
+<text x="79" y="318" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Public report</text>
+<text x="79" y="359" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Owner approves</text>
+<text x="79" y="391" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Backend snapshot</text>
+<text x="79" y="423" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Digest binds content</text>
+<rect x="435" y="275" width="300" height="170" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M437 295V425" stroke="#32d5c3" stroke-width="5"/>
+<text x="459" y="318" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Review mint</text>
+<text x="459" y="359" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">BSV-21 report pass</text>
+<text x="459" y="391" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Wallet signs</text>
+<text x="459" y="423" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Register signed offer</text>
+<rect x="835" y="275" width="300" height="170" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M837 295V425" stroke="#32d5c3" stroke-width="5"/>
+<text x="859" y="318" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Token overlay</text>
+<text x="859" y="359" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Admit + lookup</text>
+<text x="859" y="391" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Track live outputs</text>
+<text x="859" y="423" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Verify offer binding</text>
+<rect x="1235" y="275" width="310" height="170" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M1237 295V425" stroke="#32d5c3" stroke-width="5"/>
+<text x="1259" y="318" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Review swap</text>
+<text x="1259" y="359" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Buyer signs</text>
+<text x="1259" y="391" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">BSV ↔ report pass</text>
+<text x="1259" y="423" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Own wallet keys</text>
+<polyline points="340,360 435,360" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" />
+<polyline points="735,360 835,360" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<polyline points="1135,360 1235,360" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<rect x="835" y="575" width="710" height="145" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M837 595V700" stroke="#e8c489" stroke-width="5"/>
+<text x="859" y="618" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Prove ownership → read report</text>
+<text x="859" y="659" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Signed holder challenge + current overlay output</text>
+<text x="859" y="691" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Return the published report; check its digest</text>
+<polyline points="1390,445 1390,575" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" />
+<rect x="55" y="575" width="680" height="145" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M57 595V700" stroke="#e8c489" stroke-width="5"/>
+<text x="79" y="618" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Alternative: direct BRC-121 payment</text>
+<text x="79" y="659" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Wallet-reviewed report purchase</text>
+<text x="79" y="691" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Merchant setup required</text>
+<path d="M55 795H1545" stroke="#304043" stroke-width="2"/>
+<text x="55" y="833" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="500" fill="#f0f8f7" text-anchor="start">Live: overlay + issuer configuration. No real mint, swap or report payment is proven.</text>
+<text x="55" y="871" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" fill="#9aaead" text-anchor="start">Wallet signing is manual. These BSV transactions are independent of Cardano and API3.</text>
+</svg>

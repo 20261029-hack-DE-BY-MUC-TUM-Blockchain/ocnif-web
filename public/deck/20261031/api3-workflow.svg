@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc"><title id="title">API3: signed vulnerability evidence</title><desc id="desc">Implemented API3 flow: user reviews an x402 challenge and signs in MetaMask on Base Sepolia. Backend forwards only the payment proof to the API3 adapter, which verifies the NVD Airnode response. The user separately deploys or submits evidence to VulnerabilityGate. Only the 402 challenge is observed; paid response and on-chain gate execution remain unproven.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#32d5c3"/></marker></defs><rect width="1600" height="900" fill="#060c0d"/>
+<text x="55" y="75" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="600" fill="#f0f8f7" text-anchor="start">API3: signed vulnerability evidence</text>
+<text x="55" y="123" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" fill="#9aaead" text-anchor="start">A reviewed payment unlocks signed CVE data; a separate transaction records a policy decision.</text>
+<rect x="35" y="190" width="320" height="245" rx="12" fill="none" stroke="#304043" stroke-width="2" stroke-dasharray="9 8"/>
+<text x="57" y="225" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="#9aaead" text-anchor="start">USER DEVICE</text>
+<rect x="400" y="190" width="770" height="245" rx="12" fill="none" stroke="#304043" stroke-width="2" stroke-dasharray="9 8"/>
+<text x="422" y="225" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="#9aaead" text-anchor="start">PRIVATE SERVICE PATH</text>
+<text x="1240" y="225" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="#9aaead" text-anchor="start">ORACLE</text>
+<rect x="55" y="270" width="280" height="150" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M57 290V400" stroke="#32d5c3" stroke-width="5"/>
+<text x="79" y="313" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">MetaMask + web</text>
+<text x="79" y="354" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Review exact terms</text>
+<text x="79" y="386" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Sign authorization</text>
+<rect x="435" y="270" width="290" height="150" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M437 290V400" stroke="#32d5c3" stroke-width="5"/>
+<text x="459" y="313" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Rust backend</text>
+<text x="459" y="354" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Session required</text>
+<text x="459" y="386" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Relay payment proof</text>
+<rect x="835" y="270" width="300" height="150" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M837 290V400" stroke="#32d5c3" stroke-width="5"/>
+<text x="859" y="313" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">API3 adapter</text>
+<text x="859" y="354" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Verify signer, CVE</text>
+<text x="859" y="386" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Freshness + data</text>
+<rect x="1235" y="270" width="310" height="150" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M1237 290V400" stroke="#32d5c3" stroke-width="5"/>
+<text x="1259" y="313" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">NVD Airnode</text>
+<text x="1259" y="354" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">402 payment terms</text>
+<text x="1259" y="386" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Signed CVSS data</text>
+<polyline points="335,345 435,345" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<polyline points="725,345 835,345" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<polyline points="1135,345 1235,345" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<rect x="435" y="585" width="700" height="150" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M437 605V715" stroke="#e8c489" stroke-width="5"/>
+<text x="459" y="628" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">VulnerabilityGate · Base Sepolia</text>
+<text x="459" y="669" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">User-approved transaction; CVSS policy decision</text>
+<text x="459" y="701" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Records score + quarantine flag in contract state</text>
+<polyline points="195,435 195,660 435,660" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" />
+<text x="225" y="530" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" fill="#9aaead" text-anchor="start">Separate transaction</text>
+<text x="1235" y="597" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#e8c489" text-anchor="start">Still to verify</text>
+<text x="1235" y="640" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400" fill="#f0f8f7" text-anchor="start">Paid response</text>
+<text x="1235" y="683" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400" fill="#f0f8f7" text-anchor="start">On-chain receipt</text>
+<path d="M55 795H1545" stroke="#304043" stroke-width="2"/>
+<text x="55" y="833" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="500" fill="#f0f8f7" text-anchor="start">Observed: real HTTP 402 challenge. Paid evidence and gate transaction remain open.</text>
+<text x="55" y="871" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" fill="#9aaead" text-anchor="start">The contract does not automatically stop or release Ocnif jobs. No cross-chain transaction is implied.</text>
+</svg>

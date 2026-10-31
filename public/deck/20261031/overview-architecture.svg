@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc"><title id="title">Ocnif service architecture</title><desc id="desc">Architecture of the user browser and wallets, public Next.js web and private Azure backend, database, Rust core, diarization, OpenClaw and separate blockchain adapters. The Cardano native worker and MPS remain outside Azure.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#32d5c3"/></marker></defs><rect width="1600" height="900" fill="#060c0d"/>
+<text x="55" y="75" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="600" fill="#f0f8f7" text-anchor="start">Ocnif service architecture</text>
+<text x="55" y="123" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" fill="#9aaead" text-anchor="start">One authenticated workspace; model access stays in the Rust core.</text>
+<rect x="35" y="175" width="310" height="535" rx="12" fill="none" stroke="#304043" stroke-width="2" stroke-dasharray="9 8"/>
+<text x="57" y="210" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="#9aaead" text-anchor="start">USER DEVICE</text>
+<rect x="695" y="175" width="850" height="603" rx="12" fill="none" stroke="#304043" stroke-width="2" stroke-dasharray="9 8"/>
+<text x="717" y="210" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="#9aaead" text-anchor="start">PRIVATE AZURE SERVICES</text>
+<rect x="60" y="265" width="260" height="155" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M62 285V400" stroke="#32d5c3" stroke-width="5"/>
+<text x="84" y="308" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Browser</text>
+<text x="84" y="349" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Text, voice, cards</text>
+<text x="84" y="381" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Session cookie</text>
+<rect x="60" y="525" width="260" height="145" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M62 545V650" stroke="#32d5c3" stroke-width="5"/>
+<text x="84" y="568" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Wallets</text>
+<text x="84" y="609" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Review and sign</text>
+<text x="84" y="641" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">API3 / BSV</text>
+<rect x="385" y="295" width="250" height="155" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M387 315V430" stroke="#32d5c3" stroke-width="5"/>
+<text x="409" y="338" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Next.js</text>
+<text x="409" y="375" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">public web</text>
+<text x="409" y="416" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">HTTP + WS</text>
+<rect x="735" y="235" width="310" height="125" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M737 255V340" stroke="#32d5c3" stroke-width="5"/>
+<text x="759" y="278" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Rust backend</text>
+<text x="759" y="319" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Auth + event stream</text>
+<rect x="1175" y="235" width="325" height="125" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M1177 255V340" stroke="#32d5c3" stroke-width="5"/>
+<text x="1199" y="278" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">SQLite service</text>
+<text x="1199" y="319" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Messages + receipts</text>
+<rect x="735" y="450" width="310" height="165" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M737 470V595" stroke="#32d5c3" stroke-width="5"/>
+<text x="759" y="493" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Rust core</text>
+<text x="759" y="534" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Specialist workflow</text>
+<text x="759" y="566" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">gpt-5.6-terra</text>
+<text x="759" y="598" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Provider key here</text>
+<rect x="1175" y="415" width="325" height="120" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M1177 435V515" stroke="#32d5c3" stroke-width="5"/>
+<text x="1199" y="458" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Diarization</text>
+<text x="1199" y="499" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">NeMo speaker turns</text>
+<rect x="1175" y="575" width="325" height="120" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M1177 595V675" stroke="#32d5c3" stroke-width="5"/>
+<text x="1199" y="618" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">OpenClaw</text>
+<text x="1199" y="659" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">MCP bridge → core</text>
+<rect x="735" y="707" width="765" height="58" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M737 727V745" stroke="#32d5c3" stroke-width="5"/>
+<text x="759" y="750" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">API3 via backend  ·  Cardano  ·  BSV</text>
+<polyline points="320,340 385,340" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" />
+<polyline points="320,595 355,595 355,405 385,405" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" />
+<polyline points="635,365 680,365 680,297 735,297" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" />
+<polyline points="1045,280 1175,280" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<text x="1080" y="265" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" fill="#9aaead" text-anchor="start">persist</text>
+<polyline points="885,360 885,450" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<text x="905" y="410" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" fill="#9aaead" text-anchor="start">gRPC</text>
+<polyline points="1045,320 1110,320 1110,475 1175,475" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" />
+<text x="1120" y="397" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" fill="#9aaead" text-anchor="start">audio</text>
+<polyline points="1175,635 1110,635 1110,550 1045,550" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" />
+<text x="1060" y="608" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" fill="#9aaead" text-anchor="start">tool</text>
+<polyline points="575,450 575,736 735,736" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" />
+<text x="385" y="708" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" fill="#9aaead" text-anchor="start">payment routes</text>
+<path d="M55 795H1545" stroke="#304043" stroke-width="2"/>
+<text x="55" y="833" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="500" fill="#f0f8f7" text-anchor="start">Three independent payment rails share the interface and evidence workflow.</text>
+<text x="55" y="871" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" fill="#9aaead" text-anchor="start">Voice media uses short-lived provider access. Cardano worker + MPS remain operator-local.</text>
+</svg>

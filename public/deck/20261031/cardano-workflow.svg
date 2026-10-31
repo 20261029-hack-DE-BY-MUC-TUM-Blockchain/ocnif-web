@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc"><title id="title">Cardano: paid evidence review</title><desc id="desc">Observed Personal Workspace paid task. Sokosumi connects to the local worker and local agent plus Rust core. Local MPS uses a dedicated seller wallet on Cardano Preprod. The same Task has completed and withdrawn, with a verified seller net receipt of one test USDM. A separate TLS attestation reaches the cloud status broker and database; MPS and worker are not cloud hosted.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#32d5c3"/></marker></defs><rect width="1600" height="900" fill="#060c0d"/>
+<text x="55" y="75" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="600" fill="#f0f8f7" text-anchor="start">Cardano: paid evidence review</text>
+<text x="55" y="123" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="400" fill="#9aaead" text-anchor="start">Sokosumi approval, local Masumi escrow, useful result and verified seller payment.</text>
+<rect x="390" y="175" width="750" height="600" rx="12" fill="none" stroke="#304043" stroke-width="2" stroke-dasharray="9 8"/>
+<text x="412" y="210" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="#9aaead" text-anchor="start">OPERATOR-LOCAL RUNTIME</text>
+<text x="55" y="215" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="#9aaead" text-anchor="start">SOKOSUMI PREPROD</text>
+<rect x="55" y="275" width="285" height="170" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M57 295V425" stroke="#32d5c3" stroke-width="5"/>
+<text x="79" y="318" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Personal Task</text>
+<text x="79" y="359" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">User approves</text>
+<text x="79" y="391" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">1 test USDM</text>
+<text x="79" y="423" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">100 credits</text>
+<rect x="430" y="275" width="285" height="170" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M432 295V425" stroke="#32d5c3" stroke-width="5"/>
+<text x="454" y="318" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Local worker</text>
+<text x="454" y="359" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Claim + journal</text>
+<text x="454" y="391" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Complete + reply</text>
+<rect x="815" y="275" width="285" height="170" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M817 295V425" stroke="#32d5c3" stroke-width="5"/>
+<text x="839" y="318" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Agent + core</text>
+<text x="839" y="359" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Local HTTP bridge</text>
+<text x="839" y="391" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Azure model call</text>
+<rect x="430" y="565" width="670" height="155" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M432 585V700" stroke="#32d5c3" stroke-width="5"/>
+<text x="454" y="608" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Masumi Payment Service</text>
+<text x="454" y="649" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Local PostgreSQL + dedicated seller wallet</text>
+<text x="454" y="681" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Wait for FundsLocked; submit result hash</text>
+<rect x="55" y="565" width="285" height="170" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M57 585V715" stroke="#32d5c3" stroke-width="5"/>
+<text x="79" y="608" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Cardano chain</text>
+<text x="79" y="649" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">FundsLocked ✓</text>
+<text x="79" y="681" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">ResultSubmitted ✓</text>
+<text x="79" y="713" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Withdrawn ✓</text>
+<text x="1190" y="505" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="#9aaead" text-anchor="start">PRIVATE AZURE</text>
+<rect x="1190" y="535" width="355" height="185" rx="10" fill="#101c1e" stroke="#304043" stroke-width="2"/><path d="M1192 555V700" stroke="#32d5c3" stroke-width="5"/>
+<text x="1214" y="578" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#f0f8f7" text-anchor="start">Cloud status</text>
+<text x="1214" y="619" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Earlier Task attestation</text>
+<text x="1214" y="651" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Backend broker + DB</text>
+<text x="1214" y="683" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400" fill="#9aaead" text-anchor="start">Public view is redacted</text>
+<polyline points="340,350 430,350" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<polyline points="715,350 815,350" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<polyline points="575,445 575,565" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<text x="595" y="505" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" fill="#9aaead" text-anchor="start">paid state</text>
+<polyline points="430,640 340,640" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<polyline points="685,445 685,475 1510,475 1510,535" fill="none" stroke="#32d5c3" stroke-width="3" stroke-linejoin="round" marker-end="url(#arrow)" />
+<text x="815" y="515" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="400" fill="#9aaead" text-anchor="start">TLS attestation</text>
+<path d="M55 795H1545" stroke="#304043" stroke-width="2"/>
+<text x="55" y="833" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="500" fill="#f0f8f7" text-anchor="start">Completed: 9,989-byte answer. Withdrawal and seller net +1 test USDM verified.</text>
+<text x="55" y="871" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="400" fill="#9aaead" text-anchor="start">Sokosumi and MPS both report Withdrawn; receipt and exact seller net checked at 17:10 CET.</text>
+</svg>
