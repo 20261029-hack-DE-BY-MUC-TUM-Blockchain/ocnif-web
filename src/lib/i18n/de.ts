@@ -84,9 +84,15 @@ export const de: Dictionary = {
   steer: "Arbeit lenken",
   stop: "Durchlauf stoppen",
   attach: "Textbeleg hinzufügen",
-  attachmentHint: "Text-, JSON-, CSV- oder Protokolldatei bis 256 KB",
+  attachmentHint:
+    "Text, Markdown, JSON, CSV oder Log; Nachricht und Belege teilen sich 16.000 UTF-8-Bytes",
   attachmentError:
-    "Wähle eine Text-, JSON-, CSV- oder Protokolldatei unter 256 KB.",
+    "Wähle eine lesbare .txt-, .md-, .json-, .csv- oder .log-Datei.",
+  attachmentTooLarge:
+    "Diese Datei würde das Gesamtlimit von 16.000 UTF-8-Bytes für Nachricht, Dateinamen und Belege überschreiten. Wähle einen kürzeren Auszug. Dein Entwurf blieb unverändert.",
+  messageTooLarge:
+    "Die Nachricht überschreitet 16.000 UTF-8-Bytes. Kürze den Text oder entferne Belege vor dem Senden. Es wurde nichts gesendet.",
+  messageBytes: "{used} / 16.000 UTF-8-Bytes",
   suggestion1: "Verdächtige E-Mail prüfen",
   suggestion2: "Antwortheader erklären",
   suggestion3: "Schulungsübung erstellen",

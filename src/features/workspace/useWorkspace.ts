@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import * as api from "@/lib/api/client";
+import { dictionaries } from "@/lib/i18n";
 import {
   type Capabilities,
   type Conversation,
@@ -16,6 +17,7 @@ import {
   initialState,
   type RunState,
 } from "./state";
+import { MAX_SUBMISSION_BYTES, submissionBytes } from "./submission";
 export function useWorkspace(
   locale: Locale,
   onEvent: (event: RuntimeEvent) => void,
@@ -112,6 +114,13 @@ export function useWorkspace(
   }, [selected, retry]);
   const send = useCallback(
     (content: string, requestId = crypto.randomUUID()) => {
+      if (submissionBytes(content) > MAX_SUBMISSION_BYTES) {
+        setState((current) => ({
+          ...current,
+          error: dictionaries[locale].messageTooLarge,
+        }));
+        return false;
+      }
       if (!content.trim() || socket.current?.readyState !== WebSocket.OPEN)
         return false;
       socket.current.send(

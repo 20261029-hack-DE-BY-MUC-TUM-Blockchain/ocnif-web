@@ -81,8 +81,14 @@ export const en = {
   steer: "Steer run",
   stop: "Stop run",
   attach: "Add text evidence",
-  attachmentHint: "Text, JSON, CSV or log file; up to 256 KB",
-  attachmentError: "Choose a text, JSON, CSV or log file smaller than 256 KB.",
+  attachmentHint:
+    "Text, Markdown, JSON, CSV or log; message and evidence share 16,000 UTF-8 bytes",
+  attachmentError: "Choose a readable .txt, .md, .json, .csv or .log file.",
+  attachmentTooLarge:
+    "This file would exceed the 16,000 UTF-8-byte total for the message, filename and evidence. Use a smaller excerpt. Your draft was kept unchanged.",
+  messageTooLarge:
+    "The message exceeds 16,000 UTF-8 bytes. Shorten the text or remove evidence before sending. Nothing was sent.",
+  messageBytes: "{used} / 16,000 UTF-8 bytes",
   suggestion1: "Review a suspicious email",
   suggestion2: "Explain response headers",
   suggestion3: "Build a training exercise",

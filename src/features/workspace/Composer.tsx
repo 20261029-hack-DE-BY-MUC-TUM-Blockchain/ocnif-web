@@ -1,8 +1,19 @@
-import { type ChangeEvent, type KeyboardEvent, useRef, useState } from "react";
+import {
+  type ChangeEvent,
+  type KeyboardEvent,
+  useId,
+  useRef,
+  useState,
+} from "react";
 import { Button } from "@/components/ui/buttons/Button/Button";
 import { Icon } from "@/components/ui/data-display/Icon/Icon";
 import { Tooltip } from "@/components/ui/overlays/Tooltip/Tooltip";
 import { usePreferences } from "../settings/Preferences";
+import {
+  appendTextEvidence,
+  MAX_SUBMISSION_BYTES,
+  submissionBytes,
+} from "./submission";
 import styles from "./Workspace.module.css";
 
 const commands = [
@@ -35,6 +46,11 @@ export function Composer({
   const input = useRef<HTMLInputElement>(null);
   const textarea = useRef<HTMLTextAreaElement>(null);
   const [error, setError] = useState("");
+  const bytesId = useId();
+  const errorId = useId();
+  const byteCount = submissionBytes(value);
+  const tooLarge = byteCount > MAX_SUBMISSION_BYTES;
+  const visibleError = tooLarge ? t.messageTooLarge : error;
   const token = value.split(/\s/).at(-1) || "";
   const suggestions = token.startsWith("/")
     ? commands.filter((item) => item.startsWith(token))
@@ -48,23 +64,31 @@ export function Composer({
       !event.nativeEvent.isComposing
     ) {
       event.preventDefault();
-      if (value.trim() && connected) send();
+      if (byteCount > 0 && !tooLarge && connected) send();
     }
   }
   async function attach(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     event.target.value = "";
     if (!file) return;
-    if (file.size > 262144 || !/\.(txt|md|json|csv|log)$/i.test(file.name)) {
+    if (!/\.(txt|md|json|csv|log)$/i.test(file.name)) {
       setError(t.attachmentError);
+      return;
+    }
+    if (file.size > MAX_SUBMISSION_BYTES) {
+      setError(t.attachmentTooLarge);
       return;
     }
     try {
       const content = await file.text();
-      setValue(`${value}\n\n[${file.name}]\n${content}`);
+      setValue(appendTextEvidence(value, file.name, content));
       setError("");
-    } catch {
-      setError(t.attachmentError);
+    } catch (failure) {
+      setError(
+        failure instanceof RangeError
+          ? t.attachmentTooLarge
+          : t.attachmentError,
+      );
     }
   }
   function complete(item: string) {
@@ -88,12 +112,16 @@ export function Composer({
       <textarea
         ref={textarea}
         value={value}
-        onChange={(event) => setValue(event.target.value)}
+        onChange={(event) => {
+          setValue(event.target.value);
+          setError("");
+        }}
         onKeyDown={keyDown}
         placeholder={active ? t.steerPrompt : t.prompt}
         aria-label={active ? t.steerPrompt : t.prompt}
+        aria-invalid={tooLarge || undefined}
+        aria-describedby={`${bytesId}${visibleError ? ` ${errorId}` : ""}`}
         rows={2}
-        maxLength={262144}
       />
       <div className={styles.composerActions}>
         <div>
@@ -145,7 +173,7 @@ export function Composer({
           )}
           <Button
             onClick={send}
-            disabled={!value.trim() || !connected}
+            disabled={byteCount === 0 || tooLarge || !connected}
             aria-label={active ? t.steer : t.send}
           >
             {active ? t.steer : t.send}
@@ -160,11 +188,14 @@ export function Composer({
         onChange={attach}
         hidden
       />
-      {error && (
-        <p role="alert" className={styles.error}>
-          {error}
+      {visibleError && (
+        <p id={errorId} role="alert" className={styles.error}>
+          {visibleError}
         </p>
       )}
+      <p id={bytesId} className={styles.composerHint}>
+        {t.messageBytes.replace("{used}", String(byteCount))}
+      </p>
       <p className={styles.composerHint}>{t.help}</p>
     </div>
   );

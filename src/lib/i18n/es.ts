@@ -83,9 +83,14 @@ export const es: Dictionary = {
   steer: "Orientar ejecución",
   stop: "Detener ejecución",
   attach: "Añadir evidencia de texto",
-  attachmentHint: "Archivo de texto, JSON, CSV o registro; hasta 256 KB",
-  attachmentError:
-    "Elige un archivo de texto, JSON, CSV o registro menor de 256 KB.",
+  attachmentHint:
+    "Texto, Markdown, JSON, CSV o registro; mensaje y evidencia comparten 16.000 bytes UTF-8",
+  attachmentError: "Elige un archivo .txt, .md, .json, .csv o .log legible.",
+  attachmentTooLarge:
+    "Este archivo superaría el total de 16.000 bytes UTF-8 entre mensaje, nombre y evidencia. Usa un fragmento menor. Tu borrador no ha cambiado.",
+  messageTooLarge:
+    "El mensaje supera 16.000 bytes UTF-8. Acorta el texto o elimina evidencia antes de enviar. No se ha enviado nada.",
+  messageBytes: "{used} / 16.000 bytes UTF-8",
   suggestion1: "Revisar un correo sospechoso",
   suggestion2: "Explicar cabeceras de respuesta",
   suggestion3: "Crear un ejercicio de formación",

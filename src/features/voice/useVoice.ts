@@ -93,7 +93,7 @@ export function useVoice(
         else
           reply(
             message.call_id,
-            "The workspace is disconnected. No task was executed.",
+            "The workspace could not accept this request. Check its connection and keep the request within 16,000 UTF-8 bytes. No task was executed.",
           );
       }
       if (message.type === "error") {

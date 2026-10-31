@@ -82,9 +82,15 @@ export const fr: Dictionary = {
   steer: "Orienter l’exécution",
   stop: "Arrêter l’exécution",
   attach: "Ajouter une preuve textuelle",
-  attachmentHint: "Fichier texte, JSON, CSV ou journal ; 256 Ko maximum",
+  attachmentHint:
+    "Texte, Markdown, JSON, CSV ou journal ; message et preuves partagent 16 000 octets UTF-8",
   attachmentError:
-    "Choisissez un fichier texte, JSON, CSV ou journal de moins de 256 Ko.",
+    "Choisissez un fichier .txt, .md, .json, .csv ou .log lisible.",
+  attachmentTooLarge:
+    "Ce fichier dépasserait le total de 16 000 octets UTF-8 pour le message, le nom du fichier et les preuves. Utilisez un extrait plus court. Votre brouillon reste inchangé.",
+  messageTooLarge:
+    "Le message dépasse 16 000 octets UTF-8. Raccourcissez le texte ou retirez des preuves avant l’envoi. Rien n’a été envoyé.",
+  messageBytes: "{used} / 16 000 octets UTF-8",
   suggestion1: "Examiner un e-mail suspect",
   suggestion2: "Expliquer des en-têtes",
   suggestion3: "Créer un exercice de formation",
