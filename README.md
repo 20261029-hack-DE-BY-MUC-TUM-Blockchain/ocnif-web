@@ -44,7 +44,7 @@ For Apple Container, build the same Dockerfile with the environment origins pass
 
 - `/` is the landing and authentication page, including one-click demo access.
 - `/workspace` loads saved conversations and live WebSocket events.
-- `/deck/202610311230` provides the pitch route with keyboard slide navigation.
+- `/deck/202610311230` provides a 13-slide pitch with actual application captures, general workflow and architecture diagrams, and dedicated Cardano/API3/BSV workflows.
 - `/payments` reviews wallet-specific payment requests and verifier transactions.
 - `/health` returns the web process health result.
 
@@ -53,6 +53,14 @@ Presentation uses CSS Modules, with shared tokens in `src/styles/globals.css` an
 Run tests with `bun test src`. Voice requires a secure context, microphone permission and a configured backend. Its short-lived credentials remain in memory. Optional speaker analysis captures a maximum 20-second window as 16 kHz mono PCM16, discards audio on call end, and shows anonymous labels returned by the configured worker. It does not identify the intended speaker or filter out background speakers. The service worker caches only a public offline page and icons; it never caches authenticated API or conversation responses.
 
 Use `/publish` in the workspace to request explicit publication of the latest completed report. The approval is separate from an active assessment. Only a confirmed publication decision exposes the report identifier, a BSV report-market link, and a Cardano setup link carrying the report identifier as context. The identifier does not create a Masumi Task, purchase a service, or substitute for the actual evidence supplied to that Task. Rejected publication stays private.
+
+## Pitch deck
+
+The deck keeps the application's English, Spanish, German and French controls and themes. Arrow keys, Home/End, and the slide selector navigate the presentation. A validated `?slide=architecture` (or another slide identifier from `src/features/deck/slides.ts`) opens a specific slide.
+
+Visuals live in `public/deck/20261031/`. Screenshot and GIF pixels are served directly, with captions and full-size viewing links. GIF previews start only after an explicit play action and return to a still frame when paused or when leaving the slide. Their captions identify timestamped screenshot sequences rather than continuous recordings. Captures and architecture diagrams retain English labels; surrounding pitch copy is localized.
+
+Network claims are a dated evidence snapshot. Cardano Personal Task completion, result submission and seller withdrawal remain separate; API3 and BSV interface captures do not establish paid wallet execution. Tests check navigation bounds, initial paused previews, locale parity, and that all referenced local PNG/GIF/SVG assets exist and SVGs contain no active or external content. Asset provenance and visual acceptance accompany the release evidence; source checks alone do not establish pixel or assistive-technology acceptance.
 
 ## Wallet connection
 

@@ -1,98 +1,59 @@
 "use client";
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/buttons/Button/Button";
-import { Icon } from "@/components/ui/data-display/Icon/Icon";
+import { deckDictionaries } from "@/lib/i18n/deck";
 import { Header } from "../settings/Header";
 import { usePreferences } from "../settings/Preferences";
 import styles from "./Deck.module.css";
-export function Deck() {
-  const { t } = usePreferences();
-  const [index, setIndex] = useState(0);
-  const slides = [
-    [t.deckTitle, t.deckSubtitle],
-    [t.deckProblem, t.deckProblemBody],
-    [t.deckSolution, t.deckSolutionBody],
-    [t.deckWorkflow, t.deckWorkflowBody],
-    [t.deckCustomer, t.deckCustomerBody],
-    [t.deckCommerce, t.deckCommerceBody],
-    [t.deckProof, t.deckProofBody],
-    [t.deckAsk, t.deckAskBody],
-  ];
+import { DeckControls } from "./DeckControls";
+import { DeckSlideView } from "./DeckSlideView";
+import { deckSlides, initialSlideIndex, keyboardSlide } from "./slides";
+
+export function Deck({ initialSlide }: { initialSlide?: string }) {
+  const { locale } = usePreferences();
+  const copy = deckDictionaries[locale];
+  const slides = deckSlides(copy);
+  const [index, setIndex] = useState(() =>
+    initialSlideIndex(slides, initialSlide),
+  );
+  const requestedIndex = initialSlideIndex(slides, initialSlide);
+  useEffect(() => setIndex(requestedIndex), [requestedIndex]);
   useEffect(() => {
     function key(event: KeyboardEvent) {
       if (
-        event.target instanceof HTMLSelectElement ||
-        event.target instanceof HTMLInputElement
+        event.altKey ||
+        event.ctrlKey ||
+        event.metaKey ||
+        (event.target instanceof HTMLElement &&
+          event.target.closest(
+            "input, select, textarea, [contenteditable='true']",
+          ))
       )
         return;
-      if (event.key === "ArrowRight")
-        setIndex((value) => Math.min(value + 1, 7));
-      if (event.key === "ArrowLeft")
-        setIndex((value) => Math.max(value - 1, 0));
+      const next = keyboardSlide(index, event.key, slides.length);
+      if (next !== undefined) {
+        event.preventDefault();
+        setIndex(next);
+      }
     }
     window.addEventListener("keydown", key);
     return () => window.removeEventListener("keydown", key);
-  }, []);
+  }, [index, slides.length]);
   return (
     <>
       <Header />
       <main className={styles.deck}>
-        <section className={styles.slide} aria-live="polite">
-          <p className={styles.eyebrow}>
-            OCNIF · TUM BLOCKCHAIN & AI HACKATHON
-          </p>
-          <span className={styles.symbol}>
-            <Icon
-              name={
-                index === 1 ? "activity" : index === 5 ? "wallet" : "shield"
-              }
-              width="130"
-              height="130"
-            />
-          </span>
-          <h1>{slides[index][0]}</h1>
-          <p className={styles.body}>{slides[index][1]}</p>
-          {index === 7 && (
-            <Link className={styles.launch} href="/workspace">
-              {t.heroCta}
-              <Icon name="arrow" />
-            </Link>
-          )}
-          <span className={styles.watermark}>0{index + 1}</span>
-        </section>
-        <nav className={styles.controls} aria-label={t.navDeck}>
-          <Button
-            variant="secondary"
-            disabled={index === 0}
-            onClick={() => setIndex(index - 1)}
-            aria-label={t.previous}
-          >
-            ←
-          </Button>
-          <div className={styles.dots}>
-            {slides.map((slide, number) => (
-              <button
-                type="button"
-                key={slide[0]}
-                aria-label={`${t.slide} ${number + 1}`}
-                aria-current={index === number ? "step" : undefined}
-                onClick={() => setIndex(number)}
-              />
-            ))}
-          </div>
-          <span>
-            {index + 1} / {slides.length}
-          </span>
-          <Button
-            variant="secondary"
-            disabled={index === slides.length - 1}
-            onClick={() => setIndex(index + 1)}
-            aria-label={t.next}
-          >
-            →
-          </Button>
-        </nav>
+        <DeckSlideView
+          slide={slides[index]}
+          copy={copy}
+          number={index + 1}
+          count={slides.length}
+        />
+        <DeckControls
+          slides={slides}
+          index={index}
+          change={setIndex}
+          copy={copy}
+        />
       </main>
     </>
   );
