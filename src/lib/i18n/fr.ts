@@ -231,6 +231,18 @@ export const fr: Dictionary = {
   paymentExisting:
     "Une tentative enregistrée existe déjà. Examinez-la avant toute autre action.",
   retryPayment: "Renvoyer la même preuve signée",
+  paymentRejectedSafe:
+    "Le portefeuille a explicitement refusé la signature avant de renvoyer une preuve. Vous pouvez demander une nouvelle vérification ; la tentative refusée reste dans l’historique.",
+  paymentSettledExpired:
+    "Ce paiement a été réglé, mais sa preuve NVD vérifiée date de plus de 600 secondes. Une preuve récente nécessite un autre paiement examiné séparément ; l’ancien reçu est conservé.",
+  paymentNewReview: "Demander une nouvelle tentative à examiner",
+  paymentFreshReview:
+    "Les nouvelles conditions sont prêtes à être examinées. Aucune nouvelle signature ni aucun paiement n’a été demandé. Si elles expirent, demandez à nouveau les conditions pour actualiser cette même tentative.",
+  paymentHistory: "Tentatives précédentes",
+  paymentProofRetained:
+    "La preuve signée originale reste enregistrée avec cette ancienne tentative.",
+  paymentStorageUpgrade:
+    "Fermez les anciens onglets Ocnif puis rechargez la page pour mettre à jour le stockage des paiements. Les données existantes sont conservées.",
   paymentError:
     "Le paiement doit être examiné. Une demande refusée, un service indisponible ou un règlement incertain peuvent l’expliquer. Vérifiez la tentative et l’historique du portefeuille ; ne créez pas un second paiement sans contrôle.",
   settlementReported: "Règlement signalé par le facilitateur",

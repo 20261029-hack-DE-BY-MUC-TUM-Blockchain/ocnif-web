@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/buttons/Button/Button";
 import { usePreferences } from "../settings/Preferences";
 import styles from "./Payments.module.css";
+import { attemptId } from "./protocol/journal";
 import type { usePaymentFlow } from "./usePaymentFlow";
 export function PaymentReview({
   flow,
@@ -15,6 +16,8 @@ export function PaymentReview({
 }) {
   const { t } = usePreferences();
   const { challenge, attempt, result } = flow;
+  const payerMatches =
+    !attempt || (!!payer && attempt.id === attemptId(attempt.challenge, payer));
   return (
     <>
       {challenge && (
@@ -35,10 +38,10 @@ export function PaymentReview({
             <dd>{payer || t.unavailable}</dd>
           </dl>
           <p>{t.paymentApprovalNote}</p>
-          {!attempt ? (
+          {!attempt || attempt.state === "reviewing" ? (
             <Button
               onClick={approve}
-              disabled={!payer || disabled || flow.busy}
+              disabled={!payer || !payerMatches || disabled || flow.busy}
             >
               {flow.busy ? t.working : t.approvePayment}
             </Button>
@@ -51,18 +54,57 @@ export function PaymentReview({
                 <Button
                   variant="secondary"
                   onClick={flow.retrySameProof}
-                  disabled={flow.busy}
+                  disabled={flow.busy || !payerMatches}
                 >
                   {t.retryPayment}
                 </Button>
               )}
+              {flow.recovery && (
+                <>
+                  <p>
+                    {flow.recovery === "wallet_rejected"
+                      ? t.paymentRejectedSafe
+                      : t.paymentSettledExpired}
+                  </p>
+                  <Button
+                    variant="secondary"
+                    onClick={() => payer && flow.newAttempt(payer)}
+                    disabled={!payer || !payerMatches || disabled || flow.busy}
+                  >
+                    {t.paymentNewReview}
+                  </Button>
+                </>
+              )}
             </>
+          )}
+          {attempt?.state === "reviewing" && <p>{t.paymentFreshReview}</p>}
+          {!!attempt?.history?.length && (
+            <details>
+              <summary>
+                {t.paymentHistory} ({attempt.history.length})
+              </summary>
+              {attempt.history.map((previous, index) => (
+                <article key={previous.generation ?? index}>
+                  <p>
+                    <code>{previous.state}</code> ·{" "}
+                    <time dateTime={new Date(previous.createdAt).toISOString()}>
+                      {new Date(previous.createdAt).toISOString()}
+                    </time>
+                  </p>
+                  {previous.result && (
+                    <pre>{JSON.stringify(previous.result, null, 2)}</pre>
+                  )}
+                  {previous.proof && <p>{t.paymentProofRetained}</p>}
+                </article>
+              ))}
+            </details>
           )}
         </section>
       )}
       {flow.error && (
         <p className={styles.error} role="alert">
           {t.paymentError}
+          {flow.storageBlocked && <> {t.paymentStorageUpgrade}</>}
         </p>
       )}
       {result && (

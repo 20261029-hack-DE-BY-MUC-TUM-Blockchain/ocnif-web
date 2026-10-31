@@ -5,6 +5,7 @@ import {
   encodePaymentRequiredHeader,
 } from "@x402/core/http";
 import { type EvmConnection, signEvm } from "./evm";
+import { WalletSignatureRejected } from "./walletRejection";
 import { readChallenge } from "./x402";
 
 test("synthetic EVM wallet receives the exact reviewed EIP-3009 amount and recipient", async () => {
@@ -59,4 +60,26 @@ test("synthetic EVM wallet receives the exact reviewed EIP-3009 amount and recip
   connection.wallet.getChainId = async () => 1;
   await assert.rejects(() => signEvm(challenge, connection));
   assert.equal(signatures, 1);
+  connection.wallet.getChainId = async () => 84532;
+  connection.wallet.signTypedData = async () => {
+    throw { cause: { code: 4001 } };
+  };
+  await assert.rejects(
+    () => signEvm(challenge, connection),
+    WalletSignatureRejected,
+  );
+  connection.wallet.signTypedData = async () => {
+    throw new Error("provider timeout");
+  };
+  await assert.rejects(
+    () => signEvm(challenge, connection),
+    (error) => !(error instanceof WalletSignatureRejected),
+  );
+  connection.wallet.getChainId = async () => {
+    throw { code: 4001 };
+  };
+  await assert.rejects(
+    () => signEvm(challenge, connection),
+    (error) => !(error instanceof WalletSignatureRejected),
+  );
 });

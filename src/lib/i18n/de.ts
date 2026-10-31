@@ -233,6 +233,18 @@ export const de: Dictionary = {
   paymentExisting:
     "Ein gespeicherter Versuch existiert bereits. Prüfe ihn vor weiteren Aktionen.",
   retryPayment: "Denselben signierten Nachweis erneut senden",
+  paymentRejectedSafe:
+    "Die Wallet hat die Signatur ausdrücklich abgelehnt, bevor ein Nachweis zurückgegeben wurde. Du kannst eine neue Prüfung anfordern; der abgelehnte Versuch bleibt im Verlauf.",
+  paymentSettledExpired:
+    "Diese Zahlung wurde abgewickelt, aber ihr verifizierter NVD-Nachweis ist älter als 600 Sekunden. Neue Nachweise erfordern eine weitere, separat geprüfte Zahlung; der bisherige Beleg bleibt erhalten.",
+  paymentNewReview: "Neuen Versuch zur Prüfung anfordern",
+  paymentFreshReview:
+    "Neue Bedingungen sind zur Prüfung bereit. Es wurde keine neue Signatur oder Zahlung angefordert. Bei Ablauf kannst du die Zahlungsbedingungen erneut anfordern und denselben Versuch aktualisieren.",
+  paymentHistory: "Frühere Versuche",
+  paymentProofRetained:
+    "Der ursprüngliche signierte Nachweis bleibt bei diesem früheren Versuch gespeichert.",
+  paymentStorageUpgrade:
+    "Schließe ältere Ocnif-Tabs und lade die Seite neu, um den Zahlungsspeicher zu aktualisieren. Vorhandene Datensätze bleiben erhalten.",
   paymentError:
     "Die Zahlung muss geprüft werden. Ursachen können eine abgelehnte Wallet-Anfrage, ein nicht erreichbarer Dienst oder ein unklarer Abschluss sein. Prüfe den gespeicherten Versuch und den Wallet-Verlauf; zahle nicht ungeprüft erneut.",
   settlementReported: "Abschluss vom Facilitator gemeldet",

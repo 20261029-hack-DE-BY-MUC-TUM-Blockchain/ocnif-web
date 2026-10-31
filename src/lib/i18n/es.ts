@@ -230,6 +230,18 @@ export const es: Dictionary = {
   paymentExisting:
     "Ya existe un intento guardado. Revísalo antes de continuar.",
   retryPayment: "Reintentar con la misma prueba firmada",
+  paymentRejectedSafe:
+    "La billetera rechazó explícitamente la firma antes de devolver una prueba. Puedes solicitar una nueva revisión; el intento rechazado se conserva en el historial.",
+  paymentSettledExpired:
+    "Este pago se liquidó, pero su evidencia NVD verificada tiene más de 600 segundos. Obtener evidencia nueva requiere otro pago revisado por separado; se conserva el recibo anterior.",
+  paymentNewReview: "Solicitar un nuevo intento revisado",
+  paymentFreshReview:
+    "Las nuevas condiciones están listas para revisión. No se ha solicitado otra firma ni pago. Si caducan, solicita las condiciones de pago de nuevo para actualizar este mismo intento.",
+  paymentHistory: "Intentos anteriores",
+  paymentProofRetained:
+    "La prueba firmada original sigue guardada con este intento histórico.",
+  paymentStorageUpgrade:
+    "Cierra las pestañas antiguas de Ocnif y recarga para actualizar el almacenamiento de pagos. Se conservan los registros existentes.",
   paymentError:
     "El pago requiere revisión. Una solicitud rechazada, un servicio no disponible o una liquidación incierta pueden causarlo. Revisa el intento guardado y el historial; no crees otro pago sin comprobarlo.",
   settlementReported: "Liquidación informada por el facilitador",

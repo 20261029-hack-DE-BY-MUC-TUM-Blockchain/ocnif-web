@@ -224,6 +224,18 @@ export const en = {
   paymentExisting:
     "A saved attempt already exists. Review it before doing anything else.",
   retryPayment: "Retry the same signed proof",
+  paymentRejectedSafe:
+    "The wallet explicitly rejected the signature before any proof was returned. You can request a new review; the rejected attempt remains in history.",
+  paymentSettledExpired:
+    "This payment settled, but its verified NVD evidence is older than 600 seconds. Fresh evidence requires a separate reviewed payment; the old receipt is retained.",
+  paymentNewReview: "Request a new reviewed attempt",
+  paymentFreshReview:
+    "New terms are ready for review. No new signature or payment has been requested. If these terms expire, request payment terms again to refresh this same attempt.",
+  paymentHistory: "Previous attempts",
+  paymentProofRetained:
+    "The original signed proof remains saved with this historical attempt.",
+  paymentStorageUpgrade:
+    "Close older Ocnif tabs and reload to complete the payment-storage upgrade. Existing records are preserved.",
   paymentError:
     "The payment needs review. A rejected wallet request, unavailable service or uncertain settlement can cause this state. Check the saved attempt and wallet history; do not create a second payment blindly.",
   settlementReported: "Settlement reported by facilitator",

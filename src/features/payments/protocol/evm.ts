@@ -7,6 +7,7 @@ import {
   type EIP1193Provider,
 } from "viem";
 import { baseSepolia } from "viem/chains";
+import { isUserRejection, WalletSignatureRejected } from "./walletRejection";
 import { assertFresh, type Challenge } from "./x402";
 export async function connectEvm() {
   const provider = (window as Window & { ethereum?: EIP1193Provider }).ethereum;
@@ -42,11 +43,17 @@ export async function signEvm(
     throw new Error("wallet_network_or_account_changed");
   const scheme = new ExactEvmScheme({
     address: connection.address,
-    signTypedData: (message) =>
-      connection.wallet.signTypedData({
-        ...message,
-        account: connection.address,
-      } as Parameters<typeof connection.wallet.signTypedData>[0]),
+    signTypedData: async (message) => {
+      try {
+        return await connection.wallet.signTypedData({
+          ...message,
+          account: connection.address,
+        } as Parameters<typeof connection.wallet.signTypedData>[0]);
+      } catch (error) {
+        if (isUserRejection(error)) throw new WalletSignatureRejected();
+        throw error;
+      }
+    },
   });
   const signed = await scheme.createPaymentPayload(2, challenge.selected, {
     maxAmountPerPayment: challenge.selected.amount,
