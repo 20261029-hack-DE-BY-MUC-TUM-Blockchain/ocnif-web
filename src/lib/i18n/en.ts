@@ -190,6 +190,109 @@ export const en = {
   merchantPrice: "Report price",
   merchantRecipient: "Merchant address",
   refreshStatus: "Refresh status",
+  managePayments: "Open payment workspace",
+  paymentsTitle: "Review. Authorize. Verify.",
+  paymentsBody:
+    "Each network uses its own wallet and payment protocol. Review the exact request before signing. A connection or signature is not a settled payment.",
+  connectedWallet: "Wallet connected",
+  api3Title: "Pay for signed vulnerability evidence",
+  api3Body:
+    "Request a CVE assessment from the configured Airnode. Its x402 challenge states the exact price. The backend verifies the provider signature, request hash and response age after payment.",
+  connectEvm: "Connect EVM wallet",
+  switchBase: "Switch to Base Sepolia",
+  cveLabel: "CVE identifier",
+  evmError:
+    "Open an EVM wallet extension and approve the connection. The payment requires Base Sepolia.",
+  requestChallenge: "Request payment terms",
+  reviewPayment: "Review this payment",
+  paymentResource: "Requested resource",
+  paymentAsset: "Asset identifier",
+  paymentAmount: "Amount in smallest units",
+  paymentApprovalNote:
+    "Approval applies only to the recipient, asset, amount and resource shown here. Your wallet displays its signature or transaction request. Never share a seed or private key.",
+  approvePayment: "Approve these terms and sign in wallet",
+  paymentExisting:
+    "A saved attempt already exists. Review it before doing anything else.",
+  retryPayment: "Retry the same signed proof",
+  paymentError:
+    "The payment needs review. A rejected wallet request, unavailable service or uncertain settlement can cause this state. Check the saved attempt and wallet history; do not create a second payment blindly.",
+  settlementReported: "Settlement reported by facilitator",
+  responseReceived: "Resource response received",
+  paymentNotCompleted: "Payment or delivery is incomplete",
+  receiptCaveat:
+    "This is the returned settlement receipt. Resource verification and chain confirmation are separate checks; inspect the exact status and transaction.",
+  inspectResponse: "Inspect resource response",
+  bsvTitle: "Exchange security credits atomically",
+  bsvBody:
+    "One transaction exchanges an existing BSV-21 token output for BSV. The buyer prepares it, the seller reviews and signs it, and the buyer completes it through their wallet. No token inventory is invented here.",
+  overlayUnavailable:
+    "A verified token overlay is not configured. Preparation and settlement remain disabled.",
+  overlayLabel: "Configured token overlay",
+  buyer: "Buyer",
+  seller: "Seller",
+  offerJson: "Seller offer JSON",
+  preparedJson: "Prepared transaction package JSON",
+  buyerKeyIndex: "Buyer token key index",
+  reviewSwap: "Review the swap terms",
+  prepareSwap: "Approve terms and prepare in wallet",
+  signAsSeller: "Approve exact transaction as seller",
+  completeSwap: "Approve completion and broadcast in wallet",
+  sellerSignature: "Seller unlocking signature",
+  swapHandoff:
+    "Share this prepared package with the intended seller using your chosen channel. Import only the signature returned for this exact package. The wallet controls fees and final broadcast.",
+  swapState: "Operation state",
+  transactionEvidence: "Transaction evidence",
+  bsvReceiptNote:
+    "Wallet broadcast and overlay admission are separate from independent block confirmation. The receipt remains confirmed:false until an independent confirmation check exists.",
+  reconcileSwap: "Reconcile the same transaction",
+  swapError:
+    "The swap could not advance. Verify the offer, wallet role, network, token availability and saved operation. An uncertain broadcast requires reconciliation, not another purchase.",
+  swapApprovalNote:
+    "Approval binds the exact token output, token quantity, BSV price, network and both counterparties. Wallet fees are reviewed separately in the wallet.",
+  tokenId: "Token identifier",
+  tokenAmount: "Token quantity",
+  tokenOutpoint: "Token output",
+  cardanoTitle: "Unlock an explicitly published report",
+  cardanoBody:
+    "Connect a CIP-30 wallet on preprod. Review the report, recipient, price and fee budget. Your wallet signs the complete transaction; the facilitator broadcasts it and returns settlement evidence.",
+  connectCardano: "Connect Cardano wallet",
+  cardanoWallet: "Cardano wallet",
+  reportId: "Published report identifier",
+  feeBudget: "Maximum network fee (lovelace)",
+  cardanoUnavailable:
+    "A preprod chain provider and compatible wallet are required. No signing is possible until both are available.",
+  cardanoError:
+    "Cardano connection or transaction validation failed. Confirm the wallet uses preprod and has sufficient test ADA, including the fee budget.",
   speakerSnapshot: "Speaker activity snapshot",
+  receiveProceeds: "Import seller proceeds",
+  receiptJson: "Buyer transaction receipt (JSON)",
+  receiveProceedsNote:
+    "Review the completed transaction and import its payment into the seller wallet. This does not create a new transfer or confirm the transaction on chain.",
+  proceedsImported:
+    "The wallet accepted the transaction receipt. Check confirmation in your wallet.",
+  paymentPayer: "Paying wallet address",
+  gateTitle: "Put the signed decision on chain",
+  gateBody:
+    "Deploy a verifier for this CVE, then submit the paid signed response. The contract quarantines when the CVSS score meets or exceeds your threshold. Deployment and submission each require a separate wallet transaction.",
+  gateAge: "Maximum response age (seconds)",
+  gateThreshold: "CVSS threshold in tenths (70 = 7.0)",
+  gateEstimateDeployment: "Estimate verifier deployment",
+  gateContract: "Verifier contract address",
+  gateEstimateSubmission: "Verify evidence and estimate submission",
+  gateDeploy: "Review contract deployment",
+  gateSubmit: "Review signed evidence submission",
+  gateReviewNote:
+    "Review this exact policy and gas cap. The estimate expires after two minutes. MetaMask presents the final transaction; rejecting it does not produce a confirmed result.",
+  gateSigner: "Expected Airnode signer",
+  gateRequestHash: "Expected CVE request hash",
+  gateGas: "Gas limit, including 10% margin",
+  gateMaxCost: "Maximum L2 execution fee",
+  gateMaxFee: "Maximum fee per gas",
+  gateAuthorize: "Approve this transaction in wallet",
+  gateRecorded: "Recorded transaction state:",
+  gateRecheck: "Check this same transaction receipt",
+  gateError:
+    "The wallet, policy, evidence or receipt could not be verified. Review the saved transaction and wallet before retrying. No new transaction is sent during a receipt check.",
+  gateTotalEstimate: "Estimated total fee including L1/data and operator fees",
 };
 export type Dictionary = { [K in keyof typeof en]: string };

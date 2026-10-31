@@ -197,5 +197,108 @@ export const es: Dictionary = {
   merchantPrice: "Precio del informe",
   merchantRecipient: "Dirección del comerciante",
   refreshStatus: "Actualizar estado",
+  managePayments: "Abrir espacio de pagos",
+  paymentsTitle: "Revisa. Autoriza. Verifica.",
+  paymentsBody:
+    "Cada red usa su billetera y protocolo. Revisa la solicitud exacta antes de firmar. Una conexión o firma no es un pago liquidado.",
+  connectedWallet: "Billetera conectada",
+  api3Title: "Paga por evidencia de vulnerabilidad firmada",
+  api3Body:
+    "Solicita un análisis de CVE al Airnode configurado. El desafío x402 indica el precio exacto. El backend verifica la firma del proveedor, el hash de la solicitud y la antigüedad de la respuesta tras el pago.",
+  connectEvm: "Conectar billetera EVM",
+  switchBase: "Cambiar a Base Sepolia",
+  cveLabel: "Identificador CVE",
+  evmError:
+    "Abre una extensión de billetera EVM y autoriza la conexión. El pago requiere Base Sepolia.",
+  requestChallenge: "Solicitar condiciones de pago",
+  reviewPayment: "Revisar este pago",
+  paymentResource: "Recurso solicitado",
+  paymentAsset: "Identificador del activo",
+  paymentAmount: "Importe en unidades mínimas",
+  paymentApprovalNote:
+    "La aprobación cubre solo el destinatario, activo, importe y recurso mostrados. Tu billetera muestra la solicitud de firma o transacción. No compartas semillas ni claves privadas.",
+  approvePayment: "Aprobar condiciones y firmar en la billetera",
+  paymentExisting:
+    "Ya existe un intento guardado. Revísalo antes de continuar.",
+  retryPayment: "Reintentar con la misma prueba firmada",
+  paymentError:
+    "El pago requiere revisión. Una solicitud rechazada, un servicio no disponible o una liquidación incierta pueden causarlo. Revisa el intento guardado y el historial; no crees otro pago sin comprobarlo.",
+  settlementReported: "Liquidación informada por el facilitador",
+  responseReceived: "Respuesta del recurso recibida",
+  paymentNotCompleted: "Pago o entrega incompletos",
+  receiptCaveat:
+    "Este es el recibo devuelto. La verificación del recurso y la confirmación en cadena son controles distintos; revisa el estado y la transacción.",
+  inspectResponse: "Inspeccionar respuesta",
+  bsvTitle: "Intercambia créditos de seguridad de forma atómica",
+  bsvBody:
+    "Una transacción intercambia una salida BSV-21 existente por BSV. El comprador la prepara, el vendedor revisa y firma, y el comprador la completa en su billetera. No se inventa inventario.",
+  overlayUnavailable:
+    "No hay un overlay de tokens configurado. La preparación y liquidación están deshabilitadas.",
+  overlayLabel: "Overlay de tokens configurado",
+  buyer: "Comprador",
+  seller: "Vendedor",
+  offerJson: "Oferta JSON del vendedor",
+  preparedJson: "Paquete JSON de transacción preparada",
+  buyerKeyIndex: "Índice de clave del token del comprador",
+  reviewSwap: "Revisar las condiciones del intercambio",
+  prepareSwap: "Aprobar y preparar en la billetera",
+  signAsSeller: "Aprobar la transacción como vendedor",
+  completeSwap: "Aprobar finalización y difusión en billetera",
+  sellerSignature: "Firma de desbloqueo del vendedor",
+  swapHandoff:
+    "Comparte este paquete con el vendedor por el canal que elijas. Importa solo la firma de este paquete exacto. La billetera controla las comisiones y difusión final.",
+  swapState: "Estado de la operación",
+  transactionEvidence: "Evidencia de transacción",
+  bsvReceiptNote:
+    "La difusión de la billetera y admisión del overlay son distintas de la confirmación independiente en bloque. El recibo conserva confirmed:false hasta una comprobación independiente.",
+  reconcileSwap: "Conciliar la misma transacción",
+  swapError:
+    "El intercambio no pudo avanzar. Verifica la oferta, rol, red, token y operación guardada. Una difusión incierta requiere conciliación, no otra compra.",
+  swapApprovalNote:
+    "La aprobación vincula la salida del token, cantidad, precio BSV, red y ambas partes. Las comisiones se revisan en la billetera.",
+  tokenId: "Identificador del token",
+  tokenAmount: "Cantidad de tokens",
+  tokenOutpoint: "Salida del token",
+  cardanoTitle: "Desbloquea un informe publicado explícitamente",
+  cardanoBody:
+    "Conecta una billetera CIP-30 en preprod. Revisa el informe, destinatario, precio y presupuesto de comisiones. Tu billetera firma la transacción; el facilitador la difunde y devuelve evidencia.",
+  connectCardano: "Conectar billetera Cardano",
+  cardanoWallet: "Billetera Cardano",
+  reportId: "Identificador del informe publicado",
+  feeBudget: "Comisión de red máxima (lovelace)",
+  cardanoUnavailable:
+    "Se requieren un proveedor preprod y una billetera compatible. No se puede firmar hasta que estén disponibles.",
+  cardanoError:
+    "Falló la conexión o validación Cardano. Confirma que la billetera usa preprod y tiene ADA de prueba suficiente, incluidas las comisiones.",
   speakerSnapshot: "Actividad de hablantes",
+  receiveProceeds: "Importar ingresos del vendedor",
+  receiptJson: "Recibo de transacción del comprador (JSON)",
+  receiveProceedsNote:
+    "Revisa la transacción completada e importa su pago en la cartera del vendedor. Esto no crea una transferencia nueva ni confirma la transacción en la cadena.",
+  proceedsImported:
+    "La cartera aceptó el recibo de la transacción. Comprueba la confirmación en tu cartera.",
+  paymentPayer: "Dirección de la cartera pagadora",
+  gateTitle: "Registrar la decisión firmada en la cadena",
+  gateBody:
+    "Despliega un verificador para este CVE y envía la respuesta firmada de pago. El contrato pone en cuarentena cuando la puntuación CVSS alcanza o supera tu umbral. Despliegue y envío requieren transacciones separadas.",
+  gateAge: "Antigüedad máxima de la respuesta (segundos)",
+  gateThreshold: "Umbral CVSS en décimas (70 = 7,0)",
+  gateEstimateDeployment: "Estimar despliegue del verificador",
+  gateContract: "Dirección del contrato verificador",
+  gateEstimateSubmission: "Verificar evidencia y estimar envío",
+  gateDeploy: "Revisar despliegue del contrato",
+  gateSubmit: "Revisar envío de evidencia firmada",
+  gateReviewNote:
+    "Revisa esta política exacta y el límite de gas. La estimación caduca en dos minutos. MetaMask presenta la transacción final; rechazarla no genera un resultado confirmado.",
+  gateSigner: "Firmante Airnode esperado",
+  gateRequestHash: "Hash esperado de la solicitud CVE",
+  gateGas: "Límite de gas, incluido margen del 10 %",
+  gateMaxCost: "Comisión máxima de ejecución L2",
+  gateMaxFee: "Comisión máxima por unidad de gas",
+  gateAuthorize: "Aprobar esta transacción en la cartera",
+  gateRecorded: "Estado registrado de la transacción:",
+  gateRecheck: "Comprobar el recibo de esta misma transacción",
+  gateError:
+    "No se pudo verificar la cartera, política, evidencia o recibo. Revisa la transacción guardada y la cartera antes de reintentar. Comprobar el recibo no envía una transacción nueva.",
+  gateTotalEstimate: "Comisión total estimada, incluidos datos L1 y operador",
 };

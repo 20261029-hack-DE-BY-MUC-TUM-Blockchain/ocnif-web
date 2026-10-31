@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/buttons/Button/Button";
 import { Icon } from "@/components/ui/data-display/Icon/Icon";
@@ -71,6 +72,9 @@ export function WalletPanel() {
         <Icon name="wallet" />
         {t.payments}
       </h3>
+      <Link href="/payments" className={styles.link}>
+        {t.managePayments}
+      </Link>
       <div className={styles.network}>
         <b>BSV · BRC-100</b>
         <p>{t.walletIntro}</p>

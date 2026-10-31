@@ -199,5 +199,109 @@ export const de: Dictionary = {
   merchantPrice: "Berichtspreis",
   merchantRecipient: "Händleradresse",
   refreshStatus: "Status aktualisieren",
+  managePayments: "Zahlungsbereich öffnen",
+  paymentsTitle: "Prüfen. Freigeben. Verifizieren.",
+  paymentsBody:
+    "Jedes Netzwerk nutzt eine eigene Wallet und ein eigenes Protokoll. Prüfe die genaue Anfrage vor der Signatur. Eine Verbindung oder Signatur ist keine abgeschlossene Zahlung.",
+  connectedWallet: "Wallet verbunden",
+  api3Title: "Für signierte Schwachstellennachweise bezahlen",
+  api3Body:
+    "Fordere eine CVE-Bewertung vom konfigurierten Airnode an. Die x402-Anforderung enthält den genauen Preis. Das Backend prüft nach der Zahlung Signatur, Anfrage-Hash und Alter der Antwort.",
+  connectEvm: "EVM-Wallet verbinden",
+  switchBase: "Zu Base Sepolia wechseln",
+  cveLabel: "CVE-Kennung",
+  evmError:
+    "Öffne eine EVM-Wallet-Erweiterung und genehmige die Verbindung. Die Zahlung erfordert Base Sepolia.",
+  requestChallenge: "Zahlungsbedingungen anfordern",
+  reviewPayment: "Diese Zahlung prüfen",
+  paymentResource: "Angeforderte Ressource",
+  paymentAsset: "Asset-Kennung",
+  paymentAmount: "Betrag in kleinsten Einheiten",
+  paymentApprovalNote:
+    "Die Freigabe gilt nur für den angezeigten Empfänger, das Asset, den Betrag und die Ressource. Deine Wallet zeigt die Signatur- oder Transaktionsanfrage. Teile niemals Seed oder private Schlüssel.",
+  approvePayment: "Bedingungen freigeben und in der Wallet signieren",
+  paymentExisting:
+    "Ein gespeicherter Versuch existiert bereits. Prüfe ihn vor weiteren Aktionen.",
+  retryPayment: "Denselben signierten Nachweis erneut senden",
+  paymentError:
+    "Die Zahlung muss geprüft werden. Ursachen können eine abgelehnte Wallet-Anfrage, ein nicht erreichbarer Dienst oder ein unklarer Abschluss sein. Prüfe den gespeicherten Versuch und den Wallet-Verlauf; zahle nicht ungeprüft erneut.",
+  settlementReported: "Abschluss vom Facilitator gemeldet",
+  responseReceived: "Ressourcenantwort empfangen",
+  paymentNotCompleted: "Zahlung oder Lieferung unvollständig",
+  receiptCaveat:
+    "Dies ist der zurückgegebene Beleg. Ressourcenprüfung und Blockchain-Bestätigung sind getrennte Prüfungen; beachte Status und Transaktion.",
+  inspectResponse: "Ressourcenantwort prüfen",
+  bsvTitle: "Sicherheits-Credits atomar tauschen",
+  bsvBody:
+    "Eine Transaktion tauscht einen bestehenden BSV-21-Token-Output gegen BSV. Der Käufer bereitet sie vor, der Verkäufer prüft und signiert, und der Käufer schließt sie in seiner Wallet ab. Es wird kein Bestand erfunden.",
+  overlayUnavailable:
+    "Kein verifizierter Token-Overlay ist konfiguriert. Vorbereitung und Abschluss bleiben deaktiviert.",
+  overlayLabel: "Konfigurierter Token-Overlay",
+  buyer: "Käufer",
+  seller: "Verkäufer",
+  offerJson: "Verkäuferangebot als JSON",
+  preparedJson: "Vorbereitetes Transaktionspaket als JSON",
+  buyerKeyIndex: "Token-Schlüsselindex des Käufers",
+  reviewSwap: "Tauschbedingungen prüfen",
+  prepareSwap: "Bedingungen freigeben und in Wallet vorbereiten",
+  signAsSeller: "Exakte Transaktion als Verkäufer freigeben",
+  completeSwap: "Abschluss freigeben und über Wallet senden",
+  sellerSignature: "Freigabesignatur des Verkäufers",
+  swapHandoff:
+    "Teile dieses Paket über deinen gewählten Kanal mit dem vorgesehenen Verkäufer. Importiere nur die Signatur für genau dieses Paket. Die Wallet kontrolliert Gebühren und endgültiges Senden.",
+  swapState: "Vorgangsstatus",
+  transactionEvidence: "Transaktionsnachweis",
+  bsvReceiptNote:
+    "Wallet-Übertragung und Overlay-Aufnahme sind keine unabhängige Blockbestätigung. Der Beleg bleibt confirmed:false, bis eine unabhängige Bestätigungsprüfung existiert.",
+  reconcileSwap: "Dieselbe Transaktion abgleichen",
+  swapError:
+    "Der Tausch konnte nicht fortgesetzt werden. Prüfe Angebot, Wallet-Rolle, Netzwerk, Token und gespeicherten Vorgang. Eine unklare Übertragung erfordert Abgleich statt erneutem Kauf.",
+  swapApprovalNote:
+    "Die Freigabe bindet Token-Output, Tokenmenge, BSV-Preis, Netzwerk und beide Parteien. Wallet-Gebühren werden gesondert in der Wallet geprüft.",
+  tokenId: "Token-Kennung",
+  tokenAmount: "Tokenmenge",
+  tokenOutpoint: "Token-Output",
+  cardanoTitle: "Einen ausdrücklich veröffentlichten Bericht freischalten",
+  cardanoBody:
+    "Verbinde eine CIP-30-Wallet auf Preprod. Prüfe Bericht, Empfänger, Preis und Gebührenlimit. Deine Wallet signiert die vollständige Transaktion; der Facilitator sendet sie und liefert einen Beleg.",
+  connectCardano: "Cardano-Wallet verbinden",
+  cardanoWallet: "Cardano-Wallet",
+  reportId: "Kennung des veröffentlichten Berichts",
+  feeBudget: "Maximale Netzwerkgebühr (Lovelace)",
+  cardanoUnavailable:
+    "Ein Preprod-Provider und eine kompatible Wallet werden benötigt. Signieren ist erst möglich, wenn beide verfügbar sind.",
+  cardanoError:
+    "Cardano-Verbindung oder Transaktionsprüfung fehlgeschlagen. Prüfe Preprod-Netzwerk und genügend Test-ADA einschließlich Gebühren.",
   speakerSnapshot: "Momentaufnahme der Sprecheraktivität",
+  receiveProceeds: "Verkaufserlös importieren",
+  receiptJson: "Transaktionsbeleg des Käufers (JSON)",
+  receiveProceedsNote:
+    "Prüfe die abgeschlossene Transaktion und importiere die Zahlung in die Wallet des Verkäufers. Dies erzeugt keine neue Überweisung und bestätigt die Transaktion nicht auf der Blockchain.",
+  proceedsImported:
+    "Die Wallet hat den Transaktionsbeleg angenommen. Prüfe die Bestätigung in deiner Wallet.",
+  paymentPayer: "Adresse der zahlenden Wallet",
+  gateTitle: "Signierte Entscheidung auf der Blockchain speichern",
+  gateBody:
+    "Veröffentliche einen Verifikationsvertrag für diese CVE und übermittle die bezahlte signierte Antwort. Der Vertrag setzt Quarantäne, wenn der CVSS-Wert deinen Schwellenwert erreicht oder überschreitet. Beide Schritte erfordern getrennte Wallet-Transaktionen.",
+  gateAge: "Maximales Antwortalter (Sekunden)",
+  gateThreshold: "CVSS-Schwellenwert in Zehnteln (70 = 7,0)",
+  gateEstimateDeployment: "Vertragsbereitstellung schätzen",
+  gateContract: "Adresse des Verifikationsvertrags",
+  gateEstimateSubmission: "Nachweis prüfen und Übermittlung schätzen",
+  gateDeploy: "Vertragsbereitstellung prüfen",
+  gateSubmit: "Übermittlung des signierten Nachweises prüfen",
+  gateReviewNote:
+    "Prüfe diese genaue Richtlinie und die Gasobergrenze. Die Schätzung läuft nach zwei Minuten ab. MetaMask zeigt die endgültige Transaktion; eine Ablehnung erzeugt kein bestätigtes Ergebnis.",
+  gateSigner: "Erwarteter Airnode-Unterzeichner",
+  gateRequestHash: "Erwarteter Hash der CVE-Anfrage",
+  gateGas: "Gaslimit mit 10 % Reserve",
+  gateMaxCost: "Maximale L2-Ausführungsgebühr",
+  gateMaxFee: "Maximale Gebühr pro Gas",
+  gateAuthorize: "Diese Transaktion in der Wallet bestätigen",
+  gateRecorded: "Gespeicherter Transaktionsstatus:",
+  gateRecheck: "Beleg derselben Transaktion prüfen",
+  gateError:
+    "Wallet, Richtlinie, Nachweis oder Beleg konnten nicht geprüft werden. Prüfe vor einem erneuten Versuch die gespeicherte Transaktion und die Wallet. Die Belegprüfung sendet keine neue Transaktion.",
+  gateTotalEstimate:
+    "Geschätzte Gesamtgebühr einschließlich L1-Daten und Betreiber",
 };

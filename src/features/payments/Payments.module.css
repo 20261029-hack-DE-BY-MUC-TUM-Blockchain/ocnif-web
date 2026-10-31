@@ -1,0 +1,122 @@
+.page {
+  max-width: 78rem;
+  margin: auto;
+  padding: var(--space-6);
+}
+.intro {
+  padding: var(--space-8) 0;
+  max-width: 50rem;
+}
+.intro h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  margin: var(--space-4) 0;
+}
+.intro p,
+.flow > p {
+  color: var(--muted);
+}
+.tabs,
+.actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin: var(--space-5) 0;
+}
+.tabs button[aria-selected="true"] {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+.flow {
+  background: var(--glass);
+  border: var(--border) solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: clamp(1rem, 4vw, 3rem);
+}
+.flow h2 {
+  font-size: var(--font-3xl);
+  margin-bottom: var(--space-4);
+}
+.flow p {
+  font-size: var(--font-sm);
+  margin: var(--space-4) 0;
+}
+.eyebrow {
+  color: var(--accent);
+  font-size: var(--font-xs);
+  letter-spacing: 0.12em;
+}
+.field {
+  display: grid;
+  gap: var(--space-2);
+  margin: var(--space-5) 0;
+  font-size: var(--font-sm);
+}
+.field input,
+.field textarea,
+.field select {
+  background: var(--panel-soft);
+  color: var(--text);
+  border: var(--border) solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  width: 100%;
+}
+.field textarea {
+  min-height: 8rem;
+  resize: vertical;
+  font-family: monospace;
+}
+.review {
+  border-top: var(--border) solid var(--line);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+}
+.review h3 {
+  font-size: var(--font-lg);
+}
+.review dl {
+  display: grid;
+  grid-template-columns: minmax(7rem, 1fr) minmax(0, 3fr);
+  gap: var(--space-3);
+  font-size: var(--font-sm);
+  margin: var(--space-5) 0;
+}
+.review dt {
+  color: var(--muted);
+}
+.review dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.review pre {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  font-size: var(--font-xs);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 30rem;
+  overflow: auto;
+}
+.error {
+  color: var(--danger);
+}
+.review summary {
+  cursor: pointer;
+  color: var(--accent);
+}
+@media (max-width: 600px) {
+  .page {
+    padding: var(--space-3);
+  }
+  .review dl {
+    grid-template-columns: 1fr;
+  }
+  .review dd {
+    margin-bottom: var(--space-2);
+  }
+}
+
+.flow code {
+  overflow-wrap: anywhere;
+}

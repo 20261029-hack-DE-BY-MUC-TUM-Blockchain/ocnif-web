@@ -43,3 +43,10 @@
   font-size: var(--font-xs);
   color: var(--muted);
 }
+
+.link {
+  display: inline-block;
+  color: var(--accent);
+  margin-top: var(--space-3);
+  font-size: var(--font-sm);
+}

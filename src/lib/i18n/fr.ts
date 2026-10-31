@@ -197,5 +197,108 @@ export const fr: Dictionary = {
   merchantPrice: "Prix du rapport",
   merchantRecipient: "Adresse du marchand",
   refreshStatus: "Actualiser le statut",
+  managePayments: "Ouvrir l’espace de paiement",
+  paymentsTitle: "Examiner. Autoriser. Vérifier.",
+  paymentsBody:
+    "Chaque réseau utilise son portefeuille et son protocole. Examinez la demande avant de signer. Une connexion ou signature ne prouve pas un paiement réglé.",
+  connectedWallet: "Portefeuille connecté",
+  api3Title: "Payer pour des preuves de vulnérabilité signées",
+  api3Body:
+    "Demandez une analyse CVE à l’Airnode configuré. Le défi x402 indique le prix exact. Après paiement, le backend vérifie la signature, l’empreinte de la demande et l’ancienneté de la réponse.",
+  connectEvm: "Connecter le portefeuille EVM",
+  switchBase: "Passer à Base Sepolia",
+  cveLabel: "Identifiant CVE",
+  evmError:
+    "Ouvrez une extension de portefeuille EVM et autorisez la connexion. Le paiement nécessite Base Sepolia.",
+  requestChallenge: "Demander les conditions de paiement",
+  reviewPayment: "Examiner ce paiement",
+  paymentResource: "Ressource demandée",
+  paymentAsset: "Identifiant de l’actif",
+  paymentAmount: "Montant en unités minimales",
+  paymentApprovalNote:
+    "L’autorisation couvre uniquement le destinataire, l’actif, le montant et la ressource affichés. Votre portefeuille présente la demande de signature ou transaction. Ne partagez jamais de phrase secrète ni de clé privée.",
+  approvePayment: "Approuver les conditions et signer dans le portefeuille",
+  paymentExisting:
+    "Une tentative enregistrée existe déjà. Examinez-la avant toute autre action.",
+  retryPayment: "Renvoyer la même preuve signée",
+  paymentError:
+    "Le paiement doit être examiné. Une demande refusée, un service indisponible ou un règlement incertain peuvent l’expliquer. Vérifiez la tentative et l’historique du portefeuille ; ne créez pas un second paiement sans contrôle.",
+  settlementReported: "Règlement signalé par le facilitateur",
+  responseReceived: "Réponse de la ressource reçue",
+  paymentNotCompleted: "Paiement ou livraison incomplet",
+  receiptCaveat:
+    "Voici le reçu retourné. La vérification de la ressource et la confirmation sur chaîne sont distinctes ; examinez le statut et la transaction.",
+  inspectResponse: "Examiner la réponse",
+  bsvTitle: "Échanger atomiquement des crédits de sécurité",
+  bsvBody:
+    "Une transaction échange une sortie BSV-21 existante contre des BSV. L’acheteur la prépare, le vendeur examine et signe, puis l’acheteur la termine dans son portefeuille. Aucun stock n’est inventé.",
+  overlayUnavailable:
+    "Aucun service overlay de tokens n’est configuré. La préparation et le règlement restent désactivés.",
+  overlayLabel: "Overlay de tokens configuré",
+  buyer: "Acheteur",
+  seller: "Vendeur",
+  offerJson: "Offre du vendeur en JSON",
+  preparedJson: "Paquet de transaction préparée en JSON",
+  buyerKeyIndex: "Index de clé de token de l’acheteur",
+  reviewSwap: "Examiner les conditions d’échange",
+  prepareSwap: "Approuver et préparer dans le portefeuille",
+  signAsSeller: "Approuver la transaction exacte en tant que vendeur",
+  completeSwap: "Approuver la finalisation et diffuser via le portefeuille",
+  sellerSignature: "Signature de déverrouillage du vendeur",
+  swapHandoff:
+    "Partagez ce paquet avec le vendeur prévu par le canal de votre choix. Importez uniquement la signature correspondant à ce paquet exact. Le portefeuille contrôle les frais et la diffusion finale.",
+  swapState: "État de l’opération",
+  transactionEvidence: "Preuve de transaction",
+  bsvReceiptNote:
+    "La diffusion par le portefeuille et l’admission par l’overlay sont distinctes d’une confirmation indépendante en bloc. Le reçu reste confirmed:false sans vérification indépendante.",
+  reconcileSwap: "Réconcilier la même transaction",
+  swapError:
+    "L’échange n’a pas avancé. Vérifiez l’offre, le rôle, le réseau, le token et l’opération enregistrée. Une diffusion incertaine nécessite une réconciliation, pas un autre achat.",
+  swapApprovalNote:
+    "L’autorisation lie la sortie du token, sa quantité, le prix en BSV, le réseau et les deux parties. Les frais sont examinés séparément dans le portefeuille.",
+  tokenId: "Identifiant du token",
+  tokenAmount: "Quantité de tokens",
+  tokenOutpoint: "Sortie du token",
+  cardanoTitle: "Déverrouiller un rapport explicitement publié",
+  cardanoBody:
+    "Connectez un portefeuille CIP-30 sur preprod. Examinez rapport, destinataire, prix et budget de frais. Le portefeuille signe la transaction complète ; le facilitateur la diffuse et fournit le reçu.",
+  connectCardano: "Connecter le portefeuille Cardano",
+  cardanoWallet: "Portefeuille Cardano",
+  reportId: "Identifiant du rapport publié",
+  feeBudget: "Frais réseau maximum (lovelace)",
+  cardanoUnavailable:
+    "Un fournisseur preprod et un portefeuille compatible sont nécessaires. La signature reste indisponible sans les deux.",
+  cardanoError:
+    "La connexion ou validation Cardano a échoué. Vérifiez le réseau preprod et les fonds ADA de test suffisants, frais compris.",
   speakerSnapshot: "Aperçu de l’activité des locuteurs",
+  receiveProceeds: "Importer le produit de la vente",
+  receiptJson: "Reçu de transaction de l’acheteur (JSON)",
+  receiveProceedsNote:
+    "Vérifiez la transaction terminée et importez son paiement dans le portefeuille du vendeur. Cela ne crée pas de nouveau transfert et ne confirme pas la transaction sur la chaîne.",
+  proceedsImported:
+    "Le portefeuille a accepté le reçu. Vérifiez la confirmation dans votre portefeuille.",
+  paymentPayer: "Adresse du portefeuille payeur",
+  gateTitle: "Inscrire la décision signée sur la chaîne",
+  gateBody:
+    "Déployez un vérificateur pour ce CVE, puis soumettez la réponse signée payée. Le contrat applique une quarantaine lorsque le score CVSS atteint ou dépasse votre seuil. Le déploiement et la soumission nécessitent deux transactions distinctes.",
+  gateAge: "Âge maximal de la réponse (secondes)",
+  gateThreshold: "Seuil CVSS en dixièmes (70 = 7,0)",
+  gateEstimateDeployment: "Estimer le déploiement du vérificateur",
+  gateContract: "Adresse du contrat vérificateur",
+  gateEstimateSubmission: "Vérifier la preuve et estimer la soumission",
+  gateDeploy: "Examiner le déploiement du contrat",
+  gateSubmit: "Examiner la soumission de la preuve signée",
+  gateReviewNote:
+    "Examinez cette politique précise et le plafond de gas. L’estimation expire après deux minutes. MetaMask présente la transaction finale ; son rejet ne produit aucun résultat confirmé.",
+  gateSigner: "Signataire Airnode attendu",
+  gateRequestHash: "Empreinte attendue de la requête CVE",
+  gateGas: "Limite de gas avec marge de 10 %",
+  gateMaxCost: "Frais maximaux d’exécution L2",
+  gateMaxFee: "Frais maximaux par unité de gas",
+  gateAuthorize: "Approuver cette transaction dans le portefeuille",
+  gateRecorded: "État enregistré de la transaction :",
+  gateRecheck: "Vérifier le reçu de cette même transaction",
+  gateError:
+    "Le portefeuille, la politique, la preuve ou le reçu n’a pas pu être vérifié. Examinez la transaction enregistrée et votre portefeuille avant de réessayer. Vérifier le reçu n’envoie aucune nouvelle transaction.",
+  gateTotalEstimate: "Frais totaux estimés, données L1 et opérateur inclus",
 };
