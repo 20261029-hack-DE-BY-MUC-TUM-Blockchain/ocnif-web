@@ -1,0 +1,22 @@
+{
+  "repository": "20261029-hack-DE-BY-MUC-TUM-Blockchain/ocnif-bc-cardano",
+  "commit": "4ba2389c141bc85dfc8f4dcecd9931b523abb395",
+  "files": [
+    {
+      "upstream": "client/index.ts",
+      "local": "index.ts",
+      "sha256": "be7bd541982a47ac8849eb3fa3ae0e8a85f8f992b3d44b75d9b327a36558627e"
+    },
+    {
+      "upstream": "client/types.ts",
+      "local": "types.ts",
+      "sha256": "7e25af0734c5d191aa90f93c068bd2e521461f4a661094c225eb7d29f62f5006"
+    },
+    {
+      "upstream": "client/transaction.ts",
+      "local": "transaction.ts",
+      "sha256": "658205bd3712615d0cc31c1e14c66dc7e319473fea2e118e8ab889d6421fb9d6"
+    }
+  ],
+  "note": "Exact production client source vendored for independent build; source tests run in owning repository. No credentials or sibling dependencies."
+}

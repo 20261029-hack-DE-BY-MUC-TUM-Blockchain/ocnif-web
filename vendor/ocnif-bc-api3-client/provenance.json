@@ -1,0 +1,22 @@
+{
+  "repository": "20261029-hack-DE-BY-MUC-TUM-Blockchain/ocnif-bc-api3",
+  "commit": "136bcbdc41cfe31b55ad487b4c9f6c9f223c6e22",
+  "files": [
+    {
+      "path": "client/index.ts",
+      "sha256": "a9518c0f744dd2016bc9de187081a71d98c36c6bf1bfc063c532c1976160939f"
+    },
+    {
+      "path": "client/gate-artifact.json",
+      "sha256": "177bda9e90867e30306cb8b631c61fa7e71733b889b11d1a0327d815e7fabeac"
+    },
+    {
+      "path": "client/nvd-config.json",
+      "sha256": "9c7d3aa4b587e9968a6475ed8f39796dfc1423da3eb6e8c14203db9f46a2e547"
+    },
+    {
+      "path": "src/attestation.ts",
+      "sha256": "b3f5a2c46bd0f82c5b73b296dac055e32dc005aec5d41d622895f4441b7e5de7"
+    }
+  ]
+}

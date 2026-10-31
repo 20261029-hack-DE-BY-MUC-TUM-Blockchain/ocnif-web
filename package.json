@@ -13,12 +13,19 @@
     "secret-scan": "gitleaks dir . --redact --no-banner"
   },
   "dependencies": {
+    "@x402/core": "2.29.0",
+    "@x402/evm": "2.29.0",
     "next": "16.4.3",
     "ocnif-bc-bsv": "./vendor/ocnif-bc-bsv",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-markdown": "10.1.0",
-    "remark-gfm": "4.0.1"
+    "remark-gfm": "4.0.1",
+    "viem": "2.57.3",
+    "ocnif-bc-cardano-client": "file:vendor/ocnif-bc-cardano-client",
+    "@x402/cardano": "2.29.0",
+    "@evolution-sdk/evolution": "0.5.19",
+    "ocnif-bc-api3-client": "file:vendor/ocnif-bc-api3-client"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.2",
@@ -27,6 +34,7 @@
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "babel-plugin-react-compiler": "1.0.0",
+    "fake-indexeddb": "6.2.7",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3"
   },

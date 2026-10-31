@@ -1,11 +1,51 @@
 {
   "repository": "20261029-hack-DE-BY-MUC-TUM-Blockchain/ocnif-bc-bsv",
-  "commit": "3705828c94c7a6dfa0d6045b9856e17493eba684",
-  "reason": "Immutable Git tarball was inaccessible without credentials; reviewed source artifact vendored for independent builds.",
-  "sha256": {
-    "package.json": "775c92910fca7bc4615538236e6611ea11f6dfbdd359c3f0dbf22a2723b80945",
-    "src/index.ts": "9ea54f03f6263bd0eee3ee1fe35ab708d0eb15a11885159b7c1262f822aebeb9",
-    "src/journal.ts": "661e33b1dcdc3d743bcbae94967d132a3d2b7a66cde85e7d411a584ac62d83b7",
-    "README.md": "b32ccac5e156c264c191549d84e35bb00c56605991094b817599cf1a94b47aeb"
-  }
+  "commit": "e151b4af01d6ad6bb9274bc4b1791275e5643417",
+  "reason": "Reviewed immutable source vendored for independent builds without private Git credentials.",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "085f275a0c5768a17f076060b44d6577d40b48427015bdf4871022694926df1f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "b9b3e3f7a0318a9f04bb05a62bdc7844c67bf693608ba819b7f54c1d44f78e7d"
+    },
+    {
+      "path": "src/index.ts",
+      "sha256": "2e57d18fde2252f366ba752dea786ee5fbf452289dede8b17501a7242f8bf1d4"
+    },
+    {
+      "path": "src/journal.ts",
+      "sha256": "7f0958a3f22ee2f178ed6bc46e8ee682a270b5ff76a49799a5ecad6614de53f4"
+    },
+    {
+      "path": "src/overlay.ts",
+      "sha256": "ede55ec6fc2d9f3e36fe4d44f73a8a5d3831fd79fe6a8d678307333b9527476c"
+    },
+    {
+      "path": "src/protocol.ts",
+      "sha256": "9118de22f746cfc4f2dac0ebb320d2181bc090491d47f116075bd8a9aeb49a53"
+    },
+    {
+      "path": "src/swap-receipt.ts",
+      "sha256": "42855c6382c66b7de8bb731dcbf4a5a2ee9e95ba10302c39ab94a51dd8f98f94"
+    },
+    {
+      "path": "src/swap-types.ts",
+      "sha256": "19e3f77a920300bc5b1bcd8767eef90fd29df25fc223ec368b150f9fe9439347"
+    },
+    {
+      "path": "src/swap-validation.ts",
+      "sha256": "cb93e76b201cac4084d26cac6c8f81b8af8b748c375dc8e18ee42e4b00584b3c"
+    },
+    {
+      "path": "src/swap.ts",
+      "sha256": "e713e0e9a800ee930cebb630d7bc16037e4c0080c5dd2bb26521d7779a21cc60"
+    },
+    {
+      "path": "src/token.ts",
+      "sha256": "43023ff58a14a4702b167a7d9d1b4b1606286752b0b70284c551150be41098a1"
+    }
+  ]
 }

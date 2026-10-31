@@ -1,0 +1,12 @@
+{
+  "name": "ocnif-bc-api3-client",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./client/index.ts"
+  },
+  "dependencies": {
+    "viem": "2.57.3"
+  }
+}
